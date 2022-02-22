@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ddp_web/app/constans/constans.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -175,6 +177,87 @@ class BannerMenuWidget extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class MultiBannerWidget extends StatefulWidget {
+  final List<Widget> banners;
+  final CarouselControllerImpl? controller;
+
+  MultiBannerWidget({
+    Key? key,
+    required this.banners,
+    this.controller,
+  }) : super(key: key);
+
+  @override
+  State<MultiBannerWidget> createState() => _MultiBannerWidgetState();
+}
+
+class _MultiBannerWidgetState extends State<MultiBannerWidget> {
+  double _curPage = 0.0;
+  late CarouselControllerImpl _carouselController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _carouselController = widget.controller ?? CarouselControllerImpl();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          CarouselSlider(
+            items: widget.banners,
+            carouselController: _carouselController,
+            options: CarouselOptions(
+              height: bannerHeight,
+              autoPlay: true,
+              enlargeCenterPage: false,
+              // enableInfiniteScroll: false,
+              scrollPhysics: NeverScrollableScrollPhysics(),
+              autoPlayAnimationDuration: Duration(milliseconds: 200),
+              viewportFraction: 1,
+              aspectRatio: 1.0,
+              onPageChanged: (value, _) {
+                setState(() {
+                  _curPage = value.toDouble();
+                });
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          DotsIndicator(
+            dotsCount: widget.banners.length,
+            position: _curPage,
+            onTap: (value) {
+              setState(() {
+                _curPage = value;
+                _carouselController.animateToPage(_curPage.toInt());
+              });
+            },
+            decorator: DotsDecorator(
+              size: Size(10.0, 10.0),
+              activeSize: Size(12.0, 6.0),
+              spacing: EdgeInsets.all(10.0),
+              color: Colors.grey.shade400,
+              activeColor: Colors.grey,
+              activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2)),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+        ],
       ),
     );
   }

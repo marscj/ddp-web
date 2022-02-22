@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:ddp_web/app/common/blocks/menu_widget.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
@@ -9,19 +11,22 @@ class HeaderWidget extends GetResponsiveWidget {
   HeaderWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: headerHeight,
-      decoration: BoxDecoration(
+    return SizedBox.fromSize(
+      size: Size.fromHeight(headerHeight),
+      child: Card(
         color: Colors.white,
-        border: Border(bottom: Divider.createBorderSide(context)),
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        child: Container(
+          child: Row(
+            children: [
+              LeftWidget(),
+              Expanded(child: MenuWidget()),
+              RightWidget(),
+            ],
+          ).constraints(screen.settings.desktopChangePoint),
+        ),
       ),
-      child: Row(
-        children: [
-          LeftWidget(),
-          Expanded(child: MenuWidget()),
-          RightWidget(),
-        ],
-      ).constraints(screen.settings.desktopChangePoint),
     );
   }
 }
