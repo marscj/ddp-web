@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 extension BasePageView on GetResponsiveView {
-  root() => Scaffold(
+  rootPage() => Scaffold(
         body: Container(
           child: Column(
             children: [
