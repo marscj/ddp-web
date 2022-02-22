@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' deferred as M show runApp;
+import 'package:get/get.dart' deferred as G show GetMaterialApp;
+import 'app/routes/app_pages.dart' deferred as AppPage;
 
-import 'package:get/get.dart';
-
-import 'app/routes/app_pages.dart';
-
-void main() {
-  runApp(
-    GetMaterialApp(
+void main() async {
+  await G.loadLibrary();
+  await AppPage.loadLibrary();
+  await M.loadLibrary();
+  M.runApp(
+    G.GetMaterialApp(
       title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
+      initialRoute: AppPage.AppPages.INITIAL,
+      getPages: AppPage.AppPages.routes,
+      debugShowCheckedModeBanner: false,
     ),
   );
 }

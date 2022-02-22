@@ -1,4 +1,8 @@
 include: package:lints/recommended.yaml
 linter:
   rules:
+    unnecessary_overrides: false
     
+analyzer: 
+  errors:
+    todo: ignore
