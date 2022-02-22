@@ -1,6 +1,7 @@
 import 'package:ddp_web/app/constans/constans.dart';
-import 'package:ddp_web/app/widgets/extensions.dart';
+import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:get/get.dart';
 
@@ -19,7 +20,12 @@ class HomeView extends GetResponsiveView<HomeController> {
               controller: controller.scroll,
               child: Column(
                 children: [
-                  BannerWidget('assets/images/banner1.jpg'),
+                  BannerWidget(
+                    assets: 'assets/images/banner1.jpg',
+                    title: '中国中心',
+                    desc:
+                        '迪拜硅谷-中国中心聚焦吸引跨境电商，区块链金融，移动教育，电子商务，在线娱乐，物联网，新媒体运营等数字新型企业，旨在搭建中东地区最大的海外华人企业数字产业交流平台，凭借中阿两国政府的大力支持，中国中心致力于成为中国高科技企业落地中东地区的第一桥梁，凭借自身优势，为中国企业出海保驾护航。',
+                  ),
                   ContentWidget(),
                   FooterWidget()
                 ],
@@ -164,54 +170,174 @@ class FooterWidget extends StatelessWidget {
 }
 
 class BannerWidget extends GetResponsiveWidget {
-  final String? title;
-  final String? desc;
-  final Function? onTap;
+  final String title;
+  final String desc;
+  final void Function()? onTap;
   final String assets;
 
-  BannerWidget(this.assets, {Key? key, this.title, this.desc, this.onTap});
+  BannerWidget({
+    required this.assets,
+    this.title = '',
+    this.desc = '',
+    this.onTap,
+    Key? key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        BannerContentWidget(
+          assets,
+          title: title,
+          desc: desc,
+          onTap: onTap,
+        ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: BannerFooterWidget(),
+        )
+      ],
+    );
+  }
+}
+
+class BannerContentWidget extends GetResponsiveWidget {
+  final String title;
+  final String desc;
+  final void Function()? onTap;
+  final String assets;
+
+  BannerContentWidget(
+    this.assets, {
+    Key? key,
+    this.title = '',
+    this.desc = '',
+    this.onTap,
+  });
+
+  @override
+  Widget? builder() {
     return Container(
       height: bannerHeight,
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
       ),
-      child: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Spacer(),
-              Text(
-                '中国中心',
-                style: Get.theme.textTheme.headline3
-                    ?.copyWith(color: Colors.white),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: constraints.maxWidth / 2,
-                child: Text(
-                  '''
-迪拜硅谷数字产业园中国中心(China Center)位于迪拜硅谷(Dubai Silicon Oasis)，由迪拜硅谷管理局和中国中心(DDP China Center)管理处共同成立，支持机构北京国际文化贸易促进会。
-中国中心聚焦吸引跨境电商，区块链金融，移动教育，电子商务，在线娱乐，物联网，新媒体运营等数字新型企业，旨在搭建中东地区最大的海外华人企业数字产业交流平台，凭借中阿两国政府的大力支持，中国中心致力于成为中国高科技企业落地中东地区的第一桥梁，凭借自身优势，为中国企业出海保驾护航。
-中国中心旨在通过创新驱动，数字赋能，以期推动人才，资本，信息，企业多维融合，构建“一园多集群”产业布局，形成中国产业集聚，抢占智能产业和数字经济发展制高点，以期推动中国数字经济产业在中东地区的高质量发展，首次孵化2000家中国企业享受优惠政策落地迪拜，打造阿联酋数字经济平台标杆，亿级数字中国产业集群。''',
-                  style: Get.theme.textTheme.titleSmall
-                      ?.copyWith(color: Colors.white),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(onPressed: () {}, child: Text('申请入驻')),
-              Spacer()
-            ],
-          ).constraints(screen.settings.desktopChangePoint);
-        },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Spacer(),
+          Text(
+            title,
+            style: Get.theme.textTheme.headline3?.copyWith(color: Colors.white),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          AutoSizeText(
+            desc,
+            style:
+                Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
+            maxLines: 2,
+          ).constraints(screen.settings.desktopChangePoint / 2,
+              align: Alignment.centerLeft),
+          SizedBox(
+            height: 30,
+          ),
+          ElevatedButton(onPressed: onTap, child: Text('申请入驻')),
+          Spacer()
+        ],
+      ).constraints(screen.settings.desktopChangePoint),
+    );
+  }
+}
+
+class BannerFooterWidget extends GetResponsiveWidget {
+  @override
+  Widget? builder() {
+    // TODO: implement builder
+    return Container(
+      color: Colors.black38,
+      height: bannerFooterHeight,
+      child: Row(
+        children: [
+          Spacer(),
+          VerticalDivider(
+            color: Colors.white38,
+          ),
+          Expanded(
+            child: BannerMenuWidget(
+                title: '企业合伙人', desc: '超大折扣 申请加入', onTap: () {}),
+          ),
+          VerticalDivider(
+            color: Colors.white38,
+          ),
+          Expanded(
+            child: BannerMenuWidget(
+              title: '企业合伙人',
+              desc: '超大折扣 申请加入',
+              onTap: () {},
+            ),
+          ),
+          VerticalDivider(
+            color: Colors.white38,
+          ),
+          Expanded(
+            child: BannerMenuWidget(
+                title: '企业合伙人', desc: '超大折扣 申请加入', onTap: () {}),
+          ),
+          VerticalDivider(
+            color: Colors.white38,
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+class BannerMenuWidget extends StatelessWidget {
+  final String title;
+  final String desc;
+  final void Function()? onTap;
+
+  const BannerMenuWidget({
+    Key? key,
+    this.title = '',
+    this.desc = '',
+    this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(color: Colors.white),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              desc,
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle2
+                  ?.copyWith(color: Colors.white70),
+            ),
+          ],
+        ),
       ),
     );
   }

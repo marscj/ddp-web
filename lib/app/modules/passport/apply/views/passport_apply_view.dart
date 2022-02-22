@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/home_page3_controller.dart';
+import '../controllers/passport_apply_controller.dart';
 
-class HomePage3View extends GetView<HomePage3Controller> {
+class PassportApplyView extends GetView<PassportApplyController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomePage3View'),
+        title: Text('PassportApplyView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'HomePage3View is working',
+          'PassportApplyView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

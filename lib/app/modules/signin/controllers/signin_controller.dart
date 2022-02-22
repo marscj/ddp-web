@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class HomePage2Controller extends GetxController {
-  //TODO: Implement HomePage2Controller
+class SigninController extends GetxController {
+  //TODO: Implement SigninController
 
   final count = 0.obs;
   @override

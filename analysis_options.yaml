@@ -2,6 +2,7 @@ include: package:lints/recommended.yaml
 linter:
   rules:
     unnecessary_overrides: false
+    constant_identifier_names: false
     
 analyzer: 
   errors:

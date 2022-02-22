@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../controllers/home_page1_controller.dart';
+import '../controllers/signup_controller.dart';
 
-class HomePage1View extends GetView<HomePage1Controller> {
+class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomePage1View'),
+        title: Text('SignupView'),
         centerTitle: true,
       ),
       body: Center(
         child: Text(
-          'HomePage1View is working',
+          'SignupView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

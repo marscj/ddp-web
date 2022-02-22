@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class HomePage3Controller extends GetxController {
-  //TODO: Implement HomePage3Controller
+class PassportController extends GetxController {
+  //TODO: Implement PassportController
 
   final count = 0.obs;
   @override
