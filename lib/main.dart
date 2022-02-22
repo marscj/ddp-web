@@ -1,16 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app/routes/app_pages.dart';
 import 'services/auth_service.dart';
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('fonts/OFL.txt');
+    final license = await rootBundle.loadString('google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
@@ -25,15 +23,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Application",
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(
-          Theme.of(context)
-              .textTheme, // If this is not set, then ThemeData.light().textTheme is used.
-        ),
-      ),
-    );
+        title: "Application",
+        initialRoute: AppPages.INITIAL,
+        getPages: AppPages.routes);
   }
 }
