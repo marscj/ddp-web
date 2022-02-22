@@ -1,4 +1,3 @@
-import 'package:ddp_web/app/common/page/base_page.dart';
 import 'package:ddp_web/middlewares/auth_guard.dart';
 import 'package:get/get.dart';
 
@@ -19,19 +18,19 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView().rootPage(),
+      page: () => HomeView(),
       binding: HomeBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SIGNIN,
-      page: () => SigninView().rootPage(),
+      page: () => SigninView(),
       binding: SigninBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => SignupView().rootPage(),
+      page: () => SignupView(),
       binding: SignupBinding(),
       transition: Transition.noTransition,
       middlewares: [

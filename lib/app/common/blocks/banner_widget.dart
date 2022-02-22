@@ -77,7 +77,6 @@ class BannerContentWidget extends GetResponsiveWidget {
             desc,
             style:
                 Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
-            maxLines: 2,
           ).constraints(screen.settings.desktopChangePoint / 2,
               align: Alignment.centerLeft),
           SizedBox(
