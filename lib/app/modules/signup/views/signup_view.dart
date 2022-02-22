@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../controllers/signup_controller.dart';
 
-class SignupView extends GetView<SignupController> {
+class SignupView extends GetResponsiveView<SignupController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

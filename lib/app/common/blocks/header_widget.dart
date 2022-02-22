@@ -18,7 +18,7 @@ class HeaderWidget extends GetResponsiveWidget {
       child: Row(
         children: [
           LeftWidget(),
-          Expanded(flex: 1, child: MenuWidget()),
+          Expanded(child: MenuWidget()),
           RightWidget(),
         ],
       ).constraints(screen.settings.desktopChangePoint),

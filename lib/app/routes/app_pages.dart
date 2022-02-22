@@ -19,25 +19,19 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => BasePageView(
-        child: HomeView(),
-      ),
+      page: () => HomeView().root(),
       binding: HomeBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SIGNIN,
-      page: () => BasePageView(
-        child: SigninView(),
-      ),
+      page: () => SigninView().root(),
       binding: SigninBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => BasePageView(
-        child: SignupView(),
-      ),
+      page: () => SignupView().root(),
       binding: SignupBinding(),
       transition: Transition.noTransition,
       middlewares: [
