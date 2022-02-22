@@ -9,7 +9,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.1
   auto_size_text: 3.0.0
-  google_fonts: 2.3.1
   flutter: 
     sdk: flutter
 
@@ -22,6 +21,35 @@ dev_dependencies:
 flutter: 
   assets: 
     - assets/images/
-    - google_fonts/ 
+
+  fonts:
+    - family: NotoSansSC
+      fonts:
+        - asset: google_fonts/NotoSansSC-Thin.otf
+          weight: 100
+        
+        - asset: google_fonts/NotoSansSC-Thin.otf
+          weight: 200
+        
+        - asset: google_fonts/NotoSansSC-Light.otf
+          weight: 300
+
+        - asset: google_fonts/NotoSansSC-Regular.otf
+          weight: 400
+
+        - asset: google_fonts/NotoSansSC-Medium.otf
+          weight: 500
+        
+        - asset: google_fonts/NotoSansSC-Medium.otf
+          weight: 600
+
+        - asset: google_fonts/NotoSansSC-Bold.otf
+          weight: 700
+        
+        - asset: google_fonts/NotoSansSC-Black.otf
+          weight: 800
+        
+        - asset: google_fonts/NotoSansSC-Black.otf
+          weight: 900
     
   uses-material-design: true

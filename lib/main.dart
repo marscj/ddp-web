@@ -23,8 +23,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: "Application",
-        initialRoute: AppPages.INITIAL,
-        getPages: AppPages.routes);
+      title: "Application",
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+      theme: ThemeData(fontFamily: 'NotoSansSC'),
+    );
   }
 }
