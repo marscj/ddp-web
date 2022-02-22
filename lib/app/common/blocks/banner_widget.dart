@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ddp_web/app/constans/constans.dart';
-import 'package:dots_indicator/dots_indicator.dart';
+import 'package:ddp_web/plugs/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,12 +12,14 @@ class BannerWidget extends GetResponsiveWidget {
   final String desc;
   final void Function()? onTap;
   final String assets;
+  final Widget? bottom;
 
   BannerWidget({
     required this.assets,
     this.title = '',
     this.desc = '',
     this.onTap,
+    this.bottom,
     Key? key,
   }) : super(key: key);
 
@@ -31,12 +33,14 @@ class BannerWidget extends GetResponsiveWidget {
           desc: desc,
           onTap: onTap,
         ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: BannerFooterWidget(),
-        )
+        bottom != null
+            ? Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: bottom!,
+              )
+            : SizedBox.shrink()
       ],
     );
   }
@@ -57,7 +61,7 @@ class BannerContentWidget extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget? builder() {
+  Widget builder() {
     return Container(
       height: bannerHeight,
       width: double.infinity,
@@ -92,47 +96,22 @@ class BannerContentWidget extends GetResponsiveWidget {
   }
 }
 
-class BannerFooterWidget extends GetResponsiveWidget {
-  BannerFooterWidget({Key? key}) : super(key: key);
+class BannerBottomWidget extends GetResponsiveWidget {
+  final List<Widget> bottoms;
+
+  BannerBottomWidget({Key? key, required this.bottoms}) : super(key: key);
 
   @override
   Widget? builder() {
-    // TODO: implement builder
     return Container(
       color: Colors.black38,
       height: bannerFooterHeight,
       child: Row(
-        children: [
-          Spacer(),
-          VerticalDivider(
-            color: Colors.white38,
-          ),
-          Expanded(
-            child: BannerMenuWidget(
-                title: '企业合伙人', desc: '超大折扣 申请加入', onTap: () {}),
-          ),
-          VerticalDivider(
-            color: Colors.white38,
-          ),
-          Expanded(
-            child: BannerMenuWidget(
-              title: '企业合伙人',
-              desc: '超大折扣 申请加入',
-              onTap: () {},
-            ),
-          ),
-          VerticalDivider(
-            color: Colors.white38,
-          ),
-          Expanded(
-            child: BannerMenuWidget(
-                title: '企业合伙人', desc: '超大折扣 申请加入', onTap: () {}),
-          ),
-          VerticalDivider(
-            color: Colors.white38,
-          ),
-          Spacer(),
-        ],
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: bottoms
+            .divider(context: screen.context, color: Colors.white38)
+            .map<Widget>((e) => Expanded(child: e))
+            .toList(),
       ),
     );
   }
@@ -185,10 +164,12 @@ class BannerMenuWidget extends StatelessWidget {
 class MultiBannerWidget extends StatefulWidget {
   final List<Widget> banners;
   final CarouselControllerImpl? controller;
+  final Widget? bottom;
 
   MultiBannerWidget({
     Key? key,
     required this.banners,
+    this.bottom,
     this.controller,
   }) : super(key: key);
 
@@ -202,9 +183,7 @@ class _MultiBannerWidgetState extends State<MultiBannerWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     _carouselController = widget.controller ?? CarouselControllerImpl();
   }
 
@@ -213,24 +192,35 @@ class _MultiBannerWidgetState extends State<MultiBannerWidget> {
     return Container(
       child: Column(
         children: [
-          CarouselSlider(
-            items: widget.banners,
-            carouselController: _carouselController,
-            options: CarouselOptions(
-              height: bannerHeight,
-              autoPlay: true,
-              enlargeCenterPage: false,
-              // enableInfiniteScroll: false,
-              scrollPhysics: NeverScrollableScrollPhysics(),
-              autoPlayAnimationDuration: Duration(milliseconds: 200),
-              viewportFraction: 1,
-              aspectRatio: 1.0,
-              onPageChanged: (value, _) {
-                setState(() {
-                  _curPage = value.toDouble();
-                });
-              },
-            ),
+          Stack(
+            children: [
+              CarouselSlider(
+                items: widget.banners,
+                carouselController: _carouselController,
+                options: CarouselOptions(
+                  height: bannerHeight,
+                  autoPlay: true,
+                  enlargeCenterPage: false,
+                  scrollPhysics: NeverScrollableScrollPhysics(),
+                  autoPlayAnimationDuration: Duration(milliseconds: 200),
+                  viewportFraction: 1,
+                  aspectRatio: 1.0,
+                  onPageChanged: (value, _) {
+                    setState(() {
+                      _curPage = value.toDouble();
+                    });
+                  },
+                ),
+              ),
+              widget.bottom != null
+                  ? Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: widget.bottom!,
+                    )
+                  : SizedBox.shrink(),
+            ],
           ),
           SizedBox(
             height: 10,

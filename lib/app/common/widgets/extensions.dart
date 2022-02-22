@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 extension WidgetExtra on Widget {
   Widget constraints(double maxWidth, {align = Alignment.center}) => Align(
@@ -10,4 +10,33 @@ extension WidgetExtra on Widget {
           child: this,
         ),
       );
+}
+
+extension WidgetListExtra on Iterable<Widget> {
+  Iterable<Widget> divider(
+      {BuildContext? context, Color? color, Border? border}) {
+    // assert(color != null || context != null);
+
+    if (isEmpty || length == 1) {
+      return this;
+    }
+
+    Widget wrapTile(Widget child) {
+      return DecoratedBox(
+        position: DecorationPosition.foreground,
+        decoration: BoxDecoration(
+          border: border ??
+              Border(
+                right: Divider.createBorderSide(context, color: color),
+              ),
+        ),
+        child: child,
+      );
+    }
+
+    return <Widget>[
+      ...take(length - 1).map(wrapTile),
+      last,
+    ];
+  }
 }
