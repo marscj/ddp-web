@@ -1,12 +1,9 @@
+import 'package:ddp_web/app/common/page/base_page.dart';
 import 'package:ddp_web/middlewares/auth_guard.dart';
 import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-import '../modules/passport/apply/bindings/passport_apply_binding.dart';
-import '../modules/passport/apply/views/passport_apply_view.dart';
-import '../modules/passport/bindings/passport_binding.dart';
-import '../modules/passport/views/passport_view.dart';
 import '../modules/signin/bindings/signin_binding.dart';
 import '../modules/signin/views/signin_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -22,31 +19,25 @@ class AppPages {
   static final routes = [
     GetPage(
       name: _Paths.HOME,
-      page: () => HomeView(),
+      page: () => BasePageView(
+        child: HomeView(),
+      ),
       binding: HomeBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
-      name: _Paths.PASSPORT,
-      page: () => PassportView(),
-      binding: PassportBinding(),
-      children: [
-        GetPage(
-          name: _Paths.PASSPORT_APPLY,
-          page: () => PassportApplyView(),
-          binding: PassportApplyBinding(),
-        ),
-      ],
-    ),
-    GetPage(
       name: _Paths.SIGNIN,
-      page: () => SigninView(),
+      page: () => BasePageView(
+        child: SigninView(),
+      ),
       binding: SigninBinding(),
       transition: Transition.noTransition,
     ),
     GetPage(
       name: _Paths.SIGNUP,
-      page: () => SignupView(),
+      page: () => BasePageView(
+        child: SignupView(),
+      ),
       binding: SignupBinding(),
       transition: Transition.noTransition,
       middlewares: [
