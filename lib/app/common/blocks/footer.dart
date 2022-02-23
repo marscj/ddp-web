@@ -2,8 +2,8 @@ import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FooterWidget extends GetResponsiveWidget {
-  FooterWidget({Key? key}) : super(key: key);
+class GlobaleFooter extends GetResponsiveWidget {
+  GlobaleFooter({Key? key}) : super(key: key);
 
   @override
   Widget builder() {

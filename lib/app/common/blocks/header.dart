@@ -1,14 +1,12 @@
-import 'dart:html';
-
-import 'package:ddp_web/app/common/blocks/menu_widget.dart';
+import 'package:ddp_web/app/common/blocks/header_menu.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/widgets/extensions.dart';
 
-class HeaderWidget extends GetResponsiveWidget {
-  HeaderWidget({Key? key}) : super(key: key);
+class GlobaleHeader extends GetResponsiveWidget {
+  GlobaleHeader({Key? key}) : super(key: key);
 
   @override
   Widget builder() {
@@ -22,7 +20,7 @@ class HeaderWidget extends GetResponsiveWidget {
           child: Row(
             children: [
               LeftWidget(),
-              Expanded(child: MenuWidget()),
+              Expanded(child: HeaderMenu()),
               RightWidget(),
             ],
           ).responsive(),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
-class MenuWidget extends GetResponsiveWidget {
-  MenuWidget({Key? key}) : super(key: key);
+class HeaderMenu extends GetResponsiveWidget {
+  HeaderMenu({Key? key}) : super(key: key);
 
   @override
   Widget builder() {
@@ -10,23 +10,23 @@ class MenuWidget extends GetResponsiveWidget {
       margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
       child: Row(
         children: [
-          MenuTitle('业务类型', () {}),
-          MenuTitle('增值服务', () {}),
-          MenuTitle('进度查询', () {}),
-          MenuTitle('合作商', () {}),
-          MenuTitle('收费标准', () {}),
-          MenuTitle('常见问题', () {}),
+          _MenuTitle('业务类型', () {}),
+          _MenuTitle('增值服务', () {}),
+          _MenuTitle('进度查询', () {}),
+          _MenuTitle('合作商', () {}),
+          _MenuTitle('收费标准', () {}),
+          _MenuTitle('常见问题', () {}),
         ],
       ),
     );
   }
 }
 
-class MenuTitle extends GetResponsiveWidget {
+class _MenuTitle extends GetResponsiveWidget {
   final String title;
   final Function() onTap;
 
-  MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
+  _MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
 
   @override
   Widget builder() {

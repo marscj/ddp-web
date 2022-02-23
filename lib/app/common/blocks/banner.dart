@@ -8,14 +8,14 @@ import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/widgets/extensions.dart';
 
-class BannerWidget extends GetResponsiveWidget {
+class Banner extends GetResponsiveWidget {
   final String title;
   final String desc;
   final VoidCallback? onTap;
   final String assets;
   final Widget? bottom;
 
-  BannerWidget({
+  Banner({
     required this.assets,
     this.title = '',
     this.desc = '',
@@ -28,7 +28,7 @@ class BannerWidget extends GetResponsiveWidget {
   Widget builder() {
     return Stack(
       children: [
-        BannerContentWidget(
+        BannerContent(
           assets,
           title: title,
           desc: desc,
@@ -47,13 +47,13 @@ class BannerWidget extends GetResponsiveWidget {
   }
 }
 
-class BannerContentWidget extends GetResponsiveWidget {
+class BannerContent extends GetResponsiveWidget {
   final String title;
   final String desc;
   final VoidCallback? onTap;
   final String assets;
 
-  BannerContentWidget(
+  BannerContent(
     this.assets, {
     Key? key,
     this.title = '',
@@ -96,14 +96,14 @@ class BannerContentWidget extends GetResponsiveWidget {
   }
 }
 
-class BannerBottomWidget extends GetResponsiveWidget {
+class BannerBottom extends GetResponsiveWidget {
   final List<Widget> bottoms;
   final EdgeInsets? padding;
   final Color? backgroundColor;
   final Color? foregroundColor;
   final double? height;
 
-  BannerBottomWidget({
+  BannerBottom({
     Key? key,
     required this.bottoms,
     this.padding,
@@ -131,14 +131,14 @@ class BannerBottomWidget extends GetResponsiveWidget {
   }
 }
 
-class BannerMenuWidget extends GetResponsiveWidget {
+class BannerMenu extends GetResponsiveWidget {
   final String title;
   final String desc;
   final VoidCallback? onTap;
   final Color? titleColor;
   final Color? subtitleColor;
 
-  BannerMenuWidget({
+  BannerMenu({
     Key? key,
     this.title = '',
     this.desc = '',
@@ -173,12 +173,12 @@ class BannerMenuWidget extends GetResponsiveWidget {
   }
 }
 
-class MultiBannerWidget extends StatefulWidget {
+class MultiBanner extends StatefulWidget {
   final List<Widget> banners;
   final CarouselControllerImpl? controller;
   final Widget? bottom;
 
-  MultiBannerWidget({
+  MultiBanner({
     Key? key,
     required this.banners,
     this.bottom,
@@ -186,10 +186,10 @@ class MultiBannerWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MultiBannerWidget> createState() => _MultiBannerWidgetState();
+  State<MultiBanner> createState() => _MultiBannerState();
 }
 
-class _MultiBannerWidgetState extends State<MultiBannerWidget> {
+class _MultiBannerState extends State<MultiBanner> {
   double _curPage = 0.0;
   late CarouselControllerImpl _carouselController;
 
@@ -265,12 +265,12 @@ class _MultiBannerWidgetState extends State<MultiBannerWidget> {
   }
 }
 
-class MultiBannerExtraWidget extends StatefulWidget {
+class MultiBannerExtra extends StatefulWidget {
   final List<Widget> banners;
   final CarouselControllerImpl? controller;
   final Widget? bottom;
 
-  MultiBannerExtraWidget({
+  MultiBannerExtra({
     Key? key,
     required this.banners,
     this.bottom,
@@ -278,10 +278,10 @@ class MultiBannerExtraWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MultiBannerExtraWidget> createState() => _MultiBannerExtraWidgetState();
+  State<MultiBannerExtra> createState() => _MultiBannerExtraState();
 }
 
-class _MultiBannerExtraWidgetState extends State<MultiBannerExtraWidget> {
+class _MultiBannerExtraState extends State<MultiBannerExtra> {
   double _curPage = 0.0;
 
   @override

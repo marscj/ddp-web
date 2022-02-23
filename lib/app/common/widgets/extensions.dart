@@ -1,3 +1,4 @@
+import 'package:ddp_web/app/common/widgets/hover.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
@@ -19,48 +20,37 @@ class ResponsiveWidget extends GetResponsiveWidget {
 }
 
 extension ExtensionWidget on Widget {
-  // Widget limitSize(ResponsiveScreen screen,
-  //     {align = Alignment.center, double flex = 1.0}) {
-  //   double maxWidget = screen.isDesktop
-  //       ? screen.settings.desktopChangePoint
-  //       : screen.isTablet
-  //           ? screen.settings.tabletChangePoint
-  //           : screen.width;
-
-  //   return Align(
-  //     alignment: align,
-  //     child: Container(
-  //       width: double.infinity,
-  //       alignment: Alignment.centerLeft,
-  //       constraints: BoxConstraints(maxWidth: maxWidget * flex),
-  //       child: this,
-  //     ),
-  //   );
-  // }
-
-  ResponsiveWidget responsive() =>
-      ResponsiveWidget(responsiveBuilder: (context, screen) {
-        List<double> screenSize = [
-          screen.settings.desktopChangePoint,
-          screen.settings.tabletChangePoint,
-          screen.width,
-          screen.width
-        ];
-
-        return SizedBox.fromSize(
-          size: Size.fromWidth(screenSize[screen.screenType.index]),
-          child: this,
-        );
-      });
+  ResponsiveWidget responsive({limitScreen = true}) => ResponsiveWidget(
+        responsiveBuilder: (context, screen) {
+          List<double> screenSize = [
+            screen.width,
+            screen.width,
+            screen.settings.tabletChangePoint,
+            screen.settings.desktopChangePoint,
+          ];
+          return Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxWidth: limitScreen
+                      ? screenSize[screen.screenType.index]
+                      : screen.width),
+              child: this,
+            ),
+          );
+        },
+      );
+  ResponsiveWidget cardHover() => ResponsiveWidget(
+      responsiveBuilder: (context, screen) => Hover(
+          builder: (isHovered) =>
+              Card(elevation: isHovered ? 4 : 2, child: this)));
 
   ResponsiveWidget card() => ResponsiveWidget(
-        responsiveBuilder: (context, screen) => Card(
-          elevation: 1,
-          margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          child: this,
-        ),
-      );
+      responsiveBuilder: (context, screen) => Card(
+            elevation: 1,
+            margin: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            child: this,
+          ));
 }
 
 extension ExtensionListWidget on List<Widget> {
