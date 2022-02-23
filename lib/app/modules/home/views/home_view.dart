@@ -96,7 +96,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           Introduce(
             title: '专业支持',
             logo: Image.asset(
-              'assets/images/资产类申请-150x150.png',
+              'assets/images/运维分析平台.png',
               width: 128,
             ),
             desc:
@@ -105,7 +105,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           Introduce(
             title: '高新科技集群',
             logo: Image.asset(
-              'assets/images/资产类申请-150x150.png',
+              'assets/images/业务运营类.png',
               width: 128,
             ),
             desc:
@@ -114,7 +114,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           Introduce(
             title: '安全担保',
             logo: Image.asset(
-              'assets/images/资产类申请-150x150.png',
+              'assets/images/分行堡垒机高权帐号申请.png',
               width: 128,
             ),
             desc:
@@ -123,7 +123,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           Introduce(
             title: '全面服务',
             logo: Image.asset(
-              'assets/images/资产类申请-150x150.png',
+              'assets/images/数据提取.png',
               width: 128,
             ),
             desc:
@@ -132,7 +132,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           Introduce(
             title: '地理位置卓越',
             logo: Image.asset(
-              'assets/images/资产类申请-150x150.png',
+              'assets/images/网络资源.png',
               width: 128,
             ),
             desc:

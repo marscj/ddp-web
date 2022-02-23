@@ -23,7 +23,7 @@ extension ExtensionWidget on Widget {
           List<double> screenSize = [
             screen.width - 16,
             screen.width - 32,
-            screen.settings.tabletChangePoint,
+            screen.width - 64,
             screen.settings.desktopChangePoint,
           ];
           return Center(
