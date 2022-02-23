@@ -1,5 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ddp_web/app/common/blocks/action.dart';
+import 'package:ddp_web/app/common/blocks/section.dart';
 import 'package:ddp_web/app/common/widgets/button.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:ddp_web/plugs/dots_indicator.dart';
@@ -26,73 +27,13 @@ class Banner extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Stack(
-      children: [
-        BannerContent(
-          assets,
-          title: title,
-          desc: desc,
-          onTap: onTap,
-        ),
-        bottom != null
-            ? Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: bottom!,
-              )
-            : SizedBox.shrink()
-      ],
-    );
-  }
-}
-
-class BannerContent extends GetResponsiveWidget {
-  final String title;
-  final String desc;
-  final VoidCallback? onTap;
-  final String assets;
-
-  BannerContent(
-    this.assets, {
-    Key? key,
-    this.title = '',
-    this.desc = '',
-    this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget builder() {
-    return Container(
-      height: bannerHeight,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Spacer(),
-          Text(
-            title,
-            style: Get.theme.textTheme.headline3?.copyWith(color: Colors.white),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          AutoSizeText(
-            desc,
-            style:
-                Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
-          ).responsive(),
-          SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(onPressed: onTap, child: Text('申请入驻')),
-          Spacer()
-        ],
-      ).responsive(),
-    );
+    return Section(
+        height: bannerHeight,
+        backgroundImage: DecorationImage(image: AssetImage(assets)),
+        child: [
+          CallOfAction().center(),
+          // bottom?.align(alignment: Alignment.bottomCenter) ?? SizedBox.shrink()
+        ].stack());
   }
 }
 
@@ -294,44 +235,54 @@ class _MultiBannerExtraState extends State<MultiBannerExtra> {
     return Container(
       child: Column(
         children: [
-          Stack(
-            children: [
-              AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
-                transitionBuilder: (child, animate) {
-                  return FadeTransition(opacity: animate, child: child);
-                },
-                child: Container(
-                    key: ValueKey(_curPage.toInt()),
-                    child: widget.banners[_curPage.toInt()]),
-              ),
-              widget.banners.length > 1
-                  ? Positioned(
-                      bottom: 10,
-                      left: 0,
-                      right: 0,
-                      child: DotsIndicator(
-                        dotsCount: widget.banners.length,
-                        position: _curPage,
-                        onTap: (value) {
-                          setState(() {
-                            _curPage = value;
-                          });
-                        },
-                        decorator: DotsDecorator(
-                          size: Size(10.0, 10.0),
-                          activeSize: Size(12.0, 6.0),
-                          spacing: EdgeInsets.all(10.0),
-                          color: Colors.grey.shade200,
-                          activeColor: Colors.grey.shade200,
-                          activeShape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(2)),
-                        ),
-                      ),
-                    )
-                  : SizedBox.shrink(),
-            ],
-          ),
+          // Stack(
+          //   children: [
+          //     widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
+          //     widget.banners.length > 1
+          //         ? DotsIndicator(
+          //             dotsCount: widget.banners.length,
+          //             position: _curPage,
+          //             onTap: (value) {
+          //               setState(() {
+          //                 _curPage = value;
+          //               });
+          //             },
+          //             decorator: DotsDecorator(
+          //               size: Size(10.0, 10.0),
+          //               activeSize: Size(12.0, 6.0),
+          //               spacing: EdgeInsets.all(10.0),
+          //               color: Colors.grey.shade200,
+          //               activeColor: Colors.grey.shade200,
+          //               activeShape: RoundedRectangleBorder(
+          //                   borderRadius: BorderRadius.circular(2)),
+          //             ),
+          //           ).positioned(left: 0, right: 0, bottom: 10)
+          //         : SizedBox.shrink(),
+          //   ],
+          // ),
+          [
+            widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
+            widget.banners.length > 1
+                ? DotsIndicator(
+                    dotsCount: widget.banners.length,
+                    position: _curPage,
+                    onTap: (value) {
+                      setState(() {
+                        _curPage = value;
+                      });
+                    },
+                    decorator: DotsDecorator(
+                      size: Size(10.0, 10.0),
+                      activeSize: Size(12.0, 6.0),
+                      spacing: EdgeInsets.all(10.0),
+                      color: Colors.grey.shade200,
+                      activeColor: Colors.grey.shade200,
+                      activeShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2)),
+                    ),
+                  ).positioned(left: 0, right: 0, bottom: 10)
+                : SizedBox.shrink(),
+          ].stack(),
           widget.bottom != null ? widget.bottom! : SizedBox.shrink()
         ],
       ),

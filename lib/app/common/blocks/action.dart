@@ -33,6 +33,6 @@ class CallOfAction extends GetResponsiveWidget {
         height: 30,
       ),
       action ?? SizedBox.shrink()
-    ].col().paddingAll(16).cardHover();
+    ].col().paddingAll(16).responsive();
   }
 }

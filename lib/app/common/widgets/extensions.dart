@@ -7,10 +7,8 @@ typedef ResponsiveWidgetBuilder = Widget Function(
 
 class ResponsiveWidget extends GetResponsiveWidget {
   final ResponsiveWidgetBuilder responsiveBuilder;
-  final bool limitScreen;
 
-  ResponsiveWidget(
-      {Key? key, required this.responsiveBuilder, this.limitScreen = true})
+  ResponsiveWidget({Key? key, required this.responsiveBuilder})
       : super(key: key);
 
   @override
@@ -39,37 +37,37 @@ extension ExtensionWidget on Widget {
           );
         },
       );
-  ResponsiveWidget section(
-    height, {
-    backgroundColor,
-    backgroundImage,
-  }) =>
-      ResponsiveWidget(
-        responsiveBuilder: (context, screen) => SizedBox.fromSize(
-          size: Size.fromHeight(height),
-          child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                image: backgroundImage,
-              ),
-              child: this),
-        ),
+
+  Widget center() => Center(child: this);
+
+  Widget align({alignment = Alignment.center}) =>
+      Align(alignment: alignment, child: this);
+
+  Widget positioned({left, right, top, bottom}) => Positioned(
+        left: left,
+        right: right,
+        top: top,
+        bottom: bottom,
+        child: this,
       );
 
-  ResponsiveWidget cardHover() => ResponsiveWidget(
-        responsiveBuilder: (context, screen) => Hover(
-          builder: (isHovered) =>
-              Card(elevation: isHovered ? 4 : 2, child: this),
-        ),
+  Widget fade(value) => AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        transitionBuilder: (child, animate) {
+          return FadeTransition(opacity: animate, child: child);
+        },
+        child: Container(key: ValueKey(value), child: this),
       );
 
-  ResponsiveWidget card() => ResponsiveWidget(
-        responsiveBuilder: (context, screen) => Card(
-          elevation: 1,
-          margin: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          child: this,
-        ),
+  Widget cardHover() => Hover(
+        builder: (isHovered) => Card(elevation: isHovered ? 4 : 2, child: this),
+      );
+
+  Widget card() => Card(
+        elevation: 1,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        child: this,
       );
 }
 
@@ -101,26 +99,27 @@ extension ExtensionListWidget on List<Widget> {
     ];
   }
 
-  ResponsiveWidget row() => ResponsiveWidget(
+  Widget row() => ResponsiveWidget(
       responsiveBuilder: (context, screen) => Row(children: this));
 
-  ResponsiveWidget col() => ResponsiveWidget(
+  Widget col() => ResponsiveWidget(
       responsiveBuilder: (context, screen) => Column(children: this));
 
-  ResponsiveWidget grid({mainAxisSpacing, crossAxisSpacing}) =>
-      ResponsiveWidget(
-          responsiveBuilder: (context, screen) => GridView.count(
-                shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
-                crossAxisCount:
-                    screen.screenType.index > 0 ? screen.screenType.index : 1,
-                mainAxisSpacing: mainAxisSpacing,
-                crossAxisSpacing: crossAxisSpacing,
-                children: this,
-              ));
+  Widget stack() => ResponsiveWidget(
+      responsiveBuilder: (context, screen) => Stack(children: this));
 
-  ResponsiveWidget warp({mainAxisSpacing, crossAxisSpacing}) =>
-      ResponsiveWidget(
-          responsiveBuilder: (context, screen) =>
-              Wrap(children: this, spacing: 8.0, runSpacing: 4.0));
+  Widget grid({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
+      responsiveBuilder: (context, screen) => GridView.count(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            crossAxisCount:
+                screen.screenType.index > 0 ? screen.screenType.index : 1,
+            mainAxisSpacing: mainAxisSpacing,
+            crossAxisSpacing: crossAxisSpacing,
+            children: this,
+          ));
+
+  Widget warp({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
+      responsiveBuilder: (context, screen) =>
+          Wrap(children: this, spacing: 8.0, runSpacing: 4.0));
 }
