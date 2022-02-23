@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
 extension WidgetExtra on Widget {
-  Widget limitSize(double maxWidth, {align = Alignment.center}) => Align(
-        alignment: align,
-        child: Container(
-          width: double.infinity,
-          alignment: Alignment.centerLeft,
-          constraints: BoxConstraints(maxWidth: maxWidth),
-          child: this,
-        ),
-      );
+  Widget limitSize(ResponsiveScreen screen,
+      {align = Alignment.center, double flex = 1.0}) {
+    double maxWidget = screen.isDesktop
+        ? screen.settings.desktopChangePoint
+        : screen.isTablet
+            ? screen.settings.tabletChangePoint
+            : screen.width;
+
+    return Align(
+      alignment: align,
+      child: Container(
+        width: double.infinity,
+        alignment: Alignment.centerLeft,
+        constraints: BoxConstraints(maxWidth: maxWidget * flex),
+        child: this,
+      ),
+    );
+  }
 
   Widget card() => Card(
         elevation: 1,
@@ -48,14 +57,14 @@ extension WidgetListExtra on List<Widget> {
     ];
   }
 
-  Widget row({BuildContext? context}) => Row(children: this);
+  Widget row(ResponsiveScreen screen) => Row(children: this);
 
-  Widget col(BuildContext? context) => Column(children: this);
+  Widget col(ResponsiveScreen screen) => Column(children: this);
 
-  Widget grid(BuildContext? context,
-          {ScreenType screenType = ScreenType.Desktop}) =>
-      GridView.count(
-        crossAxisCount: screenType.index,
+  Widget grid(ResponsiveScreen screen) => GridView.count(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        crossAxisCount: screen.screenType.index,
         children: this,
       );
 }

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ddp_web/app/common/blocks/banner_widget.dart';
+import 'package:ddp_web/app/common/blocks/introduce_widget.dart';
 import 'package:ddp_web/app/common/page/base_page.dart';
 import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:ddp_web/app/common/widgets/hover.dart';
@@ -83,11 +84,6 @@ class ContentWidget extends GetResponsiveWidget<HomeController> {
 
   @override
   Widget builder() {
-    print(ScreenType.Desktop.index);
-    print(ScreenType.Tablet.index);
-    print(ScreenType.Phone.index);
-    print(ScreenType.Watch.index);
-
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
@@ -108,74 +104,9 @@ class ContentWidget extends GetResponsiveWidget<HomeController> {
               style: Theme.of(screen.context).textTheme.headline4,
             ),
           ),
-          Container(
-            height: 400,
-            child: Row(
-              children: [
-                Expanded(
-                  child: OnHover(
-                    builder: (isHovered) => Card(
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Container(
-                        padding: EdgeInsets.all(24),
-                        child: Column(
-                          children: [
-                            Text(
-                              '政府招商',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            Image.asset('assets/images/资产类申请-150x150.png'),
-                            AutoSizeText(
-                                '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Expanded(
-                  child: OnHover(
-                    builder: (isHovered) => Card(
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            Text('政府招商'),
-                            AutoSizeText(
-                                '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Expanded(
-                  child: OnHover(
-                    builder: (isHovered) => Card(
-                      child: Container(
-                        padding: EdgeInsets.all(12),
-                        child: Column(
-                          children: [
-                            Text('政府招商'),
-                            AutoSizeText(
-                                '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策')
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ).limitSize(screen.settings.desktopChangePoint)
+          [IntroduceWidget(), IntroduceWidget(), IntroduceWidget()]
+              .grid(screen)
+              .limitSize(screen)
         ],
       ),
     );

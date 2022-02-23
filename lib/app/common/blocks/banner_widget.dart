@@ -84,15 +84,14 @@ class BannerContentWidget extends GetResponsiveWidget {
             desc,
             style:
                 Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
-          ).limitSize(screen.settings.desktopChangePoint / 2,
-              align: Alignment.centerLeft),
+          ).limitSize(screen, flex: 0.5, align: Alignment.centerLeft),
           SizedBox(
             height: 30,
           ),
           ElevatedButton(onPressed: onTap, child: Text('申请入驻')),
           Spacer()
         ],
-      ).limitSize(screen.settings.desktopChangePoint),
+      ).limitSize(screen),
     );
   }
 }
