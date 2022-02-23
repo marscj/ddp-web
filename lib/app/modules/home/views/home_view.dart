@@ -83,6 +83,11 @@ class ContentWidget extends GetResponsiveWidget<HomeController> {
 
   @override
   Widget builder() {
+    print(ScreenType.Desktop.index);
+    print(ScreenType.Tablet.index);
+    print(ScreenType.Phone.index);
+    print(ScreenType.Watch.index);
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(

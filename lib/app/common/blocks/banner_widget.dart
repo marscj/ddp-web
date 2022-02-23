@@ -25,7 +25,7 @@ class BannerWidget extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Stack(
       children: [
         BannerContentWidget(
@@ -132,14 +132,14 @@ class BannerBottomWidget extends GetResponsiveWidget {
   }
 }
 
-class BannerMenuWidget extends StatelessWidget {
+class BannerMenuWidget extends GetResponsiveWidget {
   final String title;
   final String desc;
   final VoidCallback? onTap;
   final Color? titleColor;
   final Color? subtitleColor;
 
-  const BannerMenuWidget({
+  BannerMenuWidget({
     Key? key,
     this.title = '',
     this.desc = '',
@@ -149,7 +149,7 @@ class BannerMenuWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

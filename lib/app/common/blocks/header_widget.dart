@@ -9,8 +9,9 @@ import 'package:ddp_web/app/common/widgets/extensions.dart';
 
 class HeaderWidget extends GetResponsiveWidget {
   HeaderWidget({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return SizedBox.fromSize(
       size: Size.fromHeight(headerHeight),
       child: Card(

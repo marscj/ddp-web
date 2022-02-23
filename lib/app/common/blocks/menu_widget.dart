@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
-class MenuWidget extends StatelessWidget {
-  const MenuWidget({Key? key}) : super(key: key);
+class MenuWidget extends GetResponsiveWidget {
+  MenuWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Container(
       margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
       child: Row(
@@ -21,19 +22,20 @@ class MenuWidget extends StatelessWidget {
   }
 }
 
-class MenuTitle extends StatelessWidget {
+class MenuTitle extends GetResponsiveWidget {
   final String title;
   final Function() onTap;
 
-  const MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
+  MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Container(
       padding: EdgeInsets.only(right: 40),
       child: TextButton(
         onPressed: () => onTap,
-        child: Text(title, style: Theme.of(context).textTheme.titleMedium),
+        child:
+            Text(title, style: Theme.of(screen.context).textTheme.titleMedium),
       ),
     );
   }

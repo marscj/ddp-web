@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
 extension WidgetExtra on Widget {
   Widget limitSize(double maxWidth, {align = Alignment.center}) => Align(
@@ -19,10 +20,10 @@ extension WidgetExtra on Widget {
       );
 }
 
-extension WidgetListExtra on Iterable<Widget> {
+extension WidgetListExtra on List<Widget> {
   Iterable<Widget> divider(
       {BuildContext? context, Color? color, Border? border}) {
-    // assert(color != null || context != null);
+    assert(color != null || context != null);
 
     if (isEmpty || length == 1) {
       return this;
@@ -46,4 +47,15 @@ extension WidgetListExtra on Iterable<Widget> {
       last,
     ];
   }
+
+  Widget row({BuildContext? context}) => Row(children: this);
+
+  Widget col(BuildContext? context) => Column(children: this);
+
+  Widget grid(BuildContext? context,
+          {ScreenType screenType = ScreenType.Desktop}) =>
+      GridView.count(
+        crossAxisCount: screenType.index,
+        children: this,
+      );
 }
