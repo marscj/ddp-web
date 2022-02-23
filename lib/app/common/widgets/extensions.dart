@@ -23,8 +23,8 @@ extension ExtensionWidget on Widget {
   ResponsiveWidget responsive({limitScreen = true}) => ResponsiveWidget(
         responsiveBuilder: (context, screen) {
           List<double> screenSize = [
-            screen.width,
-            screen.width,
+            screen.width - 16,
+            screen.width - 32,
             screen.settings.tabletChangePoint,
             screen.settings.desktopChangePoint,
           ];
@@ -39,6 +39,9 @@ extension ExtensionWidget on Widget {
           );
         },
       );
+  ResponsiveWidget background(assets) => ResponsiveWidget(
+      responsiveBuilder: (context, screen) =>);
+
   ResponsiveWidget cardHover() => ResponsiveWidget(
       responsiveBuilder: (context, screen) => Hover(
           builder: (isHovered) =>
@@ -92,7 +95,8 @@ extension ExtensionListWidget on List<Widget> {
           responsiveBuilder: (context, screen) => GridView.count(
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
-                crossAxisCount: screen.screenType.index,
+                crossAxisCount:
+                    screen.screenType.index > 0 ? screen.screenType.index : 1,
                 mainAxisSpacing: mainAxisSpacing,
                 crossAxisSpacing: crossAxisSpacing,
                 children: this,
