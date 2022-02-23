@@ -113,7 +113,7 @@ extension ExtensionListWidget on List<Widget> {
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
       );
 
-  Widget stack() => Stack(children: this);
+  Widget stack({fit = StackFit.loose}) => Stack(children: this, fit: fit);
 
   Widget grid({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
       responsiveBuilder: (context, screen) => GridView.count(

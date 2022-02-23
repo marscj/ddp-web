@@ -6,23 +6,24 @@ class Section extends GetResponsiveWidget {
   final Color? backgroundColor;
   final DecorationImage? backgroundImage;
   final Widget child;
-
+  final MaterialType type;
   final EdgeInsets? margin;
   final Color? shadowColor;
   final double elevation;
   final ShapeBorder? shape;
 
-  Section({
-    Key? key,
-    required this.child,
-    this.size,
-    this.backgroundColor,
-    this.backgroundImage,
-    this.shadowColor,
-    this.margin,
-    this.elevation = 0.0,
-    this.shape,
-  }) : super(key: key);
+  Section(
+      {Key? key,
+      required this.child,
+      this.size,
+      this.backgroundColor,
+      this.backgroundImage,
+      this.shadowColor,
+      this.margin,
+      this.elevation = 0.0,
+      this.shape,
+      this.type = MaterialType.card})
+      : super(key: key);
 
   @override
   Widget builder() {
@@ -30,7 +31,7 @@ class Section extends GetResponsiveWidget {
       child: Container(
         margin: margin ?? EdgeInsets.zero,
         child: Material(
-          type: MaterialType.card,
+          type: type,
           shadowColor: shadowColor ?? Theme.of(screen.context).shadowColor,
           elevation: elevation,
           shape:

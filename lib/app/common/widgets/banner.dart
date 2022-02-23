@@ -7,18 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Banner extends GetResponsiveWidget {
-  final String title;
-  final String desc;
-  final VoidCallback? onTap;
   final String assets;
-  final Widget? bottom;
+  final Widget? child;
 
   Banner({
     required this.assets,
-    this.title = '',
-    this.desc = '',
-    this.onTap,
-    this.bottom,
+    this.child,
     Key? key,
   }) : super(key: key);
 
@@ -28,47 +22,9 @@ class Banner extends GetResponsiveWidget {
         size: Size.fromHeight(bannerHeight),
         backgroundImage:
             DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
-        child: [
-          CallOfAction().center(),
-          // bottom?.align(alignment: Alignment.bottomCenter) ?? SizedBox.shrink()
-        ].stack());
+        child: child ?? SizedBox.shrink());
   }
 }
-
-// class BannerBottom extends GetResponsiveWidget {
-//   final List<Widget> bottoms;
-//   final EdgeInsets? padding;
-//   final Color? backgroundColor;
-//   final Color? foregroundColor;
-//   final double? height;
-
-//   BannerBottom({
-//     Key? key,
-//     required this.bottoms,
-//     this.padding,
-//     this.backgroundColor,
-//     this.foregroundColor,
-//     this.height = bannerBottomHeight,
-//   }) : super(key: key);
-
-//   @override
-//   Widget? builder() {
-//     return Container(
-//       color: backgroundColor ?? Colors.black38,
-//       padding: padding,
-//       height: height,
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.spaceAround,
-//         children: bottoms
-//             .divider(
-//                 context: screen.context,
-//                 color: foregroundColor ?? Colors.white38)
-//             .map<Widget>((e) => Expanded(child: e))
-//             .toList(),
-//       ),
-//     );
-//   }
-// }
 
 class MultiBanner extends StatefulWidget {
   final List<Widget> banners;
