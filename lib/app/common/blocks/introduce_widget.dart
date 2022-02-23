@@ -9,15 +9,18 @@ class IntroduceWidget extends GetResponsiveWidget {
   @override
   Widget builder() {
     return OnHover(
-      builder: (isHovered) => Card(
-        child: Container(
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              Text('政府招商'),
-              AutoSizeText(
-                  '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策')
-            ],
+      builder: (isHovered) => Container(
+        margin: EdgeInsets.all(40),
+        child: Card(
+          child: Container(
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Text('政府招商'),
+                AutoSizeText(
+                    '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策')
+              ],
+            ),
           ),
         ),
       ),

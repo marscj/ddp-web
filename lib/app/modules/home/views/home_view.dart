@@ -72,7 +72,7 @@ class HomeView extends GetResponsiveView<HomeController> {
                 onTap: () {}),
             Container(),
           ],
-        ).card(),
+        ).card().paddingZero,
       ),
       child: ContentWidget(),
     );
@@ -85,30 +85,23 @@ class ContentWidget extends GetResponsiveWidget<HomeController> {
   @override
   Widget builder() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/block_bg.png',
-          ),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Column(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            height: 140,
-            child: Text(
-              '我们的优势',
-              style: Theme.of(screen.context).textTheme.headline4,
+        padding: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/images/block_bg.png',
             ),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: [
+          Text(
+            '我们的优势',
+            style: Theme.of(screen.context).textTheme.headline4,
           ),
           [IntroduceWidget(), IntroduceWidget(), IntroduceWidget()]
-              .grid(screen)
-              .limitSize(screen)
-        ],
-      ),
-    );
+              .grid(mainAxisSpacing: 20, crossAxisSpacing: 20)
+              .paddingAll(16)
+        ].col().responsive());
   }
 }
