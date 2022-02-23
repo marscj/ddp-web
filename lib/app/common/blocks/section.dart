@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Section extends GetResponsiveWidget {
-  final double height;
+  final Size size;
   final Color? backgroundColor;
   final DecorationImage? backgroundImage;
   final Widget child;
@@ -10,15 +10,14 @@ class Section extends GetResponsiveWidget {
   Section({
     Key? key,
     required this.child,
-    this.height = 0,
+    this.size = Size.infinite,
     this.backgroundColor,
     this.backgroundImage,
   }) : super(key: key);
 
   @override
   Widget builder() {
-    return SizedBox.fromSize(
-      size: Size.fromHeight(height),
+    return SizedBox.expand(
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,

@@ -28,7 +28,6 @@ class Banner extends GetResponsiveWidget {
   @override
   Widget builder() {
     return Section(
-        height: bannerHeight,
         backgroundImage: DecorationImage(image: AssetImage(assets)),
         child: [
           CallOfAction().center(),
@@ -232,60 +231,34 @@ class _MultiBannerExtraState extends State<MultiBannerExtra> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          // Stack(
-          //   children: [
-          //     widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
-          //     widget.banners.length > 1
-          //         ? DotsIndicator(
-          //             dotsCount: widget.banners.length,
-          //             position: _curPage,
-          //             onTap: (value) {
-          //               setState(() {
-          //                 _curPage = value;
-          //               });
-          //             },
-          //             decorator: DotsDecorator(
-          //               size: Size(10.0, 10.0),
-          //               activeSize: Size(12.0, 6.0),
-          //               spacing: EdgeInsets.all(10.0),
-          //               color: Colors.grey.shade200,
-          //               activeColor: Colors.grey.shade200,
-          //               activeShape: RoundedRectangleBorder(
-          //                   borderRadius: BorderRadius.circular(2)),
-          //             ),
-          //           ).positioned(left: 0, right: 0, bottom: 10)
-          //         : SizedBox.shrink(),
-          //   ],
-          // ),
-          [
-            widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
-            widget.banners.length > 1
-                ? DotsIndicator(
-                    dotsCount: widget.banners.length,
-                    position: _curPage,
-                    onTap: (value) {
-                      setState(() {
-                        _curPage = value;
-                      });
-                    },
-                    decorator: DotsDecorator(
-                      size: Size(10.0, 10.0),
-                      activeSize: Size(12.0, 6.0),
-                      spacing: EdgeInsets.all(10.0),
-                      color: Colors.grey.shade200,
-                      activeColor: Colors.grey.shade200,
-                      activeShape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(2)),
-                    ),
-                  ).positioned(left: 0, right: 0, bottom: 10)
-                : SizedBox.shrink(),
-          ].stack(),
-          widget.bottom != null ? widget.bottom! : SizedBox.shrink()
-        ],
-      ),
+    return SizedBox.fromSize(
+      size: Size.fromHeight(bannerHeight),
+      child: [
+        [
+          widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
+          widget.banners.length > 1
+              ? DotsIndicator(
+                  dotsCount: widget.banners.length,
+                  position: _curPage,
+                  onTap: (value) {
+                    setState(() {
+                      _curPage = value;
+                    });
+                  },
+                  decorator: DotsDecorator(
+                    size: Size(10.0, 10.0),
+                    activeSize: Size(12.0, 6.0),
+                    spacing: EdgeInsets.all(10.0),
+                    color: Colors.grey.shade200,
+                    activeColor: Colors.grey.shade200,
+                    activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(2)),
+                  ),
+                ).positioned(left: 0, right: 0, bottom: 10)
+              : SizedBox.shrink(),
+        ].stack(),
+        widget.bottom != null ? widget.bottom! : SizedBox.shrink()
+      ].col(),
     );
   }
 }

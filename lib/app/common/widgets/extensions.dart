@@ -99,14 +99,11 @@ extension ExtensionListWidget on List<Widget> {
     ];
   }
 
-  Widget row() => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Row(children: this));
+  Widget row() => Row(children: this);
 
-  Widget col() => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Column(children: this));
+  Widget col() => Column(children: this);
 
-  Widget stack() => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Stack(children: this));
+  Widget stack() => Stack(children: this);
 
   Widget grid({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
       responsiveBuilder: (context, screen) => GridView.count(
