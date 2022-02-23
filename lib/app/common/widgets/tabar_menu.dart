@@ -6,17 +6,25 @@ import 'package:get/get.dart';
 
 class TabBarMenu extends GetResponsiveWidget {
   final List<Widget> menus;
+  final bool isScroll;
 
-  TabBarMenu({Key? key, required this.menus}) : super(key: key);
+  TabBarMenu({Key? key, required this.menus, this.isScroll = false})
+      : super(key: key);
 
   @override
   Widget builder() {
     return Section(
-      size: Size.fromHeight(footerHeight),
-      backgroundColor: Colors.white,
-      elevation: 1,
-      margin: EdgeInsets.only(bottom: 1),
-      child: menus.row(),
+      size: Size.fromHeight(80),
+      backgroundColor: Color.fromARGB(255, 250, 251, 255),
+      elevation: 2,
+      margin: EdgeInsets.only(bottom: 4),
+      child: isScroll
+          ? menus.row()
+          : menus
+              .divider(context: screen.context)
+              .map<Widget>((e) => e.expanded())
+              .toList()
+              .row(),
     );
   }
 }

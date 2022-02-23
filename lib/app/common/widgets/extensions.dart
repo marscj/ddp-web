@@ -69,6 +69,8 @@ extension ExtensionWidget on Widget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         child: this,
       );
+
+  Widget expanded({flex = 1}) => Expanded(flex: flex, child: this);
 }
 
 extension ExtensionListWidget on List<Widget> {
