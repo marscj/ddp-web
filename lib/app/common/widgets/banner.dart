@@ -35,40 +35,40 @@ class Banner extends GetResponsiveWidget {
   }
 }
 
-class BannerBottom extends GetResponsiveWidget {
-  final List<Widget> bottoms;
-  final EdgeInsets? padding;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-  final double? height;
+// class BannerBottom extends GetResponsiveWidget {
+//   final List<Widget> bottoms;
+//   final EdgeInsets? padding;
+//   final Color? backgroundColor;
+//   final Color? foregroundColor;
+//   final double? height;
 
-  BannerBottom({
-    Key? key,
-    required this.bottoms,
-    this.padding,
-    this.backgroundColor,
-    this.foregroundColor,
-    this.height = bannerBottomHeight,
-  }) : super(key: key);
+//   BannerBottom({
+//     Key? key,
+//     required this.bottoms,
+//     this.padding,
+//     this.backgroundColor,
+//     this.foregroundColor,
+//     this.height = bannerBottomHeight,
+//   }) : super(key: key);
 
-  @override
-  Widget? builder() {
-    return Container(
-      color: backgroundColor ?? Colors.black38,
-      padding: padding,
-      height: height,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: bottoms
-            .divider(
-                context: screen.context,
-                color: foregroundColor ?? Colors.white38)
-            .map<Widget>((e) => Expanded(child: e))
-            .toList(),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget? builder() {
+//     return Container(
+//       color: backgroundColor ?? Colors.black38,
+//       padding: padding,
+//       height: height,
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+//         children: bottoms
+//             .divider(
+//                 context: screen.context,
+//                 color: foregroundColor ?? Colors.white38)
+//             .map<Widget>((e) => Expanded(child: e))
+//             .toList(),
+//       ),
+//     );
+//   }
+// }
 
 class MultiBanner extends StatefulWidget {
   final List<Widget> banners;

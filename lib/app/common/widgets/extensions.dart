@@ -99,7 +99,11 @@ extension ExtensionListWidget on List<Widget> {
     ];
   }
 
-  Widget row() => Row(children: this);
+  Widget row({mainAxisAlignment, crossAxisAlignment}) => Row(
+        children: this,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+      );
 
   Widget col({mainAxisAlignment, crossAxisAlignment}) => Column(
         children: this,

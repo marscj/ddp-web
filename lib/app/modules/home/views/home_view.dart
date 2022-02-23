@@ -36,18 +36,15 @@ class HomeView extends GetResponsiveView<HomeController> {
             color: Colors.blue,
           )
         ],
-        bottom: BannerBottom(
-          padding: EdgeInsets.symmetric(vertical: 10),
-          backgroundColor: Color.fromARGB(55, 188, 193, 207),
-          foregroundColor: Colors.black12,
-          bottoms: [
+        bottom: TabBarMenu(
+          menus: [
             Container(),
             TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
             TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
             TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
             Container(),
           ],
-        ).card().paddingZero,
+        ),
       ),
       child: Content(),
     );
