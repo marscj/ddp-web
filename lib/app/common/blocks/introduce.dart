@@ -11,16 +11,26 @@ class Introduce extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Container(
-      height: 10,
-      width: 10,
-      child: [
-        Text(title ?? ''),
-        logo ?? SizedBox.shrink(),
-        Container(
-          child: Text(desc ?? ''),
-        )
-      ].col().paddingAll(16).cardHover(),
-    );
+    return [
+      Text(
+        title ?? '',
+        style: Theme.of(screen.context)
+            .textTheme
+            .titleLarge
+            ?.copyWith(fontWeight: FontWeight.w600),
+      ),
+      SizedBox(
+        height: 16,
+      ),
+      logo ?? SizedBox.shrink(),
+      SizedBox(
+        height: 16,
+      ),
+      Expanded(
+          child: Text(
+        desc ?? '',
+        style: TextStyle(overflow: TextOverflow.fade),
+      )),
+    ].col().paddingAll(32).cardHover();
   }
 }

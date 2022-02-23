@@ -36,7 +36,7 @@ class Section extends GetResponsiveWidget {
           elevation: elevation,
           shape:
               shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          color: backgroundColor,
+          color: backgroundColor ?? Colors.transparent,
           child: Semantics(
             explicitChildNodes: true,
             child: SizedBox.fromSize(
@@ -54,25 +54,5 @@ class Section extends GetResponsiveWidget {
         ),
       ),
     );
-
-    // SizedBox.fromSize(
-    //   size: size,
-    //   child: DecoratedBox(
-    //     decoration: BoxDecoration(
-    //         color: backgroundColor,
-    //         image: backgroundImage,
-    //         boxShadow: shadow
-    //             ? [
-    //                 BoxShadow(
-    //                   color: Colors.grey.withOpacity(0.3),
-    //                   spreadRadius: 2,
-    //                   blurRadius: 1,
-    //                   offset: Offset(0, 1),
-    //                 ),
-    //               ]
-    //             : null),
-    //     child: child,
-    //   ),
-    // );
   }
 }
