@@ -1,13 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ddp_web/app/common/blocks/action.dart';
-import 'package:ddp_web/app/common/blocks/section.dart';
-import 'package:ddp_web/app/common/widgets/button.dart';
+import 'package:ddp_web/app/common/blocks/blocks.dart';
+import 'package:ddp_web/app/common/widgets/widgets.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:ddp_web/plugs/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:ddp_web/app/common/widgets/extensions.dart';
 
 class Banner extends GetResponsiveWidget {
   final String title;
@@ -28,7 +25,9 @@ class Banner extends GetResponsiveWidget {
   @override
   Widget builder() {
     return Section(
-        backgroundImage: DecorationImage(image: AssetImage(assets)),
+        size: Size.fromHeight(bannerHeight),
+        backgroundImage:
+            DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
         child: [
           CallOfAction().center(),
           // bottom?.align(alignment: Alignment.bottomCenter) ?? SizedBox.shrink()
@@ -231,34 +230,22 @@ class _MultiBannerExtraState extends State<MultiBannerExtra> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: Size.fromHeight(bannerHeight),
-      child: [
-        [
-          widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
-          widget.banners.length > 1
-              ? DotsIndicator(
-                  dotsCount: widget.banners.length,
-                  position: _curPage,
-                  onTap: (value) {
-                    setState(() {
-                      _curPage = value;
-                    });
-                  },
-                  decorator: DotsDecorator(
-                    size: Size(10.0, 10.0),
-                    activeSize: Size(12.0, 6.0),
-                    spacing: EdgeInsets.all(10.0),
-                    color: Colors.grey.shade200,
-                    activeColor: Colors.grey.shade200,
-                    activeShape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(2)),
-                  ),
-                ).positioned(left: 0, right: 0, bottom: 10)
-              : SizedBox.shrink(),
-        ].stack(),
-        widget.bottom != null ? widget.bottom! : SizedBox.shrink()
-      ].col(),
-    );
+    return [
+      [
+        widget.banners[_curPage.toInt()].fade(_curPage.toInt()),
+        widget.banners.length > 1
+            ? Indicator(
+                count: widget.banners.length,
+                position: _curPage,
+                onTap: (value) {
+                  setState(() {
+                    _curPage = value;
+                  });
+                },
+              ).positioned(left: 0, right: 0, bottom: 10)
+            : SizedBox.shrink(),
+      ].stack(),
+      widget.bottom != null ? widget.bottom! : SizedBox.shrink()
+    ].col();
   }
 }

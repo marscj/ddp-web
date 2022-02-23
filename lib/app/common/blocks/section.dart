@@ -17,7 +17,8 @@ class Section extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return SizedBox.expand(
+    return SizedBox.fromSize(
+      size: size,
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,

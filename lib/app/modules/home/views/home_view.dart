@@ -1,7 +1,6 @@
 import 'package:ddp_web/app/common/page/base_page.dart';
-import 'package:ddp_web/app/common/widgets/banner.dart';
-import 'package:ddp_web/app/common/widgets/extensions.dart';
-import 'package:ddp_web/app/common/blocks/introduce.dart';
+import 'package:ddp_web/app/common/widgets/widgets.dart';
+import 'package:ddp_web/app/common/blocks/blocks.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:get/get.dart';
