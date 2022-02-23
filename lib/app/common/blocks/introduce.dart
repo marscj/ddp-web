@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,10 +11,16 @@ class Introduce extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return [
-      Text(title ?? ''),
-      logo ?? SizedBox.shrink(),
-      AutoSizeText(desc ?? '')
-    ].col().cardHover();
+    return Container(
+      height: 10,
+      width: 10,
+      child: [
+        Text(title ?? ''),
+        logo ?? SizedBox.shrink(),
+        Container(
+          child: Text(desc ?? ''),
+        )
+      ].col().paddingAll(16).cardHover(),
+    );
   }
 }

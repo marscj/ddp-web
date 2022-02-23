@@ -88,17 +88,18 @@ class Content extends GetResponsiveWidget<HomeController> {
         Text(
           '我们的优势',
           style: Theme.of(screen.context).textTheme.headline4,
-        ),
+        ).paddingSymmetric(vertical: 32),
         [
           Introduce(
             title: '政府招商',
+            logo: Image.asset('assets/images/资产类申请-150x150.png'),
             desc:
                 '政府招商，安全保障，迪拜硅谷管理局全力 保 障企业的权益。入园企业可获得商务、财 政等 有关部⻔的相应政策支持。不仅无政策 ⻛险， 部分高新项目入园企业可享受地方优 惠政策',
           ),
           Introduce(),
           Introduce()
-        ].grid(mainAxisSpacing: 20, crossAxisSpacing: 20)
-      ].col().responsive(),
+        ].grid(mainAxisSpacing: 32, crossAxisSpacing: 32)
+      ].col().paddingSymmetric(vertical: 32).responsive(),
     );
   }
 }
