@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ddp_web/app/common/blocks/banner.dart';
-import 'package:ddp_web/app/common/blocks/footer.dart';
-import 'package:ddp_web/app/common/blocks/header.dart';
+import 'package:ddp_web/app/common/widgets/footer.dart';
+import 'package:ddp_web/app/common/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

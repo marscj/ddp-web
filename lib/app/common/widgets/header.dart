@@ -1,9 +1,9 @@
-import 'package:ddp_web/app/common/blocks/header_menu.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/widgets/extensions.dart';
+import 'header_menu.dart';
 
 class GlobaleHeader extends GetResponsiveWidget {
   GlobaleHeader({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:ddp_web/app/common/widgets/hover.dart';
+import 'package:ddp_web/app/common/blocks/hover.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 
@@ -39,21 +39,38 @@ extension ExtensionWidget on Widget {
           );
         },
       );
-  ResponsiveWidget background(assets) => ResponsiveWidget(
-      responsiveBuilder: (context, screen) =>);
+  ResponsiveWidget section(
+    height, {
+    backgroundColor,
+    backgroundImage,
+  }) =>
+      ResponsiveWidget(
+        responsiveBuilder: (context, screen) => SizedBox.fromSize(
+          size: Size.fromHeight(height),
+          child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: backgroundColor,
+                image: backgroundImage,
+              ),
+              child: this),
+        ),
+      );
 
   ResponsiveWidget cardHover() => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Hover(
+        responsiveBuilder: (context, screen) => Hover(
           builder: (isHovered) =>
-              Card(elevation: isHovered ? 4 : 2, child: this)));
+              Card(elevation: isHovered ? 4 : 2, child: this),
+        ),
+      );
 
   ResponsiveWidget card() => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Card(
-            elevation: 1,
-            margin: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-            child: this,
-          ));
+        responsiveBuilder: (context, screen) => Card(
+          elevation: 1,
+          margin: EdgeInsets.zero,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+          child: this,
+        ),
+      );
 }
 
 extension ExtensionListWidget on List<Widget> {
