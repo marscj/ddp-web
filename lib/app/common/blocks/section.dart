@@ -1,13 +1,10 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Section extends GetResponsiveWidget {
-  final Size size;
+  final Size? size;
   final Color? backgroundColor;
   final DecorationImage? backgroundImage;
-  final bool shadow;
   final Widget child;
 
   final EdgeInsets? margin;
@@ -18,8 +15,7 @@ class Section extends GetResponsiveWidget {
   Section({
     Key? key,
     required this.child,
-    this.size = Size.infinite,
-    this.shadow = false,
+    this.size,
     this.backgroundColor,
     this.backgroundImage,
     this.shadowColor,
@@ -40,14 +36,16 @@ class Section extends GetResponsiveWidget {
           shape: shape,
           color: backgroundColor,
           child: Semantics(
-            explicitChildNodes: false,
+            explicitChildNodes: true,
             child: SizedBox.fromSize(
               size: size,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: backgroundImage,
+              child: Container(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    image: backgroundImage,
+                  ),
+                  child: child,
                 ),
-                child: child,
               ),
             ),
           ),

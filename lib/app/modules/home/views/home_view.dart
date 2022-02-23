@@ -74,14 +74,12 @@ class Content extends GetResponsiveWidget<HomeController> {
 
   @override
   Widget builder() {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-            'assets/images/block_bg.png',
-          ),
-          fit: BoxFit.cover,
+    return Section(
+      backgroundImage: DecorationImage(
+        image: AssetImage(
+          'assets/images/block_bg.png',
         ),
+        fit: BoxFit.cover,
       ),
       child: [
         Text(
@@ -102,7 +100,7 @@ class Content extends GetResponsiveWidget<HomeController> {
           backgroundColor: Colors.amber,
           child: Container(),
           size: Size.fromHeight(200),
-          elevation: 2,
+          elevation: 20,
         )
       ].col().paddingSymmetric(vertical: 32).responsive(),
     );

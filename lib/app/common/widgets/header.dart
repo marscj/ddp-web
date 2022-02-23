@@ -1,3 +1,4 @@
+import 'package:ddp_web/app/common/blocks/section.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,21 +11,19 @@ class GlobaleHeader extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return SizedBox.fromSize(
+    return Section(
       size: Size.fromHeight(headerHeight),
-      child: Card(
-        color: Colors.white,
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        child: Container(
-          child: Row(
-            children: [
-              LeftWidget(),
-              Expanded(child: HeaderMenu()),
-              RightWidget(),
-            ],
-          ).responsive(),
-        ),
+      backgroundColor: Colors.white,
+      elevation: 1,
+      margin: EdgeInsets.only(bottom: 1),
+      child: Container(
+        child: Row(
+          children: [
+            LeftWidget(),
+            Expanded(child: HeaderMenu()),
+            RightWidget(),
+          ],
+        ).responsive(),
       ),
     );
   }
