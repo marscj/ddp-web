@@ -97,7 +97,13 @@ class Content extends GetResponsiveWidget<HomeController> {
           ),
           Introduce(),
           Introduce()
-        ].grid(mainAxisSpacing: 32, crossAxisSpacing: 32)
+        ].grid(mainAxisSpacing: 32, crossAxisSpacing: 32),
+        Section(
+          backgroundColor: Colors.amber,
+          child: Container(),
+          size: Size.fromHeight(200),
+          elevation: 2,
+        )
       ].col().paddingSymmetric(vertical: 32).responsive(),
     );
   }
