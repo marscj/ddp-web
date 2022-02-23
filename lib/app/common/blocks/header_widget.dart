@@ -24,7 +24,7 @@ class HeaderWidget extends GetResponsiveWidget {
               Expanded(child: MenuWidget()),
               RightWidget(),
             ],
-          ).constraints(screen.settings.desktopChangePoint),
+          ).limitSize(screen.settings.desktopChangePoint),
         ),
       ),
     );

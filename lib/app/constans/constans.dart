@@ -4,4 +4,4 @@ const double footerHeight = 300.0;
 
 const double bannerHeight = 500.0;
 
-const double bannerFooterHeight = 100;
+const double bannerBottomHeight = 80;

@@ -8,7 +8,7 @@ import 'services/auth_service.dart';
 
 void main() async {
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('google_fonts/OFL.txt');
+    final license = await rootBundle.loadString('assets/google_fonts/OFL.txt');
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
@@ -26,7 +26,9 @@ class App extends StatelessWidget {
       title: "Application",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: ThemeData(fontFamily: 'NotoSansSC'),
+      theme: ThemeData(
+          fontFamily: 'NotoSansSC',
+          textTheme: TextTheme(headline4: TextStyle(color: Colors.black87))),
     );
   }
 }

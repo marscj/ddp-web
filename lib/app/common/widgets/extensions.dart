@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension WidgetExtra on Widget {
-  Widget constraints(double maxWidth, {align = Alignment.center}) => Align(
+  Widget limitSize(double maxWidth, {align = Alignment.center}) => Align(
         alignment: align,
         child: Container(
           width: double.infinity,
@@ -9,6 +9,13 @@ extension WidgetExtra on Widget {
           constraints: BoxConstraints(maxWidth: maxWidth),
           child: this,
         ),
+      );
+
+  Widget card() => Card(
+        elevation: 1,
+        margin: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        child: this,
       );
 }
 

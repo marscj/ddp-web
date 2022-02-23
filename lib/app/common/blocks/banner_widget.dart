@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ddp_web/app/common/widgets/button.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:ddp_web/plugs/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:ddp_web/app/common/widgets/extensions.dart';
 class BannerWidget extends GetResponsiveWidget {
   final String title;
   final String desc;
-  final void Function()? onTap;
+  final VoidCallback? onTap;
   final String assets;
   final Widget? bottom;
 
@@ -49,7 +50,7 @@ class BannerWidget extends GetResponsiveWidget {
 class BannerContentWidget extends GetResponsiveWidget {
   final String title;
   final String desc;
-  final void Function()? onTap;
+  final VoidCallback? onTap;
   final String assets;
 
   BannerContentWidget(
@@ -83,7 +84,7 @@ class BannerContentWidget extends GetResponsiveWidget {
             desc,
             style:
                 Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
-          ).constraints(screen.settings.desktopChangePoint / 2,
+          ).limitSize(screen.settings.desktopChangePoint / 2,
               align: Alignment.centerLeft),
           SizedBox(
             height: 30,
@@ -91,25 +92,39 @@ class BannerContentWidget extends GetResponsiveWidget {
           ElevatedButton(onPressed: onTap, child: Text('申请入驻')),
           Spacer()
         ],
-      ).constraints(screen.settings.desktopChangePoint),
+      ).limitSize(screen.settings.desktopChangePoint),
     );
   }
 }
 
 class BannerBottomWidget extends GetResponsiveWidget {
   final List<Widget> bottoms;
+  final EdgeInsets? padding;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+  final double? height;
 
-  BannerBottomWidget({Key? key, required this.bottoms}) : super(key: key);
+  BannerBottomWidget({
+    Key? key,
+    required this.bottoms,
+    this.padding,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.height = bannerBottomHeight,
+  }) : super(key: key);
 
   @override
   Widget? builder() {
     return Container(
-      color: Colors.black38,
-      height: bannerFooterHeight,
+      color: backgroundColor ?? Colors.black38,
+      padding: padding,
+      height: height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bottoms
-            .divider(context: screen.context, color: Colors.white38)
+            .divider(
+                context: screen.context,
+                color: foregroundColor ?? Colors.white38)
             .map<Widget>((e) => Expanded(child: e))
             .toList(),
       ),
@@ -120,42 +135,40 @@ class BannerBottomWidget extends GetResponsiveWidget {
 class BannerMenuWidget extends StatelessWidget {
   final String title;
   final String desc;
-  final void Function()? onTap;
+  final VoidCallback? onTap;
+  final Color? titleColor;
+  final Color? subtitleColor;
 
   const BannerMenuWidget({
     Key? key,
     this.title = '',
     this.desc = '',
     this.onTap,
+    this.titleColor,
+    this.subtitleColor,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium
-                  ?.copyWith(color: Colors.white),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              desc,
-              style: Theme.of(context)
-                  .textTheme
-                  .subtitle2
-                  ?.copyWith(color: Colors.white70),
-            ),
-          ],
-        ),
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 16,
+                color: titleColor ?? Colors.white,
+                fontWeight: FontWeight.w500),
+          ),
+          SizedBox(
+            height: 4,
+          ),
+          HoverTextButton(
+            onPressed: () => onTap,
+            child: Text(desc),
+          ),
+        ],
       ),
     );
   }
@@ -247,6 +260,80 @@ class _MultiBannerWidgetState extends State<MultiBannerWidget> {
           SizedBox(
             height: 10,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class MultiBannerExtraWidget extends StatefulWidget {
+  final List<Widget> banners;
+  final CarouselControllerImpl? controller;
+  final Widget? bottom;
+
+  MultiBannerExtraWidget({
+    Key? key,
+    required this.banners,
+    this.bottom,
+    this.controller,
+  }) : super(key: key);
+
+  @override
+  State<MultiBannerExtraWidget> createState() => _MultiBannerExtraWidgetState();
+}
+
+class _MultiBannerExtraWidgetState extends State<MultiBannerExtraWidget> {
+  double _curPage = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              AnimatedSwitcher(
+                duration: Duration(milliseconds: 300),
+                transitionBuilder: (child, animate) {
+                  return FadeTransition(opacity: animate, child: child);
+                },
+                child: Container(
+                    key: ValueKey(_curPage.toInt()),
+                    child: widget.banners[_curPage.toInt()]),
+              ),
+              widget.banners.length > 1
+                  ? Positioned(
+                      bottom: 10,
+                      left: 0,
+                      right: 0,
+                      child: DotsIndicator(
+                        dotsCount: widget.banners.length,
+                        position: _curPage,
+                        onTap: (value) {
+                          setState(() {
+                            _curPage = value;
+                          });
+                        },
+                        decorator: DotsDecorator(
+                          size: Size(10.0, 10.0),
+                          activeSize: Size(12.0, 6.0),
+                          spacing: EdgeInsets.all(10.0),
+                          color: Colors.grey.shade200,
+                          activeColor: Colors.grey.shade200,
+                          activeShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(2)),
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink(),
+            ],
+          ),
+          widget.bottom != null ? widget.bottom! : SizedBox.shrink()
         ],
       ),
     );
