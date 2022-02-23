@@ -101,7 +101,11 @@ extension ExtensionListWidget on List<Widget> {
 
   Widget row() => Row(children: this);
 
-  Widget col() => Column(children: this);
+  Widget col({mainAxisAlignment, crossAxisAlignment}) => Column(
+        children: this,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+      );
 
   Widget stack() => Stack(children: this);
 

@@ -70,48 +70,6 @@ class BannerBottom extends GetResponsiveWidget {
   }
 }
 
-class BannerMenu extends GetResponsiveWidget {
-  final String title;
-  final String desc;
-  final VoidCallback? onTap;
-  final Color? titleColor;
-  final Color? subtitleColor;
-
-  BannerMenu({
-    Key? key,
-    this.title = '',
-    this.desc = '',
-    this.onTap,
-    this.titleColor,
-    this.subtitleColor,
-  }) : super(key: key);
-
-  @override
-  Widget builder() {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-                fontSize: 16,
-                color: titleColor ?? Colors.white,
-                fontWeight: FontWeight.w500),
-          ),
-          SizedBox(
-            height: 4,
-          ),
-          HoverTextButton(
-            onPressed: () => onTap,
-            child: Text(desc),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class MultiBanner extends StatefulWidget {
   final List<Widget> banners;
   final CarouselControllerImpl? controller;

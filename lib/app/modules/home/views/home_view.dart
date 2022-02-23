@@ -38,28 +38,13 @@ class HomeView extends GetResponsiveView<HomeController> {
         ],
         bottom: BannerBottom(
           padding: EdgeInsets.symmetric(vertical: 10),
-          backgroundColor: Color.fromARGB(55, 205, 216, 245),
+          backgroundColor: Color.fromARGB(55, 188, 193, 207),
           foregroundColor: Colors.black12,
           bottoms: [
             Container(),
-            BannerMenu(
-                title: '企业合伙人',
-                desc: '超大折扣 申请加入',
-                titleColor: Colors.black,
-                subtitleColor: Colors.black54,
-                onTap: () {}),
-            BannerMenu(
-                title: '企业合伙人',
-                desc: '超大折扣 申请加入',
-                titleColor: Colors.black,
-                subtitleColor: Colors.black54,
-                onTap: () {}),
-            BannerMenu(
-                title: '企业合伙人',
-                desc: '超大折扣 申请加入',
-                titleColor: Colors.black,
-                subtitleColor: Colors.black54,
-                onTap: () {}),
+            TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
+            TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
+            TabMenu(title: '企业合伙人', subtitle: '超大折扣 申请加入', onTap: () {}),
             Container(),
           ],
         ).card().paddingZero,

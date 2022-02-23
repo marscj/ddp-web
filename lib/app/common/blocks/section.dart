@@ -33,7 +33,8 @@ class Section extends GetResponsiveWidget {
           type: MaterialType.card,
           shadowColor: shadowColor ?? Theme.of(screen.context).shadowColor,
           elevation: elevation,
-          shape: shape,
+          shape:
+              shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
           color: backgroundColor,
           child: Semantics(
             explicitChildNodes: true,
