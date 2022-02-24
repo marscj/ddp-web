@@ -1,7 +1,7 @@
 import 'package:ddp_web/app/common/blocks/hover.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
-import 'package:responsive_framework/responsive_grid.dart';
+import 'package:get/get.dart';
 
 typedef ResponsiveWidgetBuilder = Widget Function(
     BuildContext context, ResponsiveScreen screen);
@@ -45,16 +45,77 @@ extension ExtensionWidget on Widget {
         },
       );
 
+  Widget visibility(
+    visibleWhen, {
+    Widget? replacement,
+  }) {
+    List<ScreenType> _typs = [
+      ScreenType.Desktop,
+      ScreenType.Phone,
+      ScreenType.Tablet,
+      ScreenType.Watch
+    ];
+    return ResponsiveWidget(
+      responsiveBuilder: (context, screen) => Visibility(
+        child: this,
+        replacement: replacement ?? SizedBox.shrink(),
+        visible: visibleWhen.contains(screen.screenType),
+      ),
+    );
+  }
+
+  Widget semantics({
+    Size? size,
+    Color? backgroundColor,
+    DecorationImage? backgroundImage,
+    MaterialType type = MaterialType.canvas,
+    EdgeInsets? margin,
+    Color? shadowColor,
+    double elevation = 0,
+    ShapeBorder? shape,
+  }) =>
+      ResponsiveWidget(
+        responsiveBuilder: (context, screen) => Semantics(
+          child: Container(
+            margin: margin ?? EdgeInsets.zero,
+            child: Material(
+              type: type,
+              shadowColor: shadowColor ?? Theme.of(context).shadowColor,
+              elevation: elevation,
+              shape: shape ??
+                  RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              color: backgroundColor ?? Colors.transparent,
+              child: Semantics(
+                explicitChildNodes: true,
+                child: SizedBox.fromSize(
+                  size: size,
+                  child: Container(
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        image: backgroundImage,
+                      ),
+                      child: this,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
   Widget center() => Center(child: this);
 
   Widget align({alignment = Alignment.center}) =>
       Align(alignment: alignment, child: this);
 
-  Widget positioned({left, right, top, bottom}) => Positioned(
+  Widget positioned({left, right, top, bottom, width, height}) => Positioned(
         left: left,
         right: right,
         top: top,
         bottom: bottom,
+        width: width,
+        height: height,
         child: this,
       );
 
@@ -128,18 +189,19 @@ extension ExtensionListWidget on List<Widget> {
         List<double> rowRatio = [1, 1.5, 1.25, 0.9];
         List<double> rowExtent = [120, 220, 320, 420];
 
-        GridView.count(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          crossAxisCount: rowCount[screen.screenType.index],
-          mainAxisSpacing: mainAxisSpacing,
-          crossAxisSpacing: crossAxisSpacing,
-          childAspectRatio: rowRatio[screen.screenType.index],
-          children: this,
-        );
+        // GridView.count(
+        //   shrinkWrap: true,
+        //   physics: NeverScrollableScrollPhysics(),
+        //   crossAxisCount: rowCount[screen.screenType.index],
+        //   mainAxisSpacing: mainAxisSpacing,
+        //   crossAxisSpacing: crossAxisSpacing,
+        //   childAspectRatio: rowRatio[screen.screenType.index],
+        //   children: this,
+        // );
 
         return GridView.custom(
             shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               mainAxisSpacing: mainAxisSpacing,
               crossAxisSpacing: crossAxisSpacing,
@@ -148,23 +210,6 @@ extension ExtensionListWidget on List<Widget> {
             ),
             childrenDelegate: SliverChildListDelegate.fixed(this));
       });
-
-  Widget rgrid({mainAxisSpacing, crossAxisSpacing}) =>
-      ResponsiveGridView.builder(
-        gridDelegate: const ResponsiveGridDelegate(
-            crossAxisExtent: 360,
-            mainAxisSpacing: 32,
-            crossAxisSpacing: 32,
-            childAspectRatio: 1),
-        itemCount: length,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(4, 8, 0, 16),
-        alignment: Alignment.center,
-        itemBuilder: (context, index) {
-          return this[index];
-        },
-      );
 
   Widget warp({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
       responsiveBuilder: (context, screen) =>

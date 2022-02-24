@@ -18,19 +18,19 @@ class HomeView extends GetResponsiveView<HomeController> {
           Banner(
             assets: 'assets/images/banner1.jpg',
             child: [
-              [
-                CallOfAction(
-                  title: '中国中心',
-                  desc:
-                      '迪拜硅谷-中国中心聚焦吸引跨境电商，区块链金融，移动教育，电子商务，在线娱乐，物联网，新媒体运营等数字新型企业，旨在搭建中东地区最大的海外华人企业数字产业交流平台，凭借中阿两国政府的大力支持，中国中心致力于成为中国高科技企业落地中东地区的第一桥梁，凭借自身优势，为中国企业出海保驾护航。',
-                  action: ElevatedButton(
-                    child: Text('申请加入'),
-                    onPressed: () {},
-                  ),
-                ).center().expanded(flex: 2),
-                Spacer()
-              ].row().responsive().center(),
-            ].stack(),
+              CallOfAction(
+                title: '中国中心',
+                desc:
+                    '迪拜硅谷-中国中心聚焦吸引跨境电商，区块链金融，移动教育，电子商务，在线娱乐，物联网，新媒体运营等数字新型企业，旨在搭建中东地区最大的海外华人企业数字产业交流平台，凭借中阿两国政府的大力支持，中国中心致力于成为中国高科技企业落地中东地区的第一桥梁，凭借自身优势，为中国企业出海保驾护航。',
+                action: ElevatedButton(
+                  child: Text('申请加入'),
+                  onPressed: () {},
+                ),
+              ).expanded(flex: 2),
+              Spacer().visibility([
+                ScreenType.Desktop,
+              ])
+            ].row().responsive(),
           ),
           Banner(
             assets: 'assets/images/banner2.png',
@@ -39,7 +39,8 @@ class HomeView extends GetResponsiveView<HomeController> {
                 title: '中国中心',
                 desc:
                     '迪拜硅谷-中国中心聚焦吸引跨境电商，区块链金融，移动教育，电子商务，在线娱乐，物联网，新媒体运营等数字新型企业，旨在搭建中东地区最大的海外华人企业数字产业交流平台，凭借中阿两国政府的大力支持，中国中心致力于成为中国高科技企业落地中东地区的第一桥梁，凭借自身优势，为中国企业出海保驾护航。',
-              ).center(),
+              ).center().expanded(flex: 2),
+              Spacer().visibility([ScreenType.Desktop]),
             ].stack(),
           ),
           Container(
@@ -138,7 +139,7 @@ class Content extends GetResponsiveWidget<HomeController> {
             desc:
                 '产业园位置卓越，距离市中心、国际机场及 大 型商业中心均在15分钟⻋程内，交通极 其便利。 园区内拥有餐厅，公寓，超市，医 院、学校、 政府机构、购物生活娱乐等设 施一应俱全',
           ),
-        ].rgrid(mainAxisSpacing: 32, crossAxisSpacing: 32),
+        ].grid(mainAxisSpacing: 32, crossAxisSpacing: 32),
       ].col().paddingOnly(bottom: 32).responsive(),
     );
   }
