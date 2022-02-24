@@ -32,6 +32,6 @@ class Introduce extends GetResponsiveWidget {
         maxLines: 5,
         style: TextStyle(overflow: TextOverflow.fade),
       )),
-    ].col().paddingAll(32).cardHover();
+    ].col().paddingAll(32).shadowHover();
   }
 }

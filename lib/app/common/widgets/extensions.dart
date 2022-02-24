@@ -3,6 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 import 'package:get/get.dart';
 
+class ResponsiveValue<T> {
+  final T? mobile;
+  final T? tablet;
+  final T? desktop;
+  final T? watch;
+
+  ResponsiveValue({this.mobile, this.tablet, this.desktop, this.watch});
+
+  T? value(screen) => screen.responsiveValue(
+      desktop: desktop, tablet: tablet, mobile: mobile, watch: watch);
+}
+
 typedef ResponsiveWidgetBuilder = Widget Function(
     BuildContext context, ResponsiveScreen screen);
 
@@ -24,21 +36,22 @@ class ResponsiveWidget extends GetResponsiveWidget {
 }
 
 extension ExtensionWidget on Widget {
-  ResponsiveWidget responsive({limitScreen = true}) => ResponsiveWidget(
+  ResponsiveWidget responsive({
+    limitScreen = true,
+  }) =>
+      ResponsiveWidget(
         responsiveBuilder: (context, screen) {
-          List<double> screenSize = [
-            screen.width - 16,
-            screen.width - 32,
-            screen.width - 64,
-            screen.settings.desktopChangePoint,
-          ];
+          double _maxWidth = screen.responsiveValue<double>(
+                  desktop: screen.settings.desktopChangePoint,
+                  tablet: screen.width - 64,
+                  mobile: screen.width - 32,
+                  watch: screen.width - 16) ??
+              screen.width;
 
           return Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(
-                  maxWidth: limitScreen
-                      ? screenSize[screen.screenType.index]
-                      : screen.width),
+                  maxWidth: limitScreen ? _maxWidth : screen.width),
               child: this,
             ),
           );
@@ -49,12 +62,6 @@ extension ExtensionWidget on Widget {
     visibleWhen, {
     Widget? replacement,
   }) {
-    List<ScreenType> _typs = [
-      ScreenType.Desktop,
-      ScreenType.Phone,
-      ScreenType.Tablet,
-      ScreenType.Watch
-    ];
     return ResponsiveWidget(
       responsiveBuilder: (context, screen) => Visibility(
         child: this,
@@ -127,7 +134,7 @@ extension ExtensionWidget on Widget {
         child: Container(key: ValueKey(value), child: this),
       );
 
-  Widget cardHover() => Hover(
+  Widget shadowHover() => Hover(
         builder: (isHovered) => Card(elevation: isHovered ? 4 : 2, child: this),
       );
 
@@ -183,11 +190,11 @@ extension ExtensionListWidget on List<Widget> {
 
   Widget stack({fit = StackFit.loose}) => Stack(children: this, fit: fit);
 
-  Widget grid({mainAxisSpacing, crossAxisSpacing}) =>
+  Widget grid({mainAxisSpacing, crossAxisSpacing, ResponsiveValue? extent}) =>
       ResponsiveWidget(responsiveBuilder: (context, screen) {
-        List<int> rowCount = [1, 1, 2, 3];
-        List<double> rowRatio = [1, 1.5, 1.25, 0.9];
-        List<double> rowExtent = [120, 220, 320, 420];
+        // List<int> rowCount = [1, 1, 2, 3];
+        // List<double> rowRatio = [1, 1.5, 1.25, 0.9];
+        // List<double> rowExtent = [120, 220, 320, 420];
 
         // GridView.count(
         //   shrinkWrap: true,
@@ -203,11 +210,11 @@ extension ExtensionListWidget on List<Widget> {
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisSpacing: mainAxisSpacing,
-              crossAxisSpacing: crossAxisSpacing,
-              mainAxisExtent: 420,
-              crossAxisCount: rowCount[screen.screenType.index],
-            ),
+                mainAxisSpacing: mainAxisSpacing,
+                crossAxisSpacing: crossAxisSpacing,
+                mainAxisExtent: extent?.value(screen) ?? 400,
+                crossAxisCount: screen.responsiveValue<int>(
+                    desktop: 3, tablet: 2, mobile: 1, watch: 1)!),
             childrenDelegate: SliverChildListDelegate.fixed(this));
       });
 
