@@ -1,6 +1,7 @@
 import 'package:ddp_web/app/common/blocks/hover.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
+import 'package:responsive_framework/responsive_grid.dart';
 
 typedef ResponsiveWidgetBuilder = Widget Function(
     BuildContext context, ResponsiveScreen screen);
@@ -9,7 +10,12 @@ class ResponsiveWidget extends GetResponsiveWidget {
   final ResponsiveWidgetBuilder responsiveBuilder;
 
   ResponsiveWidget({Key? key, required this.responsiveBuilder})
-      : super(key: key);
+      : super(
+            key: key,
+            settings: ResponsiveScreenSettings(
+              desktopChangePoint: 1200,
+              tabletChangePoint: 800,
+            ));
 
   @override
   Widget builder() {
@@ -26,6 +32,7 @@ extension ExtensionWidget on Widget {
             screen.width - 64,
             screen.settings.desktopChangePoint,
           ];
+
           return Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -115,16 +122,49 @@ extension ExtensionListWidget on List<Widget> {
 
   Widget stack({fit = StackFit.loose}) => Stack(children: this, fit: fit);
 
-  Widget grid({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
-      responsiveBuilder: (context, screen) => GridView.count(
+  Widget grid({mainAxisSpacing, crossAxisSpacing}) =>
+      ResponsiveWidget(responsiveBuilder: (context, screen) {
+        List<int> rowCount = [1, 1, 2, 3];
+        List<double> rowRatio = [1, 1.5, 1.25, 0.9];
+        List<double> rowExtent = [120, 220, 320, 420];
+
+        GridView.count(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          crossAxisCount: rowCount[screen.screenType.index],
+          mainAxisSpacing: mainAxisSpacing,
+          crossAxisSpacing: crossAxisSpacing,
+          childAspectRatio: rowRatio[screen.screenType.index],
+          children: this,
+        );
+
+        return GridView.custom(
             shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            crossAxisCount:
-                screen.screenType.index > 0 ? screen.screenType.index : 1,
-            mainAxisSpacing: mainAxisSpacing,
-            crossAxisSpacing: crossAxisSpacing,
-            children: this,
-          ));
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisSpacing: mainAxisSpacing,
+              crossAxisSpacing: crossAxisSpacing,
+              mainAxisExtent: 420,
+              crossAxisCount: rowCount[screen.screenType.index],
+            ),
+            childrenDelegate: SliverChildListDelegate.fixed(this));
+      });
+
+  Widget rgrid({mainAxisSpacing, crossAxisSpacing}) =>
+      ResponsiveGridView.builder(
+        gridDelegate: const ResponsiveGridDelegate(
+            crossAxisExtent: 360,
+            mainAxisSpacing: 32,
+            crossAxisSpacing: 32,
+            childAspectRatio: 1),
+        itemCount: length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.fromLTRB(4, 8, 0, 16),
+        alignment: Alignment.center,
+        itemBuilder: (context, index) {
+          return this[index];
+        },
+      );
 
   Widget warp({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
       responsiveBuilder: (context, screen) =>
