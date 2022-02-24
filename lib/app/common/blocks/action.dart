@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ddp_web/app/common/blocks/blocks.dart';
 import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:flutter/material.dart';
@@ -25,15 +24,18 @@ class CallOfAction extends GetResponsiveWidget {
         child: [
           Text(
             title ?? '',
-            style: Get.theme.textTheme.headline3?.copyWith(color: Colors.white),
+            style: Get.theme.textTheme.headline3
+                ?.copyWith(color: Colors.white, overflow: TextOverflow.fade),
+            maxLines: 1,
           ).align(alignment: Alignment.centerLeft),
           SizedBox(
             height: 10,
           ),
           Text(
             desc ?? '',
-            style:
-                Get.theme.textTheme.titleSmall?.copyWith(color: Colors.white),
+            style: Get.theme.textTheme.titleSmall
+                ?.copyWith(color: Colors.white, overflow: TextOverflow.fade),
+            maxLines: 8,
           ).align(alignment: Alignment.centerLeft),
           SizedBox(
             height: 40,

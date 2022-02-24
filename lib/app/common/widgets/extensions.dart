@@ -113,10 +113,17 @@ extension ExtensionWidget on Widget {
 
   Widget center() => Center(child: this);
 
-  Widget align({alignment = Alignment.center}) =>
+  Widget align({Alignment alignment = Alignment.center}) =>
       Align(alignment: alignment, child: this);
 
-  Widget positioned({left, right, top, bottom, width, height}) => Positioned(
+  Widget positioned(
+          {double? left,
+          double? right,
+          double? top,
+          double? bottom,
+          double? width,
+          double? height}) =>
+      Positioned(
         left: left,
         right: right,
         top: top,
@@ -176,21 +183,31 @@ extension ExtensionListWidget on List<Widget> {
     ];
   }
 
-  Widget row({mainAxisAlignment, crossAxisAlignment}) => Row(
+  Widget row(
+          {MainAxisAlignment? mainAxisAlignment,
+          CrossAxisAlignment? crossAxisAlignment}) =>
+      Row(
         children: this,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
       );
 
-  Widget col({mainAxisAlignment, crossAxisAlignment}) => Column(
+  Widget col(
+          {MainAxisAlignment? mainAxisAlignment,
+          CrossAxisAlignment? crossAxisAlignment}) =>
+      Column(
         children: this,
         mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
         crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
       );
 
-  Widget stack({fit = StackFit.loose}) => Stack(children: this, fit: fit);
+  Widget stack({StackFit fit = StackFit.loose}) =>
+      Stack(children: this, fit: fit);
 
-  Widget grid({mainAxisSpacing, crossAxisSpacing, ResponsiveValue? extent}) =>
+  Widget grid(
+          {double? mainAxisSpacing,
+          double? crossAxisSpacing,
+          ResponsiveValue<double>? extent}) =>
       ResponsiveWidget(responsiveBuilder: (context, screen) {
         // List<int> rowCount = [1, 1, 2, 3];
         // List<double> rowRatio = [1, 1.5, 1.25, 0.9];
@@ -210,9 +227,9 @@ extension ExtensionListWidget on List<Widget> {
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: mainAxisSpacing,
-                crossAxisSpacing: crossAxisSpacing,
-                mainAxisExtent: extent?.value(screen) ?? 400,
+                mainAxisSpacing: mainAxisSpacing ?? 0.0,
+                crossAxisSpacing: crossAxisSpacing ?? 0.0,
+                mainAxisExtent: extent?.value(screen) ?? 400.0,
                 crossAxisCount: screen.responsiveValue<int>(
                     desktop: 3, tablet: 2, mobile: 1, watch: 1)!),
             childrenDelegate: SliverChildListDelegate.fixed(this));

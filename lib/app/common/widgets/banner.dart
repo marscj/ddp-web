@@ -156,7 +156,7 @@ class _MultiBannerExtraState extends State<MultiBannerExtra> {
                     _curPage = value;
                   });
                 },
-              ).positioned(left: 0, right: 0, bottom: 10)
+              ).positioned(left: 0.0, right: 0.0, bottom: 10.0)
             : SizedBox.shrink(),
       ].stack(),
       widget.bottom != null ? widget.bottom! : SizedBox.shrink()

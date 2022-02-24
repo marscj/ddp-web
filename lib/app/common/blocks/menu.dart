@@ -19,7 +19,11 @@ class TabMenu extends GetResponsiveWidget {
         title != null
             ? Text(
                 title!,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    overflow: TextOverflow.fade),
+                maxLines: 1,
               )
             : SizedBox.shrink(),
         Visibility(

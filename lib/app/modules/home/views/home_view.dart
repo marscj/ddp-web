@@ -140,11 +140,11 @@ class Content extends GetResponsiveWidget<HomeController> {
                 '产业园位置卓越，距离市中心、国际机场及 大 型商业中心均在15分钟⻋程内，交通极 其便利。 园区内拥有餐厅，公寓，超市，医 院、学校、 政府机构、购物生活娱乐等设 施一应俱全',
           ),
         ].grid(
-            mainAxisSpacing: 32,
-            crossAxisSpacing: 32,
-            extent: ResponsiveValue(
-                desktop: 400, tablet: 350, mobile: 350, watch: 370)),
-      ].col().paddingOnly(bottom: 32).responsive(),
+            mainAxisSpacing: 32.0,
+            crossAxisSpacing: 32.0,
+            extent: ResponsiveValue<double>(
+                desktop: 400.0, tablet: 350.0, mobile: 350.0, watch: 370.0)),
+      ].col().paddingOnly(bottom: 32.0).responsive(),
     );
   }
 }
