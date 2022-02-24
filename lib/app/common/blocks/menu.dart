@@ -22,12 +22,16 @@ class TabMenu extends GetResponsiveWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               )
             : SizedBox.shrink(),
-        subtitle != null
-            ? HoverTextButton(
-                onPressed: () => onTap,
-                child: Text(subtitle!),
-              )
-            : SizedBox.shrink()
+        Visibility(
+            visible: subtitle != null,
+            child: HoverTextButton(
+              onPressed: () => onTap,
+              child: Text(
+                subtitle!,
+                style: TextStyle(overflow: TextOverflow.fade),
+                maxLines: 1,
+              ),
+            ))
       ].col(mainAxisAlignment: MainAxisAlignment.center),
     );
   }
