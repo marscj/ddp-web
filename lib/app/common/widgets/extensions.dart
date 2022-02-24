@@ -73,8 +73,8 @@ extension ExtensionWidget on Widget {
 
   Widget semantics({
     Size? size,
-    Color? backgroundColor,
-    DecorationImage? backgroundImage,
+    Color? color,
+    DecorationImage? image,
     MaterialType type = MaterialType.canvas,
     EdgeInsets? margin,
     Color? shadowColor,
@@ -91,7 +91,7 @@ extension ExtensionWidget on Widget {
               elevation: elevation,
               shape: shape ??
                   RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-              color: backgroundColor ?? Colors.transparent,
+              color: color ?? Colors.transparent,
               child: Semantics(
                 explicitChildNodes: true,
                 child: SizedBox.fromSize(
@@ -99,7 +99,7 @@ extension ExtensionWidget on Widget {
                   child: Container(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        image: backgroundImage,
+                        image: image,
                       ),
                       child: this,
                     ),
@@ -152,7 +152,7 @@ extension ExtensionWidget on Widget {
         child: this,
       );
 
-  Widget expanded({flex = 1}) => Expanded(flex: flex, child: this);
+  Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
 }
 
 extension ExtensionListWidget on List<Widget> {
