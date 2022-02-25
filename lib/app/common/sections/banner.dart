@@ -1,10 +1,14 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ddp_web/app/common/blocks/blocks.dart';
-import 'package:ddp_web/app/common/widgets/widgets.dart';
-import 'package:ddp_web/app/constans/constans.dart';
-import 'package:ddp_web/plugs/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ddp_web/app/common/blocks/indicator.dart';
+import 'package:ddp_web/app/common/extensions/animator.dart';
+import 'package:ddp_web/app/common/extensions/position.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
+import 'package:ddp_web/app/common/widgets/senses.dart';
+import 'package:ddp_web/app/constans/constans.dart';
+import 'package:ddp_web/plugs/dots_indicator.dart';
 
 class Banner extends GetResponsiveWidget {
   final String assets;
@@ -18,7 +22,7 @@ class Banner extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Section(
+    return Senses(
         size: Size.fromHeight(bannerHeight),
         image: DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
         child: child ?? SizedBox.shrink());

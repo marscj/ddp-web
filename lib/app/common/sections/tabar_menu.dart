@@ -1,7 +1,9 @@
-import 'package:ddp_web/app/common/widgets/senses.dart';
-import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:ddp_web/app/common/extensions/widget.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
+import 'package:ddp_web/app/common/widgets/senses.dart';
 
 class TabBarMenu extends GetResponsiveWidget {
   final List<Widget> menus;
@@ -12,7 +14,7 @@ class TabBarMenu extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Section(
+    return Senses(
         size: Size.fromHeight(80),
         color: Color.fromARGB(255, 250, 251, 255),
         elevation: 2,

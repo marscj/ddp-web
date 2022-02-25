@@ -1,9 +1,16 @@
-import 'package:ddp_web/app/common/page/base_page.dart';
-import 'package:ddp_web/app/common/widgets/widgets.dart';
-import 'package:ddp_web/app/common/blocks/blocks.dart';
-import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:get/get.dart';
+
+import 'package:ddp_web/app/common/blocks/call_action.dart';
+import 'package:ddp_web/app/common/blocks/menu.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
+import 'package:ddp_web/app/common/pages/base_page.dart';
+import 'package:ddp_web/app/common/sections/about.dart';
+import 'package:ddp_web/app/common/sections/banner.dart';
+import 'package:ddp_web/app/common/sections/odds.dart';
+import 'package:ddp_web/app/common/sections/tabar_menu.dart';
+import 'package:ddp_web/app/constans/constans.dart';
 
 import '../controllers/home_controller.dart';
 

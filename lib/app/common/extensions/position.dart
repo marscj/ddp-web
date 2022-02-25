@@ -22,4 +22,6 @@ extension ExtensionPosition on Widget {
         height: height,
         child: this,
       );
+
+  Widget size({size}) => SizedBox.fromSize(size: size);
 }

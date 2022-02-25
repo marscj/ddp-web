@@ -1,17 +1,17 @@
-import 'package:ddp_web/app/common/widgets/senses.dart';
-import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'header_menu.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
+import 'package:ddp_web/app/common/widgets/senses.dart';
+import 'package:ddp_web/app/constans/constans.dart';
 
 class GlobaleHeader extends GetResponsiveWidget {
   GlobaleHeader({Key? key}) : super(key: key);
 
   @override
   Widget builder() {
-    return Section(
+    return Senses(
       size: Size.fromHeight(headerHeight),
       color: Colors.white,
       elevation: 1,
