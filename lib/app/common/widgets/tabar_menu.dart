@@ -14,7 +14,7 @@ class TabBarMenu extends GetResponsiveWidget {
   Widget builder() {
     return Section(
         size: Size.fromHeight(80),
-        backgroundColor: Color.fromARGB(255, 250, 251, 255),
+        color: Color.fromARGB(255, 250, 251, 255),
         elevation: 2,
         margin: EdgeInsets.only(bottom: 4),
         child: isScroll

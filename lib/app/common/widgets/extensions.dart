@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:ddp_web/app/common/blocks/hover.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
@@ -96,13 +97,12 @@ extension ExtensionWidget on Widget {
                 explicitChildNodes: true,
                 child: SizedBox.fromSize(
                   size: size,
-                  child: Container(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        image: image,
-                      ),
-                      child: this,
+                  child: DecoratedBox(
+                    position: DecorationPosition.background,
+                    decoration: BoxDecoration(
+                      image: image,
                     ),
+                    child: this,
                   ),
                 ),
               ),
@@ -141,8 +141,16 @@ extension ExtensionWidget on Widget {
         child: Container(key: ValueKey(value), child: this),
       );
 
+  Widget fadeInRight() => FadeInRight(child: this);
+
+  Widget fadeInLeft() => FadeInLeft(child: this);
+
   Widget shadowHover() => Hover(
         builder: (isHovered) => Card(elevation: isHovered ? 4 : 2, child: this),
+      );
+
+  Widget offsetHover() => Hover(
+        builder: (isHovered) => Container(),
       );
 
   Widget card() => Card(

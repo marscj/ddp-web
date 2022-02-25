@@ -20,7 +20,7 @@ class CallOfAction extends GetResponsiveWidget {
   @override
   Widget builder() {
     return Section(
-        backgroundColor: backgroundColor,
+        color: backgroundColor,
         child: [
           Text(
             title ?? '',

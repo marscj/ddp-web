@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 class Section extends GetResponsiveWidget {
   final Size? size;
-  final Color? backgroundColor;
-  final DecorationImage? backgroundImage;
+  final Color? color;
+  final DecorationImage? image;
   final Widget child;
   final MaterialType type;
   final EdgeInsets? margin;
@@ -16,8 +16,8 @@ class Section extends GetResponsiveWidget {
       {Key? key,
       required this.child,
       this.size,
-      this.backgroundColor,
-      this.backgroundImage,
+      this.color,
+      this.image,
       this.shadowColor,
       this.margin,
       this.elevation = 0.0,
@@ -36,7 +36,7 @@ class Section extends GetResponsiveWidget {
           elevation: elevation,
           shape:
               shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          color: backgroundColor ?? Colors.transparent,
+          color: color ?? Colors.transparent,
           child: Semantics(
             explicitChildNodes: true,
             child: SizedBox.fromSize(
@@ -44,7 +44,7 @@ class Section extends GetResponsiveWidget {
               child: Container(
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    image: backgroundImage,
+                    image: image,
                   ),
                   child: child,
                 ),

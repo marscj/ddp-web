@@ -13,7 +13,7 @@ class GlobaleHeader extends GetResponsiveWidget {
   Widget builder() {
     return Section(
       size: Size.fromHeight(headerHeight),
-      backgroundColor: Colors.white,
+      color: Colors.white,
       elevation: 1,
       margin: EdgeInsets.only(bottom: 1),
       child: Container(

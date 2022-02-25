@@ -20,8 +20,7 @@ class Banner extends GetResponsiveWidget {
   Widget builder() {
     return Section(
         size: Size.fromHeight(bannerHeight),
-        backgroundImage:
-            DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),
         child: child ?? SizedBox.shrink());
   }
 }
