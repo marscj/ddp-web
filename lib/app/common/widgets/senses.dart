@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Section extends GetResponsiveWidget {
+class Senses extends GetResponsiveWidget {
   final Size? size;
   final Color? color;
   final DecorationImage? image;
@@ -12,18 +12,18 @@ class Section extends GetResponsiveWidget {
   final double elevation;
   final ShapeBorder? shape;
 
-  Section(
-      {Key? key,
-      required this.child,
-      this.size,
-      this.color,
-      this.image,
-      this.shadowColor,
-      this.margin,
-      this.elevation = 0.0,
-      this.shape,
-      this.type = MaterialType.card})
-      : super(key: key);
+  Senses({
+    Key? key,
+    required this.child,
+    this.size,
+    this.color,
+    this.image,
+    this.shadowColor,
+    this.margin,
+    this.elevation = 0.0,
+    this.shape,
+    this.type = MaterialType.canvas,
+  }) : super(key: key);
 
   @override
   Widget builder() {

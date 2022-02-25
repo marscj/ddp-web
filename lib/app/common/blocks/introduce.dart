@@ -1,6 +1,9 @@
-import 'package:ddp_web/app/common/widgets/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:ddp_web/app/common/extensions/text.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
 
 class Introduce extends GetResponsiveWidget {
   final String? title;

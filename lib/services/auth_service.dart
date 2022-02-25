@@ -5,7 +5,7 @@ class AuthService extends GetxService {
 
   final token = ''.obs;
 
-  get hasToken => token.value != '';
+  get hasToken => token.isNotEmpty;
 
   void setToken(newValue) {
     token.value = newValue;
