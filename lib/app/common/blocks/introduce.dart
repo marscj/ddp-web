@@ -14,11 +14,7 @@ class Introduce extends GetResponsiveWidget {
     return [
       Text(
         title ?? '',
-        // style: Theme.of(screen.context)
-        //     .textTheme
-        //     .titleLarge
-        //     ?.copyWith(fontWeight: FontWeight.w600),
-      ).h1(),
+      ).h2(),
       SizedBox(
         height: 16,
       ),
@@ -27,11 +23,11 @@ class Introduce extends GetResponsiveWidget {
         height: 16,
       ),
       Expanded(
-          child: Text(
-        desc ?? '',
-        maxLines: 5,
-        style: TextStyle(overflow: TextOverflow.fade),
-      )),
+        child: Text(
+          desc ?? '',
+          // maxLines: 3,
+        ).h4(),
+      ),
     ].col().paddingAll(32).shadowHover();
   }
 }

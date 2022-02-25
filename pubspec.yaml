@@ -21,29 +21,41 @@ dev_dependencies:
   flutter_test: 
     sdk: flutter
 
+#   FontWeight.w100: 'Thin',
+#   FontWeight.w200: 'ExtraLight',
+#   FontWeight.w300: 'Light',
+#   FontWeight.w400: 'Regular',
+#   FontWeight.w500: 'Medium',
+#   FontWeight.w600: 'SemiBold',
+#   FontWeight.w700: 'Bold',
+#   FontWeight.w800: 'ExtraBold',
+#   FontWeight.w900: 'Black',
+
 flutter: 
   assets: 
     - assets/images/
+
+  
   fonts: 
-    - family: NotoSansSC
+    - family: NotoSerifSC
       fonts: 
-        - asset: assets/google_fonts/NotoSansSC-Thin.otf
+        - asset: assets/google_fonts/NotoSerifSC-ExtraLight.ttf
           weight: 100
-        - asset: assets/google_fonts/NotoSansSC-Thin.otf
+        - asset: assets/google_fonts/NotoSerifSC-ExtraLight.ttf
           weight: 200
-        - asset: assets/google_fonts/NotoSansSC-Light.otf
+        - asset: assets/google_fonts/NotoSerifSC-Light.ttf
           weight: 300
-        - asset: assets/google_fonts/NotoSansSC-Regular.otf
+        - asset: assets/google_fonts/NotoSerifSC-Regular.ttf
           weight: 400
-        - asset: assets/google_fonts/NotoSansSC-Medium.otf
+        - asset: assets/google_fonts/NotoSerifSC-Medium.ttf
           weight: 500
-        - asset: assets/google_fonts/NotoSansSC-Medium.otf
+        - asset: assets/google_fonts/NotoSerifSC-SemiBold.ttf
           weight: 600
-        - asset: assets/google_fonts/NotoSansSC-Bold.otf
+        - asset: assets/google_fonts/NotoSerifSC-Bold.ttf
           weight: 700
-        - asset: assets/google_fonts/NotoSansSC-Black.otf
+        - asset: assets/google_fonts/NotoSerifSC-Black.ttf
           weight: 800
-        - asset: assets/google_fonts/NotoSansSC-Black.otf
+        - asset: assets/google_fonts/NotoSerifSC-Black.ttf
           weight: 900
           
   uses-material-design: true

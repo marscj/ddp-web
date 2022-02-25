@@ -27,7 +27,7 @@ class CallOfAction extends GetResponsiveWidget {
             style: Get.theme.textTheme.headline3
                 ?.copyWith(color: Colors.white, overflow: TextOverflow.fade),
             maxLines: 1,
-          ).align(alignment: Alignment.centerLeft),
+          ).h1().align(alignment: Alignment.centerLeft),
           SizedBox(
             height: 10,
           ),

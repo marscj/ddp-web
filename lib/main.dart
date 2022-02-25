@@ -27,7 +27,7 @@ class App extends StatelessWidget {
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       theme: ThemeData(
-        fontFamily: 'NotoSansSC',
+        fontFamily: 'NotoSerifSC',
         textTheme: TextTheme(headline4: TextStyle(color: Colors.black87)),
       ),
       debugShowCheckedModeBanner: false,

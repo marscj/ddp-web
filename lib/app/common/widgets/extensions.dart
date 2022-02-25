@@ -39,9 +39,18 @@ class ResponsiveWidget extends GetResponsiveWidget {
 }
 
 extension ExtensionText on Text {
-  Widget h1({color}) {
-    return TextBuilder(style: H1.copyWith(color: color), child: this);
-  }
+  Widget h1({color, weight}) => TextBuilder(
+      style: H1.copyWith(color: color, fontWeight: weight), child: this);
+  Widget h2({color, weight}) => TextBuilder(
+      style: H2.copyWith(color: color, fontWeight: weight), child: this);
+  Widget h3({color, weight}) => TextBuilder(
+      style: H3.copyWith(color: color, fontWeight: weight), child: this);
+  Widget h4({color, weight}) => TextBuilder(
+      style: H4.copyWith(color: color, fontWeight: weight), child: this);
+  Widget h5({color, weight}) => TextBuilder(
+      style: H5.copyWith(color: color, fontWeight: weight), child: this);
+  Widget h6({color, weight}) =>
+      TextBuilder(style: H6.copyWith(color: color), child: this);
 }
 
 extension ExtensionWidget on Widget {
