@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:ddp_web/app/common/blocks/blocks.dart';
 import 'package:ddp_web/app/common/blocks/hover.dart';
+import 'package:ddp_web/app/constans/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 import 'package:get/get.dart';
@@ -33,6 +35,12 @@ class ResponsiveWidget extends GetResponsiveWidget {
   @override
   Widget builder() {
     return responsiveBuilder(screen.context, screen);
+  }
+}
+
+extension ExtensionText on Text {
+  Widget h1({color}) {
+    return TextBuilder(style: H1.copyWith(color: color), child: this);
   }
 }
 

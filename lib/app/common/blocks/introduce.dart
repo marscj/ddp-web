@@ -14,11 +14,11 @@ class Introduce extends GetResponsiveWidget {
     return [
       Text(
         title ?? '',
-        style: Theme.of(screen.context)
-            .textTheme
-            .titleLarge
-            ?.copyWith(fontWeight: FontWeight.w600),
-      ),
+        // style: Theme.of(screen.context)
+        //     .textTheme
+        //     .titleLarge
+        //     ?.copyWith(fontWeight: FontWeight.w600),
+      ).h1(),
       SizedBox(
         height: 16,
       ),

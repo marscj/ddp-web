@@ -5,3 +5,4 @@ export 'indicator.dart';
 export 'introduce.dart';
 export 'menu.dart';
 export 'section.dart';
+export 'text.dart';
