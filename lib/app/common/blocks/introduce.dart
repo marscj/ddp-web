@@ -17,7 +17,7 @@ class Introduce extends GetResponsiveWidget {
     return [
       Text(
         title ?? '',
-      ).h2(),
+      ).h5(weight: FontWeight.bold),
       SizedBox(
         height: 16,
       ),
@@ -29,7 +29,7 @@ class Introduce extends GetResponsiveWidget {
         child: Text(
           desc ?? '',
           // maxLines: 3,
-        ).h4(),
+        ).h6(),
       ),
     ].col().paddingAll(32).shadowHover();
   }

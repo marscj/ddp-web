@@ -30,7 +30,8 @@ class Odds extends GetResponsiveWidget {
                   desc: e['desc'],
                   logo: Image.asset(
                     e['assets'],
-                    width: 128,
+                    width: 96,
+                    height: 96,
                   ),
                 ),
               )
@@ -39,7 +40,7 @@ class Odds extends GetResponsiveWidget {
                   mainAxisSpacing: 32.0,
                   crossAxisSpacing: 32.0,
                   extent: ResponsiveValue<double>(
-                      desktop: 400.0,
+                      desktop: 430.0,
                       tablet: 350.0,
                       mobile: 350.0,
                       watch: 370.0)))

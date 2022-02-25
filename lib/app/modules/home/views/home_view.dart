@@ -1,3 +1,4 @@
+import 'package:ddp_web/app/common/extensions/text.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:get/get.dart';
 
@@ -85,6 +86,19 @@ class Content extends GetResponsiveWidget<HomeController> {
 
   @override
   Widget builder() {
-    return [About(), Odds()].col();
+    return [
+      About(),
+      Odds(),
+      [
+        Text('H1').h1(),
+        Text('H2').h2(),
+        Text('H3').h3(),
+        Text('H4').h4(),
+        Text('H5').h5(),
+        Text('H6').h6(),
+        Text('H7').h7(),
+        Text('H8').h8(),
+      ].col().semantics(color: Colors.white, elevation: 4)
+    ].col();
   }
 }
