@@ -24,19 +24,15 @@ class CallOfAction extends GetResponsiveWidget {
     return [
       Text(
         title ?? '',
-        style: Get.theme.textTheme.headline3
-            ?.copyWith(color: Colors.white, overflow: TextOverflow.fade),
         maxLines: 1,
-      ).h1().align(alignment: Alignment.centerLeft),
+      ).w64(color: Colors.white).align(alignment: Alignment.centerLeft),
       SizedBox(
         height: 10,
       ),
       Text(
         desc ?? '',
-        style: Get.theme.textTheme.titleSmall
-            ?.copyWith(color: Colors.white, overflow: TextOverflow.fade),
         maxLines: 8,
-      ).align(alignment: Alignment.centerLeft),
+      ).w24(color: Colors.white).align(alignment: Alignment.centerLeft),
       SizedBox(
         height: 40,
       ),

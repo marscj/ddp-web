@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:ddp_web/app/common/extensions/resource.dart';
+import 'package:ddp_web/app/common/extensions/text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -19,8 +20,7 @@ class Odds extends GetResponsiveWidget {
     return [
       Text(
         '我们的优势',
-        style: Theme.of(screen.context).textTheme.headline4,
-      ).paddingSymmetric(vertical: 32),
+      ).w64().paddingSymmetric(vertical: 32),
       Container().loadJson<List<dynamic>>(
           assets: 'assets/data/odds.json',
           builder: (context, data) => data.data!

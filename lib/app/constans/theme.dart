@@ -24,7 +24,7 @@ import 'package:flutter/material.dart';
 /// caption      12.0  regular  0.4
 /// overline     10.0  regular  1.5
 
-const TextStyle H1 = TextStyle(
+const TextStyle W96 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 96,
   color: Colors.black87,
@@ -33,16 +33,16 @@ const TextStyle H1 = TextStyle(
   letterSpacing: -1.5,
 );
 
-const TextStyle H2 = TextStyle(
+const TextStyle W64 = TextStyle(
   fontFamily: 'NotoSerifSC',
-  fontSize: 60,
+  fontSize: 64,
   color: Colors.black87,
   overflow: TextOverflow.fade,
   fontWeight: FontWeight.w300,
   letterSpacing: -0.5,
 );
 
-const TextStyle H3 = TextStyle(
+const TextStyle W48 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 48,
   color: Colors.black87,
@@ -51,7 +51,7 @@ const TextStyle H3 = TextStyle(
   letterSpacing: 0,
 );
 
-const TextStyle H4 = TextStyle(
+const TextStyle W32 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 32,
   color: Colors.black87,
@@ -60,7 +60,7 @@ const TextStyle H4 = TextStyle(
   letterSpacing: 0.25,
 );
 
-const TextStyle H5 = TextStyle(
+const TextStyle W24 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 24,
   color: Colors.black87,
@@ -69,7 +69,7 @@ const TextStyle H5 = TextStyle(
   letterSpacing: 0.25,
 );
 
-const TextStyle H6 = TextStyle(
+const TextStyle W18 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 18,
   color: Colors.black87,
@@ -78,7 +78,7 @@ const TextStyle H6 = TextStyle(
   letterSpacing: 0.5,
 );
 
-const TextStyle H7 = TextStyle(
+const TextStyle W14 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 14,
   color: Colors.black87,
@@ -87,7 +87,7 @@ const TextStyle H7 = TextStyle(
   letterSpacing: 0.5,
 );
 
-const TextStyle H8 = TextStyle(
+const TextStyle W12 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 12,
   color: Colors.black87,

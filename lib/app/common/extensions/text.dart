@@ -3,43 +3,43 @@ import 'package:ddp_web/app/common/widgets/text.dart';
 import 'package:ddp_web/app/constans/theme.dart';
 
 extension ExtensionText on Text {
-  Widget h1({color, weight}) => TextBuilder(
-      style: H1.copyWith(
+  Widget w96({color, weight}) => TextBuilder(
+      style: W96.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h2({color, weight}) => TextBuilder(
-      style: H2.copyWith(
+  Widget w64({color, weight}) => TextBuilder(
+      style: W64.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h3({color, weight}) => TextBuilder(
-      style: H3.copyWith(
+  Widget w48({color, weight}) => TextBuilder(
+      style: W48.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h4({color, weight}) => TextBuilder(
-      style: H4.copyWith(
+  Widget w32({color, weight}) => TextBuilder(
+      style: W32.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h5({color, weight}) => TextBuilder(
-      style: H5.copyWith(
+  Widget w24({color, weight}) => TextBuilder(
+      style: W24.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h6({color, weight}) => TextBuilder(
-      style: H6.copyWith(
+  Widget w18({color, weight}) => TextBuilder(
+      style: W18.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h7({color, weight}) => TextBuilder(
-      style: H7.copyWith(
+  Widget w14({color, weight}) => TextBuilder(
+      style: W14.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
-  Widget h8({color, weight}) => TextBuilder(
-      style: H8.copyWith(
+  Widget w12({color, weight}) => TextBuilder(
+      style: W12.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 }
