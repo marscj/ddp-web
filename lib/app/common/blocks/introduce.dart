@@ -17,7 +17,7 @@ class Introduce extends GetResponsiveWidget {
     return [
       Text(
         title ?? '',
-      ).w32(weight: FontWeight.bold),
+      ).w24(weight: FontWeight.w500),
       SizedBox(
         height: 16,
       ),
@@ -28,7 +28,7 @@ class Introduce extends GetResponsiveWidget {
       Expanded(
         child: Text(
           desc ?? '',
-        ).w18(),
+        ).w16(),
       ),
     ].col().paddingAll(32).shadowHover();
   }

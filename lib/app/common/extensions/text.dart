@@ -33,6 +33,11 @@ extension ExtensionText on Text {
           color: color, fontWeight: weight, overflow: TextOverflow.clip),
       child: this);
 
+  Widget w16({color, weight}) => TextBuilder(
+      style: W16.copyWith(
+          color: color, fontWeight: weight, overflow: TextOverflow.clip),
+      child: this);
+
   Widget w14({color, weight}) => TextBuilder(
       style: W14.copyWith(
           color: color, fontWeight: weight, overflow: TextOverflow.clip),

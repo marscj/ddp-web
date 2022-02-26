@@ -29,7 +29,7 @@ const TextStyle W96 = TextStyle(
   fontSize: 96,
   color: Colors.black87,
   overflow: TextOverflow.fade,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w300,
   letterSpacing: -1.5,
 );
 
@@ -72,6 +72,15 @@ const TextStyle W24 = TextStyle(
 const TextStyle W18 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 18,
+  color: Colors.black87,
+  overflow: TextOverflow.fade,
+  fontWeight: FontWeight.w400,
+  letterSpacing: 0.5,
+);
+
+const TextStyle W16 = TextStyle(
+  fontFamily: 'NotoSerifSC',
+  fontSize: 16,
   color: Colors.black87,
   overflow: TextOverflow.fade,
   fontWeight: FontWeight.w400,

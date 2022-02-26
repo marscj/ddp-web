@@ -20,7 +20,7 @@ class Odds extends GetResponsiveWidget {
     return [
       Text(
         '我们的优势',
-      ).w64().paddingSymmetric(vertical: 32),
+      ).w32(weight: FontWeight.w500).paddingSymmetric(vertical: 32),
       Container().loadJson<List<dynamic>>(
           assets: 'assets/data/odds.json',
           builder: (context, data) => data.data!
