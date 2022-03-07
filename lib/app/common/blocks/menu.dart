@@ -1,7 +1,8 @@
+import 'package:ddp_web/app/common/extensions/text.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_responsive.dart';
-import 'package:ddp_web/app/common/extensions/widgets.dart';
-import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/widgets/button.dart';
 
 class TabMenu extends GetResponsiveWidget {
@@ -17,12 +18,8 @@ class TabMenu extends GetResponsiveWidget {
       title != null
           ? Text(
               title!,
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  overflow: TextOverflow.fade),
               maxLines: 1,
-            )
+            ).w18()
           : SizedBox.shrink(),
       Visibility(
           visible: subtitle != null,

@@ -27,28 +27,22 @@ class Senses extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Semantics(
-      child: Container(
-        margin: margin ?? EdgeInsets.zero,
-        child: Material(
-          type: type,
-          shadowColor: shadowColor ?? Theme.of(screen.context).shadowColor,
-          elevation: elevation,
-          shape:
-              shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-          color: color ?? Colors.transparent,
-          child: Semantics(
-            explicitChildNodes: true,
-            child: SizedBox.fromSize(
-              size: size,
-              child: Container(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    image: image,
-                  ),
-                  child: child,
-                ),
+    return Container(
+      margin: margin ?? EdgeInsets.zero,
+      child: Material(
+        type: type,
+        shadowColor: shadowColor ?? Theme.of(screen.context).shadowColor,
+        elevation: elevation,
+        shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        color: color ?? Colors.transparent,
+        child: SizedBox.fromSize(
+          size: size,
+          child: Container(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                image: image,
               ),
+              child: child,
             ),
           ),
         ),
