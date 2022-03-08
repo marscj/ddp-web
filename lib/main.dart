@@ -26,10 +26,7 @@ class App extends StatelessWidget {
       title: "迪拜-中国中心",
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      theme: ThemeData(
-        fontFamily: 'NotoSerifSC',
-        textTheme: TextTheme(headline4: TextStyle(color: Colors.black87)),
-      ),
+      theme: ThemeData(fontFamily: 'NotoSerifSC'),
       debugShowCheckedModeBanner: false,
     );
   }

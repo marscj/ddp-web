@@ -23,5 +23,8 @@ extension ExtensionText on Text {
       Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.w200));
 
   Text bold() =>
-      Text(data ?? '', style: W12.copyWith(fontWeight: FontWeight.bold));
+      Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.bold));
+
+  Text medium() =>
+      Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.w500));
 }
