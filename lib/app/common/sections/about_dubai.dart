@@ -39,14 +39,13 @@ class _AboutDubaiState extends State<AboutDubai> {
       videoPlayerController: _controller,
       autoPlay: true,
       looping: true,
+      allowFullScreen: false,
+      allowedScreenSleep: false,
+      allowMuting: false,
+      allowPlaybackSpeedChanging: false,
     );
 
     setState(() {});
-  }
-
-  Future<void> toggleVideo() async {
-    await _controller.pause();
-    await initializePlayer();
   }
 
   @override
