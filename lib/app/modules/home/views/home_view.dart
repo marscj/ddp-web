@@ -1,4 +1,5 @@
 import 'package:ddp_web/app/common/extensions/text.dart';
+import 'package:ddp_web/app/common/sections/about_dubai.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:get/get.dart';
 
@@ -88,6 +89,7 @@ class Content extends GetResponsiveWidget<HomeController> {
   Widget builder() {
     return [
       About(),
+      AboutDubai(),
       Odds(),
     ].col();
   }
