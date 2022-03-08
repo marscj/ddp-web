@@ -1,50 +1,27 @@
-import 'package:flutter/widgets.dart';
-import 'package:ddp_web/app/common/widgets/text.dart';
+import 'package:flutter/material.dart';
 import 'package:ddp_web/app/constans/theme.dart';
 
 extension ExtensionText on Text {
-  Widget w96({color, weight}) => TextBuilder(
-      style: W96.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text s96() => Text(data ?? '', style: W96);
+  Text s64() => Text(data ?? '', style: W64);
+  Text s48() => Text(data ?? '', style: W48);
+  Text s32() => Text(data ?? '', style: W32);
+  Text s24() => Text(data ?? '', style: W24);
+  Text s18() => Text(data ?? '', style: W18);
+  Text s16() => Text(data ?? '', style: W16);
+  Text s14() => Text(data ?? '', style: W14);
+  Text s12() => Text(data ?? '', style: W12);
 
-  Widget w64({color, weight}) => TextBuilder(
-      style: W64.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text white() => Text(data ?? '', style: style?.copyWith(color: Colors.white));
 
-  Widget w48({color, weight}) => TextBuilder(
-      style: W48.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text black() =>
+      Text(data ?? '', style: style?.copyWith(color: Colors.black87));
 
-  Widget w32({color, weight}) => TextBuilder(
-      style: W32.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text grey() => Text(data ?? '', style: style?.copyWith(color: Colors.grey));
 
-  Widget w24({color, weight}) => TextBuilder(
-      style: W24.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text light() =>
+      Text(data ?? '', style: style?.copyWith(fontWeight: FontWeight.w200));
 
-  Widget w18({color, weight}) => TextBuilder(
-      style: W18.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
-
-  Widget w16({color, weight}) => TextBuilder(
-      style: W16.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
-
-  Widget w14({color, weight}) => TextBuilder(
-      style: W14.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
-
-  Widget w12({color, weight}) => TextBuilder(
-      style: W12.copyWith(
-          color: color, fontWeight: weight, overflow: TextOverflow.clip),
-      child: this);
+  Text bold() =>
+      Text(data ?? '', style: W12.copyWith(fontWeight: FontWeight.bold));
 }

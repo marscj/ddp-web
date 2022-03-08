@@ -25,14 +25,15 @@ class CallOfAction extends GetResponsiveWidget {
       Text(
         title ?? '',
         maxLines: 1,
-      ).w48(color: Colors.white).align(alignment: Alignment.centerLeft),
+      ).s48().white().align(alignment: Alignment.centerLeft),
       SizedBox(
         height: 10,
       ),
       Text(
         desc ?? '',
         maxLines: 8,
-      ).w18(color: Colors.white).align(alignment: Alignment.centerLeft),
+      ).s18()
+        ..white().align(alignment: Alignment.centerLeft),
       SizedBox(
         height: 40,
       ),

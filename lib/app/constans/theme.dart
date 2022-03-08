@@ -28,7 +28,7 @@ const TextStyle W96 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 96,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w300,
   letterSpacing: -1.5,
 );
@@ -37,7 +37,7 @@ const TextStyle W64 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 64,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w300,
   letterSpacing: -0.5,
 );
@@ -46,7 +46,7 @@ const TextStyle W48 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 48,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0,
 );
@@ -55,7 +55,7 @@ const TextStyle W32 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 32,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.25,
 );
@@ -64,7 +64,7 @@ const TextStyle W24 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 24,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.25,
 );
@@ -73,7 +73,7 @@ const TextStyle W18 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 18,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.5,
 );
@@ -82,7 +82,7 @@ const TextStyle W16 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 16,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.5,
 );
@@ -91,7 +91,7 @@ const TextStyle W14 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 14,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 0.5,
 );
@@ -100,7 +100,7 @@ const TextStyle W12 = TextStyle(
   fontFamily: 'NotoSerifSC',
   fontSize: 12,
   color: Colors.black87,
-  overflow: TextOverflow.fade,
+  overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
   letterSpacing: 1.0,
 );
