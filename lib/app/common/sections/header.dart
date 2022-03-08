@@ -1,10 +1,11 @@
+import 'package:ddp_web/app/common/extensions/position.dart';
+import 'package:ddp_web/app/common/extensions/widgets.dart';
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'header_menu.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/widgets/container.dart';
-import 'package:ddp_web/app/constans/constans.dart';
 
 class GlobaleHeader extends GetResponsiveWidget {
   GlobaleHeader({Key? key}) : super(key: key);
@@ -12,19 +13,14 @@ class GlobaleHeader extends GetResponsiveWidget {
   @override
   Widget builder() {
     return MContainer(
-      size: Size.fromHeight(headerHeight),
       color: Colors.white,
-      elevation: 1,
+      elevation: 2,
       margin: EdgeInsets.only(bottom: 1),
-      child: Container(
-        child: Row(
-          children: [
-            LeftWidget(),
-            Expanded(child: HeaderMenu()),
-            RightWidget(),
-          ],
-        ).responsive(),
-      ),
+      child: [
+        LeftWidget(),
+        Expanded(child: HeaderMenu().align(alignment: Alignment.centerRight)),
+        RightWidget().visibility([ScreenType.Desktop, ScreenType.Tablet]),
+      ].row().paddingSymmetric(vertical: 20).responsive(),
     );
   }
 }
@@ -45,18 +41,82 @@ class LeftWidget extends StatelessWidget {
   }
 }
 
-class RightWidget extends StatelessWidget {
-  const RightWidget({Key? key}) : super(key: key);
+class RightWidget extends GetResponsiveWidget {
+  RightWidget({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
+    return [
+      ElevatedButton(onPressed: () {}, child: Text('登陆')),
+      SizedBox(width: 6),
+      ElevatedButton(onPressed: () {}, child: Text('注册'))
+    ].row().responsive();
+  }
+}
+
+class HeaderMenu extends ResponsiveWidget {
+  HeaderMenu({Key? key}) : super(key: key);
+
+  @override
+  Widget desktop() {
     return Container(
-        child: Row(
-      children: [
-        ElevatedButton(onPressed: () {}, child: Text('登陆')),
-        SizedBox(width: 6),
-        ElevatedButton(onPressed: () {}, child: Text('注册'))
-      ],
-    ));
+      margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
+      child: Wrap(
+        children: [
+          _MenuTitle('业务类型', () {}),
+          _MenuTitle('增值服务', () {}),
+          _MenuTitle('进度查询', () {}),
+          _MenuTitle('合作商', () {}),
+          _MenuTitle('收费标准', () {}),
+          _MenuTitle('常见问题', () {}),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget? tablet() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
+      child: Wrap(
+        children: [
+          _MenuTitle('业务类型', () {}),
+          _MenuTitle('增值服务', () {}),
+          _MenuTitle('进度查询', () {}),
+          _MenuTitle('合作商', () {}),
+          _MenuTitle('收费标准', () {}),
+          _MenuTitle('常见问题', () {}),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget? phone() {
+    return IconButton(
+      icon: Icon(Icons.menu),
+      onPressed: () {},
+    );
+  }
+}
+
+class SliderMenu extends GetResponsiveWidget {}
+
+class _MenuTitle extends GetResponsiveWidget {
+  final String title;
+  final Function() onTap;
+
+  _MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
+
+  @override
+  Widget builder() {
+    return Container(
+      padding: EdgeInsets.only(right: 40),
+      child: TextButton(
+        onPressed: () => onTap,
+        child:
+            Text(title, style: Theme.of(screen.context).textTheme.titleMedium),
+      ),
+    );
   }
 }
