@@ -16,7 +16,7 @@ extension ExtensionWidget on Widget {
                       ? screen.responsiveValue<double>(
                               desktop: screen.settings.desktopChangePoint,
                               tablet: screen.width - 64,
-                              mobile: screen.width - 32,
+                              mobile: screen.width - 64,
                               watch: screen.width - 16) ??
                           screen.width
                       : screen.width),

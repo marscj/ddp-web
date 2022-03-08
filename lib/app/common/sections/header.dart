@@ -1,10 +1,9 @@
 import 'package:ddp_web/app/common/extensions/position.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/widgets/container.dart';
 
 class GlobaleHeader extends ResponsiveWidget {
@@ -18,9 +17,32 @@ class GlobaleHeader extends ResponsiveWidget {
       margin: EdgeInsets.only(bottom: 1),
       child: [
         LeftWidget(),
+        Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
+        RightWidget(),
+      ].row().paddingSymmetric(vertical: 20, horizontal: 16),
+    );
+  }
+
+  @override
+  Widget? desktop() {
+    return builder();
+  }
+
+  @override
+  Widget? tablet() {
+    return builder();
+  }
+
+  @override
+  Widget? phone() {
+    return MContainer(
+      color: Colors.white,
+      elevation: 2,
+      margin: EdgeInsets.only(bottom: 1),
+      child: [
+        LeftWidget(),
         Expanded(child: HeaderMenu().align(alignment: Alignment.centerRight)),
-        RightWidget().visibility([ScreenType.Desktop, ScreenType.Tablet]),
-      ].row().paddingSymmetric(vertical: 20).responsive(),
+      ].row().paddingSymmetric(vertical: 20, horizontal: 16),
     );
   }
 }
@@ -50,7 +72,7 @@ class RightWidget extends ResponsiveWidget {
       ElevatedButton(onPressed: () {}, child: Text('登陆')),
       SizedBox(width: 6),
       ElevatedButton(onPressed: () {}, child: Text('注册'))
-    ].row().responsive();
+    ].row();
   }
 }
 
@@ -58,7 +80,7 @@ class HeaderMenu extends ResponsiveWidget {
   HeaderMenu({Key? key}) : super(key: key);
 
   @override
-  Widget desktop() {
+  Widget builder() {
     return Container(
       margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
       child: Wrap(
@@ -75,20 +97,13 @@ class HeaderMenu extends ResponsiveWidget {
   }
 
   @override
+  Widget desktop() {
+    return builder();
+  }
+
+  @override
   Widget? tablet() {
-    return Container(
-      margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
-      child: Wrap(
-        children: [
-          _MenuTitle('业务类型', () {}),
-          _MenuTitle('增值服务', () {}),
-          _MenuTitle('进度查询', () {}),
-          _MenuTitle('合作商', () {}),
-          _MenuTitle('收费标准', () {}),
-          _MenuTitle('常见问题', () {}),
-        ],
-      ),
-    );
+    return builder();
   }
 
   @override
@@ -100,7 +115,20 @@ class HeaderMenu extends ResponsiveWidget {
   }
 }
 
-class SliderMenu extends ResponsiveWidget {}
+class SliderMenu extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Drawer(
+        child: SingleChildScrollView(
+            child: [
+          _MenuTitle('业务类型', () {}),
+          _MenuTitle('增值服务', () {}),
+          _MenuTitle('进度查询', () {}),
+          _MenuTitle('合作商', () {}),
+          _MenuTitle('收费标准', () {}),
+          _MenuTitle('常见问题', () {}),
+        ].col()),
+      );
+}
 
 class _MenuTitle extends ResponsiveWidget {
   final String title;
