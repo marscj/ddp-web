@@ -32,6 +32,7 @@ class About extends ResponsiveWidget {
                 )
                     .container(size: Size(double.infinity, double.infinity))
                     .expanded(),
+                SizedBox(width: 8),
                 [
                   Image.asset(
                     'assets/images/DSC02925.jpg',
@@ -39,6 +40,7 @@ class About extends ResponsiveWidget {
                   )
                       .container(size: Size(double.infinity, double.infinity))
                       .expanded(),
+                  SizedBox(height: 8),
                   [
                     Image.asset(
                       'assets/images/DSC02942.jpg',
@@ -46,6 +48,7 @@ class About extends ResponsiveWidget {
                     )
                         .container(size: Size(double.infinity, double.infinity))
                         .expanded(),
+                    SizedBox(width: 8),
                     Image.asset(
                       'assets/images/DSC02977.jpg',
                       fit: BoxFit.cover,

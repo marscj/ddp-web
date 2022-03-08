@@ -1,5 +1,4 @@
 import 'package:ddp_web/app/common/extensions/position.dart';
-import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
@@ -81,19 +80,36 @@ class HeaderMenu extends ResponsiveWidget {
 
   @override
   Widget builder() {
-    return Container(
-      margin: EdgeInsets.fromLTRB(50, 0, 20, 0),
-      child: Wrap(
-        children: [
-          _MenuTitle('业务类型', () {}),
-          _MenuTitle('增值服务', () {}),
-          _MenuTitle('进度查询', () {}),
-          _MenuTitle('合作商', () {}),
-          _MenuTitle('收费标准', () {}),
-          _MenuTitle('常见问题', () {}),
+    return [
+      MenuTitle(
+        '业务类型',
+        items: [
+          PopupMenuItem(child: Text('增值服务')),
+          PopupMenuItem(child: Text('增值服务')),
+          PopupMenuItem(child: Text('增值服务')),
         ],
       ),
-    );
+      MenuTitle(
+        '增值服务',
+        items: [
+          PopupMenuItem(child: Text('增值服务')),
+          PopupMenuItem(child: Text('增值服务')),
+          PopupMenuItem(child: Text('增值服务')),
+        ],
+      ),
+      MenuTitle(
+        '进度查询',
+      ),
+      MenuTitle(
+        '合作商',
+      ),
+      MenuTitle(
+        '收费标准',
+      ),
+      MenuTitle(
+        '常见问题',
+      ),
+    ].warp();
   }
 
   @override
@@ -108,9 +124,11 @@ class HeaderMenu extends ResponsiveWidget {
 
   @override
   Widget? phone() {
-    return IconButton(
+    return PopupMenuButton(
       icon: Icon(Icons.menu),
-      onPressed: () {},
+      itemBuilder: (BuildContext context) {
+        return <PopupMenuEntry>[];
+      },
     );
   }
 }
@@ -120,30 +138,101 @@ class SliderMenu extends StatelessWidget {
   Widget build(BuildContext context) => Drawer(
         child: SingleChildScrollView(
             child: [
-          _MenuTitle('业务类型', () {}),
-          _MenuTitle('增值服务', () {}),
-          _MenuTitle('进度查询', () {}),
-          _MenuTitle('合作商', () {}),
-          _MenuTitle('收费标准', () {}),
-          _MenuTitle('常见问题', () {}),
+          MenuTitle(
+            '业务类型',
+          ),
+          MenuTitle('增值服务'),
+          MenuTitle('进度查询'),
+          MenuTitle('合作商'),
+          MenuTitle('收费标准'),
+          MenuTitle('常见问题'),
         ].col()),
       );
 }
 
-class _MenuTitle extends ResponsiveWidget {
+class MenuTitle<T> extends StatefulWidget {
   final String title;
-  final Function() onTap;
+  final List<PopupMenuEntry<T>> items;
+  final double? elevation;
+  final T? initialValue;
+  final PopupMenuItemSelected<T>? onSelected;
+  final PopupMenuCanceled? onCanceled;
 
-  _MenuTitle(this.title, this.onTap, {Key? key}) : super(key: key);
+  MenuTitle(
+    this.title, {
+    Key? key,
+    this.items = const [],
+    this.elevation,
+    this.initialValue,
+    this.onSelected,
+    this.onCanceled,
+  }) : super(key: key);
 
   @override
-  Widget builder() {
-    return Container(
-      padding: EdgeInsets.only(right: 40),
-      child: TextButton(
-        onPressed: () => onTap,
-        child:
-            Text(title, style: Theme.of(screen.context).textTheme.titleMedium),
+  State<MenuTitle> createState() => MenuTitleState();
+}
+
+class MenuTitleState<T> extends State<MenuTitle<T>> {
+  bool _hover = false;
+
+  void onEntered(bool isHovered) {
+    setState(() {
+      _hover = isHovered;
+      if (isHovered) showButtonMenu();
+    });
+  }
+
+  void showButtonMenu() {
+    final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
+    final RenderBox button = context.findRenderObject()! as RenderBox;
+    final RenderBox overlay =
+        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+    final RelativeRect position = RelativeRect.fromRect(
+      Rect.fromPoints(
+        button.localToGlobal(Offset(0, 32), ancestor: overlay),
+        button.localToGlobal(
+            button.size.bottomRight(Offset.zero) + Offset(0, 32),
+            ancestor: overlay),
+      ),
+      Offset.zero & overlay.size,
+    );
+
+    if (widget.items.isNotEmpty) {
+      showMenu<T?>(
+        context: context,
+        elevation: widget.elevation ?? popupMenuTheme.elevation,
+        items: widget.items,
+        initialValue: widget.initialValue,
+        position: position,
+      ).then<void>((T? newValue) {
+        if (!mounted) return null;
+        if (newValue == null) {
+          widget.onCanceled?.call();
+          return null;
+        }
+        widget.onSelected?.call(newValue);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child: TextButton(
+          onPressed: () {
+            showButtonMenu();
+          },
+          child: Text(widget.title),
+          style: ButtonStyle(
+            overlayColor: MaterialStateProperty.all(Colors.transparent),
+            foregroundColor: _hover
+                ? MaterialStateProperty.all(Colors.blue)
+                : MaterialStateProperty.all(Colors.black87),
+          ),
+          onHover: (value) => onEntered(value),
+        ),
       ),
     );
   }
