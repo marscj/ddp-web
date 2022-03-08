@@ -40,7 +40,7 @@ class CallOfAction extends GetResponsiveWidget {
     ]
         .col(mainAxisAlignment: MainAxisAlignment.center)
         .paddingAll(16)
-        .semantics(color: color)
+        .container(color: color)
         .responsive();
   }
 }

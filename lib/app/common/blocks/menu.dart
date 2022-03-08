@@ -33,6 +33,6 @@ class TabMenu extends GetResponsiveWidget {
           ))
     ]
         .col(mainAxisAlignment: MainAxisAlignment.center)
-        .semantics(margin: EdgeInsets.fromLTRB(50, 0, 20, 0));
+        .container(margin: EdgeInsets.fromLTRB(50, 0, 20, 0));
   }
 }

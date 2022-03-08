@@ -44,7 +44,7 @@ class Odds extends GetResponsiveWidget {
                       tablet: 350.0,
                       mobile: 350.0,
                       watch: 370.0)))
-    ].col().paddingOnly(bottom: 32.0).responsive().semantics(
+    ].col().paddingOnly(bottom: 32.0).responsive().container(
           image: DecorationImage(
             image: AssetImage(
               'assets/images/block_bg.png',

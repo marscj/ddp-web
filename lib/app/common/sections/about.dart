@@ -1,4 +1,5 @@
 import 'package:ddp_web/app/common/extensions/text.dart';
+import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,12 +22,36 @@ class About extends GetResponsiveWidget {
 中国中心旨在通过创新驱动，数字赋能，以期推动人才，资本，信息，企业多维融合，构建“一园多集群”产业布局，形成中国产业集聚，抢占智能产业和数字经济发展制高点，以期推动中国数字经济产业在中东地区的高质量发展，首次孵化2000家中国企业享受优惠政策落地迪拜，打造阿联酋数字经济平台标杆，亿级数字中国产业集群。''')
           .s16()
           .paddingOnly(top: 40),
-      Image.asset(
-        'assets/images/02925.jpg',
-        height: 450,
-        width: double.infinity,
-        fit: BoxFit.cover,
-      ).paddingOnly(top: 40),
+      MContainer(
+              size: Size.fromHeight(450),
+              child: [
+                Image.asset(
+                  'assets/images/20210520152154.jpg',
+                ).container().expanded(),
+                [
+                  Image.asset(
+                    'assets/images/DSC02925.jpg',
+                    fit: BoxFit.cover,
+                  )
+                      .container(size: Size(double.infinity, double.infinity))
+                      .expanded(),
+                  [
+                    Image.asset(
+                      'assets/images/DSC02942.jpg',
+                      fit: BoxFit.cover,
+                    )
+                        .container(size: Size(double.infinity, double.infinity))
+                        .expanded(),
+                    Image.asset(
+                      'assets/images/DSC02977.jpg',
+                      fit: BoxFit.cover,
+                    )
+                        .container(size: Size(double.infinity, double.infinity))
+                        .expanded()
+                  ].row().expanded()
+                ].col().expanded()
+              ].row())
+          .paddingOnly(top: 40)
     ].col().paddingOnly(bottom: 40).responsive();
   }
 }

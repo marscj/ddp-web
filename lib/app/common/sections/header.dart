@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import 'header_menu.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
-import 'package:ddp_web/app/common/widgets/senses.dart';
+import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 
 class GlobaleHeader extends GetResponsiveWidget {
@@ -11,7 +11,7 @@ class GlobaleHeader extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Senses(
+    return MContainer(
       size: Size.fromHeight(headerHeight),
       color: Colors.white,
       elevation: 1,

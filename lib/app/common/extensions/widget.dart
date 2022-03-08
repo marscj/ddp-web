@@ -1,4 +1,4 @@
-import 'package:ddp_web/app/common/widgets/senses.dart';
+import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:flutter/material.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/common/widgets/hover.dart';
@@ -39,7 +39,7 @@ extension ExtensionWidget on Widget {
     );
   }
 
-  Widget semantics({
+  Widget container({
     Size? size,
     Color? color,
     DecorationImage? image,
@@ -50,7 +50,7 @@ extension ExtensionWidget on Widget {
     ShapeBorder? shape,
   }) =>
       ResponsiveWidget(
-        responsiveBuilder: (context, screen) => Senses(
+        responsiveBuilder: (context, screen) => MContainer(
           size: size,
           color: color,
           image: image,

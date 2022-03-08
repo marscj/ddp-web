@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ddp_web/app/common/widgets/senses.dart';
+import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 
 class GlobaleFooter extends GetResponsiveWidget {
@@ -9,7 +9,7 @@ class GlobaleFooter extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return Senses(
+    return MContainer(
       size: Size.fromHeight(footerHeight),
       child: Container(
         color: Colors.indigo.shade900,
