@@ -1,11 +1,11 @@
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/widgets/container.dart';
 
-class TabBarMenu extends GetResponsiveWidget {
+class TabBarMenu extends StatelessWidget {
   final List<Widget> menus;
   final bool isScroll;
 
@@ -13,7 +13,7 @@ class TabBarMenu extends GetResponsiveWidget {
       : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return MContainer(
         size: Size.fromHeight(80),
         color: Color.fromARGB(255, 250, 251, 255),
@@ -22,7 +22,7 @@ class TabBarMenu extends GetResponsiveWidget {
         child: isScroll
             ? menus.row()
             : menus
-                .divider(context: screen.context)
+                .divider(context: context)
                 .map<Widget>((e) => e.expanded())
                 .toList()
                 .row());

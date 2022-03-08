@@ -1,3 +1,4 @@
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart' hide Banner;
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ import 'package:ddp_web/app/common/widgets/banner.dart';
 import 'package:ddp_web/app/common/widgets/tabar_menu.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 
-class HomeBanner extends GetResponsiveWidget {
+class HomeBanner extends ResponsiveWidget {
   HomeBanner({Key? key}) : super(key: key);
 
   @override

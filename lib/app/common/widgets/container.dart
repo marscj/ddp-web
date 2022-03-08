@@ -1,7 +1,7 @@
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class MContainer extends GetResponsiveWidget {
+class MContainer extends StatelessWidget {
   final Size? size;
   final Color? color;
   final DecorationImage? image;
@@ -28,13 +28,13 @@ class MContainer extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return Container(
       margin: margin,
       padding: padding,
       child: Material(
         type: type,
-        shadowColor: shadowColor ?? Theme.of(screen.context).shadowColor,
+        shadowColor: shadowColor ?? Theme.of(context).shadowColor,
         elevation: elevation,
         shape: shape ?? RoundedRectangleBorder(borderRadius: BorderRadius.zero),
         color: color ?? Colors.transparent,

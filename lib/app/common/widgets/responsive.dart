@@ -17,20 +17,21 @@ typedef ResponsiveWidgetBuilder = Widget Function(
     BuildContext context, ResponsiveScreen screen);
 
 class ResponsiveWidget extends GetResponsiveWidget {
-  final ResponsiveWidgetBuilder? responsiveBuilder;
+  final ResponsiveWidgetBuilder? responsive;
 
-  ResponsiveWidget({Key? key, this.responsiveBuilder})
+  ResponsiveWidget({Key? key, this.responsive})
       : super(
-            key: key,
-            settings: ResponsiveScreenSettings(
-              desktopChangePoint: 1200,
-              tabletChangePoint: 800,
-            ));
+          key: key,
+          settings: ResponsiveScreenSettings(
+            desktopChangePoint: 1200,
+            tabletChangePoint: 800,
+          ),
+        );
 
   @override
   Widget builder() {
-    return Visibility(
-        visible: responsiveBuilder != null,
-        child: responsiveBuilder!(screen.context, screen));
+    return responsive != null
+        ? responsive!(screen.context, screen)
+        : SizedBox.expand();
   }
 }

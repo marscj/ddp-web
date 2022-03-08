@@ -1,10 +1,10 @@
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 
-class GlobaleFooter extends GetResponsiveWidget {
+class GlobaleFooter extends ResponsiveWidget {
   GlobaleFooter({Key? key}) : super(key: key);
 
   @override

@@ -2,10 +2,9 @@ import 'package:ddp_web/app/common/extensions/text.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_responsive.dart';
 import 'package:ddp_web/app/common/widgets/button.dart';
 
-class TabMenu extends GetResponsiveWidget {
+class TabMenu extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final VoidCallback? onTap;
@@ -13,7 +12,7 @@ class TabMenu extends GetResponsiveWidget {
   TabMenu({Key? key, this.title, this.subtitle, this.onTap}) : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return [
       title != null
           ? Text(

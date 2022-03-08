@@ -1,8 +1,7 @@
 import 'package:ddp_web/plugs/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class Indicator extends GetResponsiveWidget {
+class Indicator extends StatelessWidget {
   final int count;
   final double position;
   final ValueChanged<double>? onTap;
@@ -15,7 +14,7 @@ class Indicator extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return DotsIndicator(
       dotsCount: count,
       position: position,

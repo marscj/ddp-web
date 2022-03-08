@@ -5,7 +5,7 @@ import 'package:ddp_web/app/common/extensions/position.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 
-class CallOfAction extends GetResponsiveWidget {
+class CallOfAction extends StatelessWidget {
   final String? title;
   final String? desc;
   final Widget? action;
@@ -20,7 +20,7 @@ class CallOfAction extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return [
       Text(
         title ?? '',

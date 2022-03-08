@@ -8,7 +8,7 @@ extension ExtensionWidget on Widget {
     limitScreen = true,
   }) =>
       ResponsiveWidget(
-        responsiveBuilder: (context, screen) {
+        responsive: (context, screen) {
           return Center(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -31,7 +31,7 @@ extension ExtensionWidget on Widget {
     Widget? replacement,
   }) {
     return ResponsiveWidget(
-      responsiveBuilder: (context, screen) => Visibility(
+      responsive: (context, screen) => Visibility(
         child: this,
         replacement: replacement ?? SizedBox.shrink(),
         visible: visibleWhen.contains(screen.screenType),
@@ -49,18 +49,16 @@ extension ExtensionWidget on Widget {
     double elevation = 0,
     ShapeBorder? shape,
   }) =>
-      ResponsiveWidget(
-        responsiveBuilder: (context, screen) => MContainer(
-          size: size,
-          color: color,
-          image: image,
-          type: type,
-          margin: margin,
-          shadowColor: shadowColor,
-          elevation: elevation,
-          shape: shape,
-          child: this,
-        ),
+      MContainer(
+        size: size,
+        color: color,
+        image: image,
+        type: type,
+        margin: margin,
+        shadowColor: shadowColor,
+        elevation: elevation,
+        shape: shape,
+        child: this,
       );
 
   Widget shadowHover() => Hover(

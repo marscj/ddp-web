@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/widgets/container.dart';
 
-class GlobaleHeader extends GetResponsiveWidget {
+class GlobaleHeader extends ResponsiveWidget {
   GlobaleHeader({Key? key}) : super(key: key);
 
   @override
@@ -25,8 +25,8 @@ class GlobaleHeader extends GetResponsiveWidget {
   }
 }
 
-class LeftWidget extends StatelessWidget {
-  const LeftWidget({Key? key}) : super(key: key);
+class LeftWidget extends ResponsiveWidget {
+  LeftWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class LeftWidget extends StatelessWidget {
   }
 }
 
-class RightWidget extends GetResponsiveWidget {
+class RightWidget extends ResponsiveWidget {
   RightWidget({Key? key}) : super(key: key);
 
   @override
@@ -100,9 +100,9 @@ class HeaderMenu extends ResponsiveWidget {
   }
 }
 
-class SliderMenu extends GetResponsiveWidget {}
+class SliderMenu extends ResponsiveWidget {}
 
-class _MenuTitle extends GetResponsiveWidget {
+class _MenuTitle extends ResponsiveWidget {
   final String title;
   final Function() onTap;
 

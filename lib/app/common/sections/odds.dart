@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:ddp_web/app/common/extensions/resource.dart';
 import 'package:ddp_web/app/common/extensions/text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'package:ddp_web/app/common/blocks/introduce.dart';
@@ -10,7 +8,7 @@ import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 
-class Odds extends GetResponsiveWidget {
+class Odds extends ResponsiveWidget {
   Odds({
     Key? key,
   }) : super(key: key);

@@ -1,5 +1,5 @@
+import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ddp_web/app/common/blocks/indicator.dart';
@@ -10,7 +10,7 @@ import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:ddp_web/plugs/dots_indicator.dart';
 
-class Banner extends GetResponsiveWidget {
+class Banner extends StatelessWidget {
   final String assets;
   final Widget? child;
 
@@ -21,7 +21,7 @@ class Banner extends GetResponsiveWidget {
   }) : super(key: key);
 
   @override
-  Widget builder() {
+  Widget build(BuildContext context) {
     return MContainer(
         size: Size.fromHeight(bannerHeight),
         image: DecorationImage(image: AssetImage(assets), fit: BoxFit.cover),

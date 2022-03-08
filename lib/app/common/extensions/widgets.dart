@@ -54,7 +54,7 @@ extension ExtensionListWidget on List<Widget> {
           {double? mainAxisSpacing,
           double? crossAxisSpacing,
           ResponsiveValue<double>? extent}) =>
-      ResponsiveWidget(responsiveBuilder: (context, screen) {
+      ResponsiveWidget(responsive: (context, screen) {
         return GridView.custom(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
@@ -67,7 +67,6 @@ extension ExtensionListWidget on List<Widget> {
             childrenDelegate: SliverChildListDelegate.fixed(this));
       });
 
-  Widget warp({mainAxisSpacing, crossAxisSpacing}) => ResponsiveWidget(
-      responsiveBuilder: (context, screen) =>
-          Wrap(children: this, spacing: 8.0, runSpacing: 4.0));
+  Widget warp({mainAxisSpacing, crossAxisSpacing}) =>
+      Wrap(children: this, spacing: 8.0, runSpacing: 4.0);
 }

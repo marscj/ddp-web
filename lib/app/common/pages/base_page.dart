@@ -3,9 +3,8 @@ import 'package:ddp_web/app/common/sections/footer.dart';
 import 'package:ddp_web/app/common/sections/header.dart';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class BasePageView extends GetResponsiveWidget {
+class BasePageView extends StatelessWidget {
   final Widget? banner;
   final Widget? header;
   final Widget? footer;
