@@ -26,6 +26,7 @@ class BasePageView extends GetResponsiveWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SliderMenu(),
       body: Container(
         child: Column(
           children: [

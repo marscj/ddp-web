@@ -17,9 +17,9 @@ typedef ResponsiveWidgetBuilder = Widget Function(
     BuildContext context, ResponsiveScreen screen);
 
 class ResponsiveWidget extends GetResponsiveWidget {
-  final ResponsiveWidgetBuilder responsiveBuilder;
+  final ResponsiveWidgetBuilder? responsiveBuilder;
 
-  ResponsiveWidget({Key? key, required this.responsiveBuilder})
+  ResponsiveWidget({Key? key, this.responsiveBuilder})
       : super(
             key: key,
             settings: ResponsiveScreenSettings(
@@ -29,6 +29,8 @@ class ResponsiveWidget extends GetResponsiveWidget {
 
   @override
   Widget builder() {
-    return responsiveBuilder(screen.context, screen);
+    return Visibility(
+        visible: responsiveBuilder != null,
+        child: responsiveBuilder!(screen.context, screen));
   }
 }

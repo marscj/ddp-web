@@ -27,7 +27,10 @@ class About extends GetResponsiveWidget {
               child: [
                 Image.asset(
                   'assets/images/20210520152154.jpg',
-                ).container().expanded(),
+                  fit: BoxFit.cover,
+                )
+                    .container(size: Size(double.infinity, double.infinity))
+                    .expanded(),
                 [
                   Image.asset(
                     'assets/images/DSC02925.jpg',
@@ -49,7 +52,10 @@ class About extends GetResponsiveWidget {
                         .container(size: Size(double.infinity, double.infinity))
                         .expanded()
                   ].row().expanded()
-                ].col().expanded()
+                ]
+                    .col()
+                    .expanded()
+                    .visibility([ScreenType.Desktop, ScreenType.Tablet])
               ].row())
           .paddingOnly(top: 40)
     ].col().paddingOnly(bottom: 40).responsive();
