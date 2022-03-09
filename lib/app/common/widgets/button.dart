@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 class HoverTextButton extends StatefulWidget {
   final VoidCallback? onPressed;
+  final Color? color;
   final Widget child;
 
   HoverTextButton({
     Key? key,
     required this.child,
+    this.color,
     this.onPressed,
   }) : super(key: key);
 
@@ -25,8 +27,8 @@ class _HoverTextButtonState extends State<HoverTextButton> {
       style: ButtonStyle(
           overlayColor: MaterialStateProperty.all(Colors.transparent),
           foregroundColor: _hover
-              ? MaterialStateProperty.all(Colors.blueAccent)
-              : MaterialStateProperty.all(Theme.of(context).disabledColor)),
+              ? MaterialStateProperty.all(Colors.blue)
+              : MaterialStateProperty.all(widget.color ?? Colors.black87)),
       onHover: (value) {
         setState(() {
           _hover = value;

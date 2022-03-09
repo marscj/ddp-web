@@ -34,7 +34,8 @@ class BasePageView extends GetView<BasePageController> {
       init: BasePageController(),
       builder: (controller) {
         return Scaffold(
-          drawer: SliderMenu(),
+          key: controller.scaffoldState,
+          drawer: DrawerMenu(),
           body: [
             SingleChildScrollView(
               controller: scrollController,
@@ -47,23 +48,7 @@ class BasePageView extends GetView<BasePageController> {
                 ],
               ),
             ),
-
             header ?? GlobaleHeader(),
-            // Obx(
-            //   () => Positioned(
-            //     left: Get.width > 1200 ? (Get.width - 1200) / 2 : 0,
-            //     right: Get.width > 1200 ? (Get.width - 1200) / 2 : 0,
-            //     top: headerHeight,
-            //     child: Visibility(
-            //       visible: controller.showmenu.value,
-            //       child: Container(
-            //         color: Colors.red,
-            //         width: 100,
-            //         height: 100,
-            //       ),
-            //     ),
-            //   ),
-            // )
           ].stack(),
         );
       },

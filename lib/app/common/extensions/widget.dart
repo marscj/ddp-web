@@ -64,5 +64,7 @@ extension ExtensionWidget on Widget {
 
   Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
 
+  Widget list() => SingleChildScrollView(child: this);
+
   Widget fitted() => FittedBox(child: this);
 }
