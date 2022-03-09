@@ -4,39 +4,41 @@ import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
 import 'package:ddp_web/app/common/widgets/button.dart';
-import 'package:ddp_web/app/common/widgets/logo.dart';
 import 'package:ddp_web/app/common/widgets/mega.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class GlobaleHeader extends StatelessWidget {
+class GlobaleHeader extends ResponsiveWidget {
   GlobaleHeader({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return _GlobaleHeader();
-  }
-}
-
-class _GlobaleHeader extends ResponsiveWidget {
-  _GlobaleHeader({Key? key}) : super(key: key);
-
-  @override
   Widget builder() {
-    return [
-      [
-        LogoWidget().paddingOnly(left: 16),
-        HeaderMenu().expanded(),
-        RightWidget().paddingOnly(right: 16),
-      ].row().container(
-          size: Size.fromHeight(headerHeight),
-          color: Colors.white,
-          elevation: 2,
-          type: MaterialType.card),
-      Mega()
-    ].col();
+    final BasePageController controller = Get.find<BasePageController>();
+    return Obx(
+      () => SizedBox.fromSize(
+        size: controller.showmenu.value
+            ? Size.fromHeight(headerHeight + megaHeight)
+            : Size.fromHeight(headerHeight),
+        child: [
+          [
+            LeftWidget().paddingOnly(left: 16),
+            Expanded(child: HeaderMenu().align(Alignment.center)),
+            RightWidget().paddingOnly(right: 16),
+          ].row().container(
+              size: Size.fromHeight(headerHeight),
+              color: Colors.white,
+              elevation: 2,
+              type: MaterialType.card),
+          Visibility(
+            replacement: SizedBox.expand(),
+            visible: controller.showmenu.value,
+            child: Mega().positioned(top: headerHeight, left: 0, right: 0),
+          )
+        ].stack(),
+      ),
+    );
   }
 
   @override
@@ -52,7 +54,7 @@ class _GlobaleHeader extends ResponsiveWidget {
   @override
   Widget? phone() {
     return [
-      LogoWidget().paddingOnly(left: 16),
+      LeftWidget().paddingOnly(left: 16),
       Spacer(),
       RightWidget().paddingOnly(right: 16),
     ].row().container(
@@ -60,6 +62,22 @@ class _GlobaleHeader extends ResponsiveWidget {
         color: Colors.white,
         elevation: 2,
         type: MaterialType.card);
+  }
+}
+
+class LeftWidget extends ResponsiveWidget {
+  LeftWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Image.asset(
+        'assets/images/LOGO-1-1.png',
+        height: 40,
+        width: 60,
+      ),
+    );
   }
 }
 
