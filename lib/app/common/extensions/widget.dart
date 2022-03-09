@@ -39,31 +39,30 @@ extension ExtensionWidget on Widget {
     );
   }
 
-  Widget container({
-    Size? size,
-    Color? color,
-    DecorationImage? image,
-    MaterialType type = MaterialType.canvas,
-    EdgeInsets? margin,
-    Color? shadowColor,
-    double elevation = 0,
-    ShapeBorder? shape,
-  }) =>
+  Widget container(
+          {Size? size,
+          Color? color,
+          DecorationImage? image,
+          MaterialType type = MaterialType.canvas,
+          EdgeInsets? margin,
+          Color? shadowColor,
+          double elevation = 0,
+          ShapeBorder? shape}) =>
       MContainer(
-        size: size,
-        color: color,
-        image: image,
-        type: type,
-        margin: margin,
-        shadowColor: shadowColor,
-        elevation: elevation,
-        shape: shape,
-        child: this,
-      );
+          size: size,
+          color: color,
+          image: image,
+          type: type,
+          margin: margin,
+          shadowColor: shadowColor,
+          elevation: elevation,
+          shape: shape,
+          child: this);
 
-  Widget shadowHover() => Hover(
-        builder: (isHovered) => Card(elevation: isHovered ? 4 : 2, child: this),
-      );
+  Widget card() => Hover(
+      builder: (isHovered) => Card(elevation: isHovered ? 4 : 2, child: this));
 
   Widget expanded({int flex = 1}) => Expanded(flex: flex, child: this);
+
+  Widget fitted() => FittedBox(child: this);
 }

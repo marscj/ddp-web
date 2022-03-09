@@ -16,21 +16,20 @@ class GlobaleHeader extends ResponsiveWidget {
   Widget builder() {
     final BasePageController controller = Get.find<BasePageController>();
     return Obx(
-      () => MContainer(
-        color: Colors.white,
-        elevation: 2,
+      () => SizedBox.fromSize(
         size: controller.showmenu.value
             ? Size.fromHeight(headerHeight + megaHeight)
             : Size.fromHeight(headerHeight),
         child: [
           [
-            LeftWidget(),
+            LeftWidget().paddingOnly(left: 16),
             Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
-            RightWidget(),
-          ]
-              .row()
-              .container(size: Size.fromHeight(headerHeight))
-              .marginSymmetric(horizontal: 16),
+            RightWidget().paddingOnly(right: 16),
+          ].row().container(
+              size: Size.fromHeight(headerHeight),
+              color: Colors.white,
+              elevation: 2,
+              type: MaterialType.card),
           Visibility(
             replacement: SizedBox.expand(),
             visible: controller.showmenu.value,
@@ -72,11 +71,11 @@ class LeftWidget extends ResponsiveWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
-      alignment: Alignment.centerLeft,
+      alignment: Alignment.center,
       child: Image.asset(
         'assets/images/LOGO-1-1.png',
         height: 40,
+        width: 60,
       ),
     );
   }
@@ -91,7 +90,7 @@ class RightWidget extends ResponsiveWidget {
       ElevatedButton(onPressed: () {}, child: Text('登陆')),
       SizedBox(width: 6),
       ElevatedButton(onPressed: () {}, child: Text('注册'))
-    ].row();
+    ].row().container(color: Colors.red);
   }
 }
 
@@ -197,7 +196,10 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
   bool _hoverd = false;
 
   void onEntered(bool isHovered) {
-    controller.showmenu.value = isHovered;
+    if (widget.items.isNotEmpty) {
+      controller.showmenu.value = isHovered;
+    }
+
     setState(() {
       _hoverd = isHovered;
     });
@@ -209,16 +211,17 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
       onEnter: (event) => onEntered(true),
       onExit: (event) => onEntered(false),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         height: double.infinity,
         child: TextButton(
           onPressed: () {},
           child: Text(widget.title),
           style: ButtonStyle(
+            textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16)),
             overlayColor: MaterialStateProperty.all(Colors.transparent),
             foregroundColor: _hoverd
                 ? MaterialStateProperty.all(Colors.blue)
-                : MaterialStateProperty.all(Colors.black87),
+                : MaterialStateProperty.all(Colors.black),
           ),
         ),
       ),

@@ -31,6 +31,6 @@ class Introduce extends StatelessWidget {
           desc ?? '',
         ).s16(),
       ),
-    ].col().paddingAll(32).shadowHover();
+    ].col().paddingAll(32).card();
   }
 }

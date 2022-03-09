@@ -1,8 +1,8 @@
+import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
-import 'package:ddp_web/app/common/widgets/container.dart';
 import 'package:get/get.dart';
 
 class Mega extends ResponsiveWidget {
@@ -19,14 +19,12 @@ class Mega extends ResponsiveWidget {
       onExit: (event) {
         controller.showmenu.value = false;
       },
-      child: MContainer(
-        color: Colors.white,
-        elevation: 2,
+      child: SizedBox.fromSize(
         size: Size.fromHeight(megaHeight),
         child: Container(
-          color: Colors.red,
+          color: Colors.yellow,
         ),
-      ),
+      ).responsive(),
     );
   }
 

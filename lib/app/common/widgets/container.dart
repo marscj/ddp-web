@@ -41,12 +41,10 @@ class MContainer extends StatelessWidget {
         child: SizedBox.fromSize(
           size: size,
           child: Container(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                image: image,
-              ),
-              child: child,
+            decoration: BoxDecoration(
+              image: image,
             ),
+            child: child,
           ),
         ),
       ),
