@@ -2,7 +2,7 @@ import 'package:ddp_web/app/common/extensions/position.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
-import 'package:ddp_web/app/common/sections/mega.dart';
+import 'package:ddp_web/app/common/widgets/mega.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +90,7 @@ class RightWidget extends ResponsiveWidget {
       ElevatedButton(onPressed: () {}, child: Text('登陆')),
       SizedBox(width: 6),
       ElevatedButton(onPressed: () {}, child: Text('注册'))
-    ].row().container(color: Colors.red);
+    ].row();
   }
 }
 
@@ -198,10 +198,22 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
   void onEntered(bool isHovered) {
     if (widget.items.isNotEmpty) {
       controller.showmenu.value = isHovered;
+      controller.curMenu.value = widget.title;
     }
 
     setState(() {
       _hoverd = isHovered;
+    });
+  }
+
+  Widget hoverdIcon() {
+    return Obx(() {
+      if (_hoverd ||
+          (controller.showmenu.value &&
+              (controller.curMenu.value == widget.title))) {
+        return Icon(Icons.arrow_drop_up);
+      }
+      return Icon(Icons.arrow_drop_down);
     });
   }
 
@@ -213,9 +225,8 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         height: double.infinity,
-        child: TextButton(
+        child: TextButton.icon(
           onPressed: () {},
-          child: Text(widget.title),
           style: ButtonStyle(
             textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16)),
             overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -223,6 +234,8 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
                 ? MaterialStateProperty.all(Colors.blue)
                 : MaterialStateProperty.all(Colors.black),
           ),
+          label: widget.items.isNotEmpty ? hoverdIcon() : SizedBox.shrink(),
+          icon: Text(widget.title),
         ),
       ),
     );

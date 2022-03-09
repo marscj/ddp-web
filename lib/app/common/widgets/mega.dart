@@ -20,11 +20,17 @@ class Mega extends ResponsiveWidget {
         controller.showmenu.value = false;
       },
       child: SizedBox.fromSize(
-        size: Size.fromHeight(megaHeight),
-        child: Container(
-          color: Colors.yellow,
-        ),
-      ).responsive(),
+          size: Size.fromHeight(megaHeight),
+          child: Card(
+            elevation: 4,
+            margin: EdgeInsets.zero,
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(6),
+              ),
+            ),
+          )).responsive(),
     );
   }
 
