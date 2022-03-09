@@ -25,6 +25,7 @@ class _GlobaleHeader extends ResponsiveWidget {
 
   @override
   Widget builder() {
+    final BasePageController controller = Get.find<BasePageController>();
     return [
       [
         LogoWidget().paddingOnly(left: 16),
@@ -35,7 +36,7 @@ class _GlobaleHeader extends ResponsiveWidget {
           color: Colors.white,
           elevation: 2,
           type: MaterialType.card),
-      Mega()
+      Obx(() => Visibility(visible: controller.showmenu.value, child: Mega()))
     ].col();
   }
 
@@ -186,19 +187,11 @@ class DrawerMenu extends StatelessWidget {
 class MenuTitle<T> extends StatefulWidget {
   final String title;
   final List<PopupMenuEntry<T>> items;
-  final double? elevation;
-  final T? initialValue;
-  final PopupMenuItemSelected<T>? onSelected;
-  final PopupMenuCanceled? onCanceled;
 
   MenuTitle(
     this.title, {
     Key? key,
     this.items = const [],
-    this.elevation,
-    this.initialValue,
-    this.onSelected,
-    this.onCanceled,
   }) : super(key: key);
 
   @override
