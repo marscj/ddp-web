@@ -1,6 +1,8 @@
 import 'package:ddp_web/app/common/extensions/position.dart';
+import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
+import 'package:ddp_web/app/common/sections/mega.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
@@ -12,15 +14,27 @@ class GlobaleHeader extends ResponsiveWidget {
 
   @override
   Widget builder() {
-    return MContainer(
-      color: Colors.white,
-      elevation: 2,
-      size: Size.fromHeight(headerHeight),
-      child: [
-        LeftWidget(),
-        Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
-        RightWidget(),
-      ].row().paddingSymmetric(horizontal: 16),
+    final BasePageController controller = Get.find<BasePageController>();
+    return Obx(
+      () => MContainer(
+        color: Colors.white,
+        elevation: 2,
+        size: controller.showmenu.value
+            ? Size.fromHeight(headerHeight + megaHeight)
+            : Size.fromHeight(headerHeight),
+        child: [
+          [
+            LeftWidget(),
+            Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
+            RightWidget(),
+          ].row().container(size: Size.fromHeight(headerHeight)),
+          Visibility(
+            replacement: SizedBox.expand(),
+            visible: controller.showmenu.value,
+            child: Mega().positioned(top: headerHeight),
+          )
+        ].stack(),
+      ),
     );
   }
 
@@ -175,49 +189,10 @@ class MenuTitle<T> extends StatefulWidget {
 }
 
 class MenuTitleState<T> extends State<MenuTitle<T>> {
-  bool _hover = false;
+  final BasePageController controller = Get.find<BasePageController>();
 
   void onEntered(bool isHovered) {
-    BasePageController controller = Get.find<BasePageController>();
-    setState(() {
-      _hover = isHovered;
-
-      controller.showmenu.value = isHovered;
-      // if (isHovered) showButtonMenu();
-    });
-  }
-
-  void showButtonMenu() {
-    final PopupMenuThemeData popupMenuTheme = PopupMenuTheme.of(context);
-    final RenderBox button = context.findRenderObject()! as RenderBox;
-    final RenderBox overlay =
-        Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
-    final RelativeRect position = RelativeRect.fromRect(
-      Rect.fromPoints(
-        button.localToGlobal(Offset(0, 32), ancestor: overlay),
-        button.localToGlobal(
-            button.size.bottomRight(Offset.zero) + Offset(0, 32),
-            ancestor: overlay),
-      ),
-      Offset.zero & overlay.size,
-    );
-
-    if (widget.items.isNotEmpty) {
-      showMenu<T?>(
-        context: context,
-        elevation: widget.elevation ?? popupMenuTheme.elevation,
-        items: widget.items,
-        initialValue: widget.initialValue,
-        position: position,
-      ).then<void>((T? newValue) {
-        if (!mounted) return null;
-        if (newValue == null) {
-          widget.onCanceled?.call();
-          return null;
-        }
-        widget.onSelected?.call(newValue);
-      });
-    }
+    controller.showmenu.value = isHovered;
   }
 
   @override
@@ -227,16 +202,13 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
       onExit: (event) => onEntered(false),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 30),
-        color: Colors.red,
         height: double.infinity,
         child: TextButton(
-          onPressed: () {
-            showButtonMenu();
-          },
+          onPressed: () {},
           child: Text(widget.title),
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: _hover
+            foregroundColor: controller.showmenu.value
                 ? MaterialStateProperty.all(Colors.blue)
                 : MaterialStateProperty.all(Colors.black87),
           ),

@@ -7,10 +7,10 @@ extension ExtensionPosition on Widget {
       Align(alignment: alignment, child: this);
 
   Widget positioned(
-          {double? left,
-          double? right,
-          double? top,
-          double? bottom,
+          {double? left = 0,
+          double? right = 0,
+          double? top = 0,
+          double? bottom = 0,
           double? width,
           double? height}) =>
       Positioned(
