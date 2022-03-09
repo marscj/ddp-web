@@ -23,43 +23,39 @@ class Mega extends ResponsiveWidget {
       },
       child: SizedBox.fromSize(
         size: Size.fromHeight(megaHeight),
-        child: Card(
-          elevation: 4,
-          margin: EdgeInsets.zero,
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(6),
+        child: [
+          MegaItem(
+            icon: Image.asset(
+              'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
+              height: 100,
             ),
-          ),
-          child: [
-            MegaItem(
-              icon: Image.asset(
+            title: Text('护照申请'),
+          ).expanded(),
+          MegaItem(
+            icon: Image.asset(
                 'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-                height: 100,
-              ),
-              title: Text('护照申请'),
-            ),
-            MegaItem(
-              icon: Image.asset(
-                  'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-                  height: 100),
-              title: Text('营业执照申请'),
-            ),
-            MegaItem(
-              icon: Image.asset(
-                  'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-                  height: 100),
-              title: Text('体检申请'),
-            ),
-            MegaItem(
-              icon: Image.asset(
-                  'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-                  height: 100),
-              title: Text('公证认证'),
-            ),
-          ].row(mainAxisAlignment: MainAxisAlignment.spaceEvenly),
-        ),
+                height: 100),
+            title: Text('营业执照申请'),
+          ).expanded(),
+          MegaItem(
+            icon: Image.asset(
+                'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
+                height: 100),
+            title: Text('体检申请'),
+          ).expanded(),
+          MegaItem(
+            icon: Image.asset(
+                'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
+                height: 100),
+            title: Text('公证认证'),
+          ).expanded(),
+          Text('业务办理').center().container(
+              color: Colors.grey,
+              size: Size.fromWidth(200),
+              image: DecorationImage(
+                  image: AssetImage('assets/images/mega.jpg'),
+                  fit: BoxFit.cover))
+        ].row().container(elevation: 4, color: Colors.white),
       ).responsive(),
     );
   }
