@@ -25,18 +25,18 @@ class CallOfAction extends StatelessWidget {
       Text(
         title ?? '',
         maxLines: 1,
-      ).s48().white().align(alignment: Alignment.centerLeft),
+      ).s48().white().align(Alignment.centerLeft),
       SizedBox(
         height: 10,
       ),
       Text(
         desc ?? '',
         maxLines: 8,
-      ).s18().white().align(alignment: Alignment.centerLeft),
+      ).s18().white().align(Alignment.centerLeft),
       SizedBox(
         height: 40,
       ),
-      action?.align(alignment: Alignment.centerLeft) ?? SizedBox.shrink()
+      action?.align(Alignment.centerLeft) ?? SizedBox.shrink()
     ]
         .col(mainAxisAlignment: MainAxisAlignment.center)
         .paddingAll(16)

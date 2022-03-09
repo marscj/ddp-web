@@ -23,6 +23,7 @@ class TabMenu extends StatelessWidget {
       Visibility(
           visible: subtitle != null,
           child: HoverTextButton(
+            color: Colors.grey,
             onPressed: () => onTap,
             child: Text(
               subtitle!,

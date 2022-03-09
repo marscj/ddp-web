@@ -24,7 +24,7 @@ class GlobaleHeader extends ResponsiveWidget {
         child: [
           [
             LeftWidget().paddingOnly(left: 16),
-            Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
+            Expanded(child: HeaderMenu().align(Alignment.center)),
             RightWidget().paddingOnly(right: 16),
           ].row().container(
               size: Size.fromHeight(headerHeight),
@@ -156,33 +156,47 @@ class DrawerMenu extends StatelessWidget {
               HoverTextButton(
                 onPressed: () {},
                 child: Text('签证办理'),
-              ),
+              ).align(Alignment.centerLeft),
               HoverTextButton(
                 onPressed: () {},
                 child: Text('公司执照办理'),
-              ),
+              ).align(Alignment.centerLeft),
               HoverTextButton(
                 onPressed: () {},
                 child: Text('体检申请'),
-              ),
+              ).align(Alignment.centerLeft),
               HoverTextButton(
                 onPressed: () {},
                 child: Text('公证认证'),
-              ),
-            ],
+              ).align(Alignment.centerLeft),
+            ]
+                .map((e) => e.paddingSymmetric(horizontal: 8, vertical: 10))
+                .toList(),
           ),
           HoverTextButton(
             onPressed: () {},
             child: Text('进度查询'),
-          ),
+          )
+              .align(Alignment.centerLeft)
+              .paddingSymmetric(horizontal: 8, vertical: 10),
           HoverTextButton(
             onPressed: () {},
             child: Text('合作商'),
-          ),
+          )
+              .align(Alignment.centerLeft)
+              .paddingSymmetric(horizontal: 8, vertical: 10),
           HoverTextButton(
             onPressed: () {},
             child: Text('纳斯达克上市'),
-          ),
+          )
+              .align(Alignment.centerLeft)
+              .paddingSymmetric(horizontal: 8, vertical: 10),
+          Spacer(),
+          Text('DDP CHINA CENTRE @ copyright 2020')
+              .s14()
+              .white()
+              .center()
+              .container(size: Size.fromHeight(60), color: Colors.black)
         ].col(),
       );
 }
