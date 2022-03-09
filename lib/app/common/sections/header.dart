@@ -27,11 +27,14 @@ class GlobaleHeader extends ResponsiveWidget {
             LeftWidget(),
             Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
             RightWidget(),
-          ].row().container(size: Size.fromHeight(headerHeight)),
+          ]
+              .row()
+              .container(size: Size.fromHeight(headerHeight))
+              .marginSymmetric(horizontal: 16),
           Visibility(
             replacement: SizedBox.expand(),
             visible: controller.showmenu.value,
-            child: Mega().positioned(top: headerHeight),
+            child: Mega().positioned(top: headerHeight, left: 0, right: 0),
           )
         ].stack(),
       ),
@@ -54,10 +57,11 @@ class GlobaleHeader extends ResponsiveWidget {
       color: Colors.white,
       elevation: 2,
       margin: EdgeInsets.only(bottom: 1),
+      size: Size.fromHeight(headerHeight),
       child: [
         LeftWidget(),
         Expanded(child: HeaderMenu().align(alignment: Alignment.centerRight)),
-      ].row().paddingSymmetric(vertical: 20, horizontal: 16),
+      ].row().marginSymmetric(horizontal: 16),
     );
   }
 }
@@ -190,9 +194,13 @@ class MenuTitle<T> extends StatefulWidget {
 
 class MenuTitleState<T> extends State<MenuTitle<T>> {
   final BasePageController controller = Get.find<BasePageController>();
+  bool _hoverd = false;
 
   void onEntered(bool isHovered) {
     controller.showmenu.value = isHovered;
+    setState(() {
+      _hoverd = isHovered;
+    });
   }
 
   @override
@@ -208,7 +216,7 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
           child: Text(widget.title),
           style: ButtonStyle(
             overlayColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: controller.showmenu.value
+            foregroundColor: _hoverd
                 ? MaterialStateProperty.all(Colors.blue)
                 : MaterialStateProperty.all(Colors.black87),
           ),
