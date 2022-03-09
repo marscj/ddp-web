@@ -5,7 +5,7 @@ import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
 import 'package:ddp_web/app/common/widgets/button.dart';
 import 'package:ddp_web/app/common/widgets/logo.dart';
-import 'package:ddp_web/app/common/widgets/mega.dart';
+import 'package:ddp_web/app/common/sections/mega.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
 import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
@@ -104,15 +104,7 @@ class HeaderMenu extends ResponsiveWidget {
   @override
   Widget builder() {
     return [
-      MenuTitle(
-        '业务办理',
-        items: [
-          PopupMenuItem(child: Text('签证办理')),
-          PopupMenuItem(child: Text('公司执照办理')),
-          PopupMenuItem(child: Text('体检申请')),
-          PopupMenuItem(child: Text('公证认证')),
-        ],
-      ),
+      MenuTitle('业务办理', mega: true),
       MenuTitle(
         '进度查询',
       ),
@@ -138,11 +130,11 @@ class DrawerMenu extends StatelessWidget {
             children: [
               HoverTextButton(
                 onPressed: () {},
-                child: Text('签证办理'),
+                child: Text('签证申请'),
               ).align(Alignment.centerLeft),
               HoverTextButton(
                 onPressed: () {},
-                child: Text('公司执照办理'),
+                child: Text('营业执照申请'),
               ).align(Alignment.centerLeft),
               HoverTextButton(
                 onPressed: () {},
@@ -186,13 +178,9 @@ class DrawerMenu extends StatelessWidget {
 
 class MenuTitle<T> extends StatefulWidget {
   final String title;
-  final List<PopupMenuEntry<T>> items;
+  final bool mega;
 
-  MenuTitle(
-    this.title, {
-    Key? key,
-    this.items = const [],
-  }) : super(key: key);
+  MenuTitle(this.title, {Key? key, this.mega = false}) : super(key: key);
 
   @override
   State<MenuTitle> createState() => MenuTitleState();
@@ -203,7 +191,7 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
   bool _hoverd = false;
 
   void onEntered(bool isHovered) {
-    if (widget.items.isNotEmpty) {
+    if (widget.mega) {
       controller.showmenu.value = isHovered;
       controller.curMenu.value = widget.title;
     }
@@ -224,6 +212,15 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
     });
   }
 
+  bool isHoverd() {
+    if (_hoverd ||
+        (controller.showmenu.value &&
+            (controller.curMenu.value == widget.title))) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -232,18 +229,18 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),
         height: double.infinity,
-        child: TextButton.icon(
-          onPressed: () {},
-          style: ButtonStyle(
-            textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16)),
-            overlayColor: MaterialStateProperty.all(Colors.transparent),
-            foregroundColor: _hoverd
-                ? MaterialStateProperty.all(Colors.blue)
-                : MaterialStateProperty.all(Colors.black),
-          ),
-          label: widget.items.isNotEmpty ? hoverdIcon() : SizedBox.shrink(),
-          icon: Text(widget.title),
-        ),
+        child: Obx(() => TextButton.icon(
+              onPressed: () {},
+              style: ButtonStyle(
+                textStyle: MaterialStateProperty.all(TextStyle(fontSize: 16)),
+                overlayColor: MaterialStateProperty.all(Colors.transparent),
+                foregroundColor: isHoverd()
+                    ? MaterialStateProperty.all(Colors.blue)
+                    : MaterialStateProperty.all(Colors.black),
+              ),
+              label: widget.mega ? hoverdIcon() : SizedBox.shrink(),
+              icon: Text(widget.title),
+            )),
       ),
     );
   }
