@@ -1,6 +1,8 @@
 import 'package:ddp_web/app/common/extensions/position.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
+import 'package:ddp_web/app/common/pages/page_controller.dart';
 import 'package:ddp_web/app/common/widgets/responsive.dart';
+import 'package:ddp_web/app/constans/constans.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ddp_web/app/common/widgets/container.dart';
@@ -13,12 +15,12 @@ class GlobaleHeader extends ResponsiveWidget {
     return MContainer(
       color: Colors.white,
       elevation: 2,
-      margin: EdgeInsets.only(bottom: 1),
+      size: Size.fromHeight(headerHeight),
       child: [
         LeftWidget(),
         Expanded(child: HeaderMenu().align(alignment: Alignment.center)),
         RightWidget(),
-      ].row().paddingSymmetric(vertical: 20, horizontal: 16),
+      ].row().paddingSymmetric(horizontal: 16),
     );
   }
 
@@ -109,7 +111,7 @@ class HeaderMenu extends ResponsiveWidget {
       MenuTitle(
         '常见问题',
       ),
-    ].warp();
+    ].row(mainAxisAlignment: MainAxisAlignment.center);
   }
 
   @override
@@ -176,9 +178,12 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
   bool _hover = false;
 
   void onEntered(bool isHovered) {
+    BasePageController controller = Get.find<BasePageController>();
     setState(() {
       _hover = isHovered;
-      if (isHovered) showButtonMenu();
+
+      controller.showmenu.value = isHovered;
+      // if (isHovered) showButtonMenu();
     });
   }
 
@@ -218,8 +223,12 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      onEnter: (event) => onEntered(true),
+      onExit: (event) => onEntered(false),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 25),
+        padding: EdgeInsets.symmetric(horizontal: 30),
+        color: Colors.red,
+        height: double.infinity,
         child: TextButton(
           onPressed: () {
             showButtonMenu();
@@ -231,7 +240,6 @@ class MenuTitleState<T> extends State<MenuTitle<T>> {
                 ? MaterialStateProperty.all(Colors.blue)
                 : MaterialStateProperty.all(Colors.black87),
           ),
-          onHover: (value) => onEntered(value),
         ),
       ),
     );
