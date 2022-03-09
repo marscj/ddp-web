@@ -3,14 +3,16 @@ import 'package:ddp_web/app/constans/theme.dart';
 
 extension ExtensionText on Text {
   Text s96() => Text(data ?? '', style: W96);
-  Text s64() => Text(data ?? '', style: W64);
+  Text s60() => Text(data ?? '', style: W60);
   Text s48() => Text(data ?? '', style: W48);
-  Text s32() => Text(data ?? '', style: W32);
+  Text s40() => Text(data ?? '', style: W40);
+  Text s34() => Text(data ?? '', style: W34);
   Text s24() => Text(data ?? '', style: W24);
   Text s18() => Text(data ?? '', style: W18);
   Text s16() => Text(data ?? '', style: W16);
   Text s14() => Text(data ?? '', style: W14);
   Text s12() => Text(data ?? '', style: W12);
+  Text s10() => Text(data ?? '', style: W10);
 
   Text white() => Text(data ?? '', style: style?.copyWith(color: Colors.white));
 

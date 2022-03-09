@@ -24,83 +24,223 @@ import 'package:flutter/material.dart';
 /// caption      12.0  regular  0.4
 /// overline     10.0  regular  1.5
 
-const TextStyle W96 = TextStyle(
-  fontFamily: 'NotoSerifSC',
-  fontSize: 96,
-  color: Colors.black87,
-  overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w300,
-  letterSpacing: -1.5,
-);
+// const TextStyle tdl = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 96.0,
+//     fontWeight: FontWeight.w300,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: -1.5);
 
-const TextStyle W64 = TextStyle(
-  fontFamily: 'NotoSerifSC',
-  fontSize: 64,
-  color: Colors.black87,
-  overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w300,
-  letterSpacing: -0.5,
-);
+// const TextStyle tdm = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 60.0,
+//     fontWeight: FontWeight.w300,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: -0.5);
+
+// const TextStyle tds = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 48.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.0);
+
+// const TextStyle thl = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 40.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.25);
+
+// const TextStyle thm = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 34.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.25);
+
+// const TextStyle ths = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 24.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.0);
+
+// const TextStyle ttl = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 20.0,
+//     fontWeight: FontWeight.w500,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.15);
+
+// const TextStyle ttm = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 16.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.15);
+
+// const TextStyle tts = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 14.0,
+//     fontWeight: FontWeight.w500,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.1);
+
+// const TextStyle tbl = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 16.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.5);
+
+// const TextStyle tbm = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 14.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.25);
+
+// const TextStyle tbs = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 12.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 0.4);
+
+// const TextStyle tll = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 14.0,
+//     fontWeight: FontWeight.w500,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 1.25);
+
+// const TextStyle tlm = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 11.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 1.5);
+
+// const TextStyle tls = TextStyle(
+//     color: Colors.black87,
+//     overflow: TextOverflow.clip,
+//     fontSize: 10.0,
+//     fontWeight: FontWeight.w400,
+//     textBaseline: TextBaseline.alphabetic,
+//     letterSpacing: 1.5);
+
+const TextStyle W96 = TextStyle(
+    fontSize: 96.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w300,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: -1.5);
+
+const TextStyle W60 = TextStyle(
+    fontSize: 60.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w300,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: -0.5);
 
 const TextStyle W48 = TextStyle(
-  fontFamily: 'NotoSerifSC',
-  fontSize: 48,
-  color: Colors.black87,
-  overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w400,
-  letterSpacing: 0,
-);
+    fontSize: 48.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w400,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: 0.0);
 
-const TextStyle W32 = TextStyle(
-  fontFamily: 'NotoSerifSC',
-  fontSize: 32,
-  color: Colors.black87,
-  overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w400,
-  letterSpacing: 0.25,
-);
+const TextStyle W40 = TextStyle(
+    fontSize: 40.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w400,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: 0.25);
+
+const TextStyle W34 = TextStyle(
+    fontSize: 34.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w400,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: 0.25);
 
 const TextStyle W24 = TextStyle(
-  fontFamily: 'NotoSerifSC',
-  fontSize: 24,
-  color: Colors.black87,
-  overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w400,
-  letterSpacing: 0.25,
-);
+    fontSize: 24.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w400,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: 0.0);
+
+const TextStyle W20 = TextStyle(
+    fontSize: 20.0,
+    color: Colors.black87,
+    overflow: TextOverflow.clip,
+    fontWeight: FontWeight.w500,
+    textBaseline: TextBaseline.alphabetic,
+    letterSpacing: 0.15);
 
 const TextStyle W18 = TextStyle(
-  fontFamily: 'NotoSerifSC',
   fontSize: 18,
   color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
-  letterSpacing: 0.5,
+  textBaseline: TextBaseline.alphabetic,
+  letterSpacing: 0.15,
 );
 
 const TextStyle W16 = TextStyle(
-  fontFamily: 'NotoSerifSC',
   fontSize: 16,
   color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
-  letterSpacing: 0.5,
+  textBaseline: TextBaseline.alphabetic,
+  letterSpacing: 0.15,
 );
 
 const TextStyle W14 = TextStyle(
-  fontFamily: 'NotoSerifSC',
   fontSize: 14,
   color: Colors.black87,
   overflow: TextOverflow.clip,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w500,
+  textBaseline: TextBaseline.alphabetic,
   letterSpacing: 0.5,
 );
 
 const TextStyle W12 = TextStyle(
-  fontFamily: 'NotoSerifSC',
   fontSize: 12,
   color: Colors.black87,
   overflow: TextOverflow.clip,
   fontWeight: FontWeight.w400,
-  letterSpacing: 1.0,
+  textBaseline: TextBaseline.alphabetic,
+  letterSpacing: 0.4,
+);
+
+const TextStyle W10 = TextStyle(
+  fontSize: 10,
+  color: Colors.black87,
+  overflow: TextOverflow.clip,
+  fontWeight: FontWeight.w400,
+  textBaseline: TextBaseline.alphabetic,
+  letterSpacing: 1.5,
 );
