@@ -67,4 +67,7 @@ extension ExtensionWidget on Widget {
   Widget list() => SingleChildScrollView(child: this);
 
   Widget fitted() => FittedBox(child: this);
+
+  Widget ratio(aspectRatio) =>
+      AspectRatio(aspectRatio: aspectRatio, child: this);
 }

@@ -1,4 +1,4 @@
-import 'package:ddp_web/app/common/extensions/position.dart';
+import 'package:ddp_web/app/common/extensions/text.dart';
 import 'package:ddp_web/app/common/extensions/widget.dart';
 import 'package:ddp_web/app/common/extensions/widgets.dart';
 import 'package:ddp_web/app/common/pages/page_controller.dart';
@@ -25,29 +25,29 @@ class Mega extends ResponsiveWidget {
         size: Size.fromHeight(megaHeight),
         child: [
           MegaItem(
+                  icon: Image.asset(
+                    'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
+                    height: 100,
+                  ),
+                  title: Text('护照申请').s16())
+              .expanded(),
+          MegaItem(
             icon: Image.asset(
-              'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-              height: 100,
-            ),
-            title: Text('护照申请'),
+                'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
+                height: 100),
+            title: Text('营业执照申请').s16(),
           ).expanded(),
           MegaItem(
             icon: Image.asset(
                 'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
                 height: 100),
-            title: Text('营业执照申请'),
+            title: Text('体检申请').s16(),
           ).expanded(),
           MegaItem(
             icon: Image.asset(
                 'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
                 height: 100),
-            title: Text('体检申请'),
-          ).expanded(),
-          MegaItem(
-            icon: Image.asset(
-                'assets/images/c9db2601b0265cecee08dbfd903ef0ab-passport-travel-icon.png',
-                height: 100),
-            title: Text('公证认证'),
+            title: Text('公证认证').s16(),
           ).expanded(),
         ].row().container(elevation: 4, color: Colors.white),
       ).responsive(),

@@ -24,43 +24,35 @@ class About extends ResponsiveWidget {
           .s16()
           .paddingOnly(top: 40),
       MContainer(
-              size: Size.fromHeight(450),
               child: [
-                Image.asset(
-                  'assets/images/20210520152154.jpg',
-                  fit: BoxFit.cover,
-                )
-                    .container(size: Size(double.infinity, double.infinity))
-                    .expanded(),
-                SizedBox(width: 8),
-                [
-                  Image.asset(
-                    'assets/images/DSC02925.jpg',
-                    fit: BoxFit.cover,
-                  )
-                      .container(size: Size(double.infinity, double.infinity))
-                      .expanded(),
-                  SizedBox(height: 8),
-                  [
-                    Image.asset(
-                      'assets/images/DSC02942.jpg',
-                      fit: BoxFit.cover,
-                    )
-                        .container(size: Size(double.infinity, double.infinity))
-                        .expanded(),
-                    SizedBox(width: 8),
-                    Image.asset(
-                      'assets/images/DSC02977.jpg',
-                      fit: BoxFit.cover,
-                    )
-                        .container(size: Size(double.infinity, double.infinity))
-                        .expanded()
-                  ].row().expanded()
-                ]
-                    .col()
-                    .expanded()
-                    .visibility([ScreenType.Desktop, ScreenType.Tablet])
-              ].row())
+        Image.asset(
+          'assets/images/20210520152154.jpg',
+          fit: BoxFit.cover,
+        ).container(size: Size(double.infinity, double.infinity)).expanded(),
+        SizedBox(width: 8),
+        [
+          Image.asset(
+            'assets/images/DSC02925.jpg',
+            fit: BoxFit.cover,
+          ).container(size: Size(double.infinity, double.infinity)).expanded(),
+          SizedBox(height: 8),
+          [
+            Image.asset(
+              'assets/images/DSC02942.jpg',
+              fit: BoxFit.cover,
+            )
+                .container(size: Size(double.infinity, double.infinity))
+                .expanded(),
+            SizedBox(width: 8),
+            Image.asset(
+              'assets/images/DSC02977.jpg',
+              fit: BoxFit.cover,
+            ).container(size: Size(double.infinity, double.infinity)).expanded()
+          ].row().expanded()
+        ].col().expanded().visibility(
+            [ScreenType.Desktop, ScreenType.Tablet, ScreenType.Phone])
+      ].row())
+          .ratio(2)
           .paddingOnly(top: 40)
     ].col().paddingOnly(bottom: 40).responsive();
   }
