@@ -49,12 +49,6 @@ class Mega extends ResponsiveWidget {
                 height: 100),
             title: Text('公证认证'),
           ).expanded(),
-          Text('业务办理').center().container(
-              color: Colors.grey,
-              size: Size.fromWidth(200),
-              image: DecorationImage(
-                  image: AssetImage('assets/images/mega.jpg'),
-                  fit: BoxFit.cover))
         ].row().container(elevation: 4, color: Colors.white),
       ).responsive(),
     );
