@@ -63,7 +63,7 @@ extension ExtensionListWidget on List<Widget> {
                 crossAxisSpacing: crossAxisSpacing ?? 0.0,
                 mainAxisExtent: extent?.value(screen) ?? 400.0,
                 crossAxisCount: screen.responsiveValue<int>(
-                    desktop: 3, tablet: 2, mobile: 2, watch: 1)!),
+                    desktop: 3, tablet: 2, mobile: 1, watch: 1)!),
             childrenDelegate: SliverChildListDelegate.fixed(this));
       });
 
