@@ -104,15 +104,13 @@ class HeaderMenu extends ResponsiveWidget {
   @override
   Widget builder() {
     return [
-      MenuTitle('业务办理', mega: true),
+      MenuTitle('金融服务', mega: true),
+      MenuTitle('商务服务', mega: true),
       MenuTitle(
         '进度查询',
       ),
       MenuTitle(
         '合作商',
-      ),
-      MenuTitle(
-        '纳斯达克上市',
       ),
     ].row(mainAxisAlignment: MainAxisAlignment.center);
   }
